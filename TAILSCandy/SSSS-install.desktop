@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install/Update SSSS
+Comment=Install/Update SSSS Python GUI
+Exec=/home/amnesia/Persistent/Packages/install_SSSS.sh
+Name=Install/Update SSSS
+Icon=gnome-app-install

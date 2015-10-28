@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Martus 4.4 client
+Comment=Install Martus 4.4 client
+Exec=/home/amnesia/Persistent/Packages/install_martus.sh
+Name=Install Martus 4.4 client
+Icon=gnome-app-install

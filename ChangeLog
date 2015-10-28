@@ -1,0 +1,52 @@
+********************************************************
+CHANGELOG
+********************************************************
+
+IMPORTANT: "TAILS Candy" is for use with a TAILS persistent volume only, i.e.
+*********  when running TAILS from a USB-stick, SSD card or virtual machine with persistence support.		
+
+INITIAL RELEASE 0.1a - October 30th 2015
+********************
+
+"TAILS Candy" provides a set of on-demand installation/update scripts for
+OpenSSH, VLC, TorChat, OnionMail, OnionShare, Tahoe LAFS, Pond, Martus,
+Academic Signature, Tomb, Armory, Dropbox, SilentEye, TeamViewer, PyBitmessage,
+Shamir's Secret Sharing Scheme and Veracrypt.
+
+Additional features:
+
+1) Create a persistent autostart entry in ~/.config/autostart that will be
+executed every time you log in to TAILS. You can customise the Customisations.sh
+script it runs and which can be found in the ~/Persistent/Packages folder.
+
+2) Disable TAILS Gnome Keyring Daemon SSH-support by overriding default
+autostart. This is done by creating another ~/.config/autostart item which is
+a copy of the one in /etc/xdg/autostart but with Autostart set to false.
+Reason for doing so is that Gnome Keyring s*cks, doesn't support recent SSH key
+types and normal people are using the GnuPG agent for this purpose anyway.
+
+3) Check for GPG SSH-support in ~/.bashrc and ~/.gnupg/gpg-agent.conf. Set if
+not found. Check if you have configured GPG persistence.
+
+4) Persistently modify the Gnome menu to contain an "Encryption" group menu
+item ( ~/.config/menus/ and ~/.local/share/desktop-directories/Encryption.
+directory )
+
+5) Disable weak DHE-exchanges & RC4-ciphers in the user's Tor Browser default
+profile.
+
+6) Create a link to the TAILSCandy folder on the user's desktop so he/she can
+perform point-and-click installations/updates.
+
+7) Propose to replace the default Gnome top panel by a customised one
+containing additional icons for system settings and to restart the panel.
+(~/.config/gnome-panel/panel-default-layout.layout). Saves the original
+if answered yes to.
+
+8) Propose to make I2P settings persistent.
+
+9) Ask if you want to make some additional Debian package installations
+persistent by adding them to the live-additional-software.conf file (e.g.
+Mixmaster, FileZilla, Putty).
+
+

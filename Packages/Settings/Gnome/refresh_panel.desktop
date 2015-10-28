@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Refresh
+Name[de]=Refresh
+Name[en_GB]=Refresh
+Name[fr]=Refresh
+Name[fr_CA]=Refresh
+Comment=Refresh Gnome panel
+Type=Application
+Terminal=false
+Exec=/usr/bin/killall gnome-panel
+Icon=grsync

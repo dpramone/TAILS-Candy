@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=email
+Name[en_US]=Set up OnionMail
+Comment=Install Pond secure asynchronous messaging
+Exec=/home/amnesia/Persistent/Packages/setup_onionmail.sh
+Name=Set up OnionMail
+Icon=email

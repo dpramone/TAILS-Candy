@@ -1,0 +1,13 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Veracrypt
+Path=/home/amnesia/Persistent/Packages/Veracrypt
+Exec=/home/amnesia/Persistent/Packages/Veracrypt/install_veracrypt.sh
+Name=Install Veracrypt 1.16
+Comment=Install Veracrypt 1.16
+Icon=gnome-app-install

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Encryption
+Name[en_US]=Encryption
+Name[en_DK]=Encryption
+Comment=Cryptographic Applications
+Comment[en_US]=Cryptographic Applications
+Comment[en_DK]=Cryptographic Applications
+Icon=gdu-encrypted-lock
+Type=Directory

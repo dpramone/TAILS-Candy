@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=chat
+Name[en_US]=Install TorChat
+Comment=Install Torchat Anonymous Chat
+Exec=/usr/bin/gksudo /home/amnesia/Persistent/Packages/install_torchat.sh
+Name=Install TorChat
+Icon=chat

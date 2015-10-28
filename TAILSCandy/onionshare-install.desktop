@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install OnionShare
+Exec=/home/amnesia/Persistent/Packages/install_onionshare.sh
+Name=Install OnionShare
+Icon=gnome-app-install

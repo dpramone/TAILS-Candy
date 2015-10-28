@@ -1,0 +1,22 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+  "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<Menu> 
+  <Name>Encryption</Name>
+   <Menu>
+       <Name>Encryption</Name>
+       <Directory>Encryption.directory</Directory>
+       <Include>
+	    <Category>Security</Category> 
+       </Include>
+	<Menu>
+	<Name>Tomb</Name>
+	<Directory>Tomb.directory</Directory>
+	<Include>
+		<Category>Tomb</Category>
+	</Include>
+	</Menu>
+       <Layout>
+            <Merge type="all"/>
+       </Layout>
+   </Menu>
+</Menu>

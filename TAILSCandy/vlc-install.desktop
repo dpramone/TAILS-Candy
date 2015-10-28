@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=vlc
+Name[en_US]=Install VLC Video Player
+Comment=Install VLC Video Player
+Exec=/usr/bin/gksudo /home/amnesia/Persistent/Packages/install_vlc.sh
+Name=Install VLC Video Player
+Icon=vlc

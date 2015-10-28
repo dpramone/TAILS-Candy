@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Dropbox
+Comment=Install Dropbox
+Exec=/home/amnesia/Persistent/Packages/install_dropbox.sh
+Name=Install Dropbox
+Icon=gnome-app-install

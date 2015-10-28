@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Academic Signature b52
+Comment=Install Academic Signature b52
+Exec=/home/amnesia/Persistent/Packages/install_acasig.sh
+Name=Install Academic Signature b52
+Icon=gnome-app-install

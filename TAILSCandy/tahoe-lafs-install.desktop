@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install/Bootstrap Tahoe LAFS
+Comment=Install/Bootstrap Tahoe LAFS DFS
+Exec=/usr/bin/gksudo /home/amnesia/Persistent/Packages/install_tahoe-lafs.sh
+Name=Install/Bootstrap Tahoe LAFS
+Icon=gnome-app-install

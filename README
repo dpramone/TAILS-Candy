@@ -1,0 +1,216 @@
+TAILS Candy Ver. 0.1a
+*********************
+
+	(C) 2015-2016 by Dirk Praet
+
+License: GPL v3 - http://www.gnu.org/licenses/gpl.txt
+
+I - DESCRIPTION
+=   ===========
+
+"TAILS Candy" is a small software package designed for use with the TAILS (The
+Amnesic Incognito Live System) operating system. It is not meant to be used
+with any other OS and REQUIRES a TAILS-installation with a persistent volume and
+Dotfiles support configured. 
+See https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html .
+
+The package consists of a number of scripts that add additional features to 
+TAILS, i.e. on-demand installations/upgrades of some useful software that does
+not come with a default TAILS stock installation. Most of these scripts will
+require the root password to be configured at the TAILS Greeter login screen.
+
+The following are currently included:
+
+1) Academic Signature - A Swiss army knife of (ECC) encryption
+   http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
+
+2) Armory - A Bitcoin wallet manager
+   https://bitcoinarmory.com
+
+3) Dropbox - Cloud storage
+   https://www.dropbox.com
+
+4) Martus - Secure information collection and management system
+   https://www.martus.org
+
+5) OnionMail - Set up (a) secure email account(s) on an OnionMail server. 
+   http://en.onionmail.info
+
+6) OnionShare - Secure file sharing
+   https://onionshare.org/
+
+7) OpenSSH - Upgrades the (really old) TAILS OpenSSH version 
+   http://www.openssh.com/
+
+8) Pond - Forward secure, asynchronous messaging 
+   https://pond.imperialviolet.org
+
+9) PyBitmessage - P2P encrypted messaging (with optional Mixmaster support)
+   https://github.com/Bitmessage/PyBitmessage
+
+10) Tahoe LAFS - Secure, encrypted distributed file system (with or without I2P)
+    https://www.tahoe-lafs.org/
+
+11) TeamViewer - Remote support
+    https://www.teamviewer.com/en/
+
+12) Tomb - LUKS container creation and management
+    https://www.dyne.org/software/tomb/
+
+13) TorChat - Secure instant messaging over Tor
+    https://github.com/prof7bit/TorChat
+
+14) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+    https://github.com/skhakimov/secret-sharing
+
+15) Silent Eye - Steganography tool
+    http://www.silenteye.org/
+
+16) Veracrypt - Truecrypt/Veracrypt encrypted container management
+    https://veracrypt.codeplex.com/
+
+17) VLC - VLC Media Player
+    https://www.videolan.org
+
+None of these packages come with "TAILS Candy". They are fetched on demand
+from Debian repositories, cloned/pulled from Github or downloaded from their
+respective sites.
+
+Many of the installation scripts are based on TAILS-installation instructions
+or wrappers around routines already provided by the respective authors of the
+packages (in order not to break stuff when they are revised or upgraded).
+
+In addition to these scripts, "TAILS Candy" provides a couple of additional
+enhancements in the form of login hooks, Gnome desktop and other modifications
+to allow for further customisation. 
+
+
+II - CONTENTS
+==   ========
+
+"TAILS Candy" will install two folders in the TAILS ~/Persistent folder:
+
+- Packages  : Contains the actual installation/upgrade scripts as well as 
+              subfolder called "Repo" and another one called "Settings".
+              Repo will store downloaded packages for subsequent installations.
+              Settings stores package configuration settings that cannot be
+              moved to the Dotfiles persistent directory.
+- TAILSCandy: A folder with .desktop files to execute the installation/upgrade
+              scripts in Packages with a simple point-and-click.
+
+The hooks and modifications previously mentioned will all be taken care of
+by the "TAILS Candy" installer. Here's a short summary:
+
+1) Create a persistent autostart entry in ~/.config/autostart that will be
+executed every time you log in to TAILS. You can customise the Customisations.sh
+script it runs and which can be found in the ~/Persistent/Packages folder.
+
+2) Disable TAILS Gnome Keyring Daemon SSH-support by overriding default
+autostart. This is done by creating another ~/.config/autostart item which is
+a copy of the one in /etc/xdg/autostart but with Autostart set to false.
+Reason for doing so is that Gnome Keyring s*cks, doesn't support recent SSH key
+types and normal people are using the GnuPG agent for this purpose anyway.
+
+3) Check for GPG SSH-support in ~/.bashrc and ~/.gnupg/gpg-agent.conf. Set if
+not found. Check if you have configured GPG persistence.
+
+4) Persistently modify the Gnome menu to contain an "Encryption" group menu
+item ( ~/.config/menus/ and ~/.local/share/desktop-directories/Encryption.
+directory )
+
+5) Disable weak DHE-exchanges & RC4-ciphers in the user's Tor Browser default
+profile.
+
+6) Create a link to the TAILSCandy folder on the user's desktop so he/she can
+perform point-and-click installations/updates.
+
+7) Propose to replace the default Gnome top panel by a customised one
+containing additional icons for system settings and to restart the panel.
+(~/.config/gnome-panel/panel-default-layout.layout). Saves the original
+if answered yes to.
+
+8) Propose to make I2P settings persistent.
+
+9) Ask if you want to make some additional Debian package installations
+persistent by adding them to the live-additional-software.conf file (e.g.
+Mixmaster, FileZilla, Putty).
+
+
+III - REQUIREMENTS
+===   ============
+
+1) A working TAILS 1.6 with persistent volume and Dotfiles support configured.
+   "TAILS Candy" has not been tested on previous versions and you should
+   upgrade anyway.
+2) Root password set up at the TAILS Greeter (login) screen.
+3) Some patience and a kind disposition. This is a first (alpha) release.
+   Most (bash) scripts are really basic-basic and will benefit from some
+   optimisation and code clean-up. This will happen over time.
+   They will also most probably contain some left-over bugs here and there.
+
+
+IV - (DE)INSTALLATION
+==   ================
+
+Make the install_candy.sh script executable (chmod u+x) and run from where ever 
+you have uncompressed the .tar.gz distribution file. The installer will move the
+Packages and TAILSCandy folders to your ~/Persistent directory and guide you
+through the installation. 
+
+If you're tired of TAILS Candy, the package can be uninstalled by making the
+uninstall script remove_candy.sh executable and then running it as root. It
+will remove the two main folders from ~/Persistent and undo (most of) the
+modifications described earlier. Any applications previously installed will be
+preserved and you will be asked if you wish to keep their application settings
+stored in ~/Persistent/Packages/Settings. If answered yes to, they will be saved
+in ~/Persistent/TAILS_Candy_Saved_Settings . You're on your own to reconfigure
+the preserved applications with these. Simplest way would probably be to move
+that folder back to ~/Persistent/Packages/Settings .
+
+
+V - CAVEATS
+=   ======= 
+
+1) None of the packages that can be installed or upgraded through TAILS Candy
+should compromise TAILS security, and those requiring network access do so
+over Tor (some of which need manual socks5 proxy configuration to tunnel
+over localhost:9050). That said, I can in no way guarantee that this is not the
+case, so any risks relating to installation and use of any package you install
+through TAILS Candy are yours and yours alone.
+
+2) At this time, TAILS Candy does NOT come with AppArmor profiles for the
+additional packages it can install. Perhaps in some future release.
+
+3) Do NOT add additional stuff just for the heck of it. Everything you
+install increases the system's attack surface, so install only what you need in any given TAILS session. This goes for both the live-additional-software.conf
+file (for persistent TAILS package installs) and the TAILS Candy packages. The
+former also (considerably) adds to boot time.
+
+4) The TAILS Candy scripts only guide you through installation/upgrade of the
+supported packages. They don't explain you how to set them up or use them.
+So if you're not familiar with them, RTFM or visit the reference URL's given
+above.
+
+5) All the usual restrictions on TAILS and Tor apply. If used correctly,
+they should provide you with some increased degree of privacy, security and
+anonimity - especially when compared to a stock Windows installation - but they
+will not protect you from resourceful state actors or hardware-based attacks (
+cold boot, evil maid etc.).
+
+You can still mitigate the latter by running TAILS on older hardware stuffed
+with RAM and preferably without wireless, bluetooth and sound chips. Unless you
+have good reasons to use the TAILS persistence feature, running from DVD really 
+is more secure too. If you know what you're doing, you can also run from DVD
+and access a persistent TAILS LUKS-volume on an USB-stick or SSD card.
+
+
+VI - COMMENTS
+==   ========
+
+All comments and suggestions are welcome. You can also drop me a note at
+skylord@jedi.be if you want your application included in this package. Security
+-Anonimity-Privacy stuff only, please.
+
+
+
+Happy TAILS'ing, stay safe and s*d the FiveEyes !
