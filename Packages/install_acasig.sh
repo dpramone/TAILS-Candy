@@ -93,9 +93,7 @@ Type=Application
 Terminal=false
 Path=/home/amnesia/Persistent/aca_sig-b52
 Exec=/home/amnesia/Persistent/aca_sig-b52/aca_sig
-Icon=writer
-# Or if you prefer the original icon ...
-#Icon=/home/amnesia/Persistent/aca_sig-b52/signature-icon.png
+Icon=/home/amnesia/Persistent/aca_sig-b52/signature-icon.png
 Categories=Security;Encryption;
 StartupNotify=true
 EOF

@@ -195,7 +195,7 @@ above.
 they should provide you with some increased degree of privacy, security and
 anonimity - especially when compared to a stock Windows installation - but they
 will not protect you from resourceful state actors or hardware-based attacks (
-cold boot, evil maid etc.).
+evil maid, compromised chips, BIOS/UEFI infestations etc.).
 
 You can still mitigate the latter by running TAILS on older hardware stuffed
 with RAM and preferably without wireless, bluetooth and sound chips. Unless you
