@@ -56,6 +56,7 @@ then
 	else
         	echo "Trying to download the Martus package (55 MB)..."
         	wget https://martus.org/installers/Martus-4.4.zip || error_exit "Unable to download Martus 4.4 client. Bailing out."
+		wait
 	fi
 	unzip Martus-4.4.zip
 	mv Martus-4.4.zip $REPO_DIR/

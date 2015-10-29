@@ -56,6 +56,7 @@ then
 	wizardfile=$REPO_DIR/wizard.tar.gz
 	if [ ! -f "$wizardfile" ]
         	wget -O wizard.tar.gz http://louhlbgyupgktsw7.onion/network/wizard.tar.gz || error_exit "Unable to download OnionMail installer. Bailing out ..."
+	wait
 	fi
 	mv $wizardfile $INSTALL_DIR
         cd $INSTALL_DIR

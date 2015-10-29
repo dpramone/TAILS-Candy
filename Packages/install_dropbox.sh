@@ -46,6 +46,7 @@ then
         echo "Trying to download the Dropbox headless installer ..."
         cd /live/persistence/TailsData_unlocked/dotfiles
 	wget -O - https://www.dropbox.com/install?os=lnx | tar xzf - || error_exit "Unable to download Dropbox. Giving up."
+	wait
 	if [ ! -d "$BIN_DIR" ]; then
 	mkdir -p $BIN_DIR
 	ln -sf $BIN_DIR /home/amnesia/bin
@@ -53,7 +54,9 @@ then
 	cd $BIN_DIR
 	echo "Downloading Dropbox.py console script ..."
 	wget -O $BIN_DIR/dropbox.py https://www.dropbox.com/download?dl=packages/dropbox.py || echo "Unable to download dropbox.py cli helper"
+	wait
 	wget -O $BIN_DIR/dropbox_uploader.sh https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh || echo "Unable to download dropbox_uploader.sh cli helper"
+	wait
 	cp -p $BIN_DIR/dropbox.py $INSTALL_DIR/ 1>&2
 	# Create Dropbox config directory & symlinks
 	mkdir $DOT_DIR/.dropbox

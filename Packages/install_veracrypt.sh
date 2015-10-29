@@ -18,6 +18,43 @@ function error_exit
         exit 1
 }
 
+checksig()
+{
+
+# Takes gpg key fingerprint as an argument
+echo
+echo "Verification will fail until you have trusted the Veracrypt public key."
+echo
+gpg --list-keys $1 || wget -O - https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc | gpg --import
+# Download distribution file signature
+wget -O veracrypt-1.16-setup.tar.bz2.sig -t 10 --no-check-certificate https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468027&FileTime=130886989044200000&Build=21031 || echo "Unable to download signature file"
+wait
+if [ -s ./veracrypt-1.16-setup.tar.bz2.sig ]; then
+# Verify distribution file
+        local sig="veracrypt-1.16-setup.tar.bz2.sig"
+        local output="$(gpg -v "$sig" 2>&1)"
+        local good="$(grep -oE "^gpg: Good signature from" <<< "$output")"
+        local bad="$(grep -oE "^gpg: BAD signature from" <<< "$output")"
+        local untrusted="$(grep -oE "^gpg: WARNING: This key is not certified with a trusted signature" <<< "$output")"
+        if [[ -n $good && -z $untrusted ]]; then
+                echo "Signature verified. Looking good."
+                return 0
+        elif [[ -n $bad ]]; then
+                echo "Signature verification FAILED!"
+        else
+                Confirm "This key is untrusted. Do you wish to edit its trust now?" && gpg --edit-key $1
+        fi
+else
+echo "Unable to fetch signature file and verify downloaded Veracrypt distribution file"
+fi
+
+echo
+read -n 1 -p "Press any key to continue or Ctrl-C to abort installation ..."
+
+}
+
+Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
+
 # Main line
 
 clear
@@ -38,9 +75,15 @@ cd $REPO_DIR
 installfile=$REPO_DIR/veracrypt-1.16-setup-gui-x86
 if [ ! -f "$installfile" ]; then
 wget -O veracrypt-1.16-setup.tar.bz2 https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468024&FileTime=130886989031200000&Build=21031 || error_exit "Unable to download Veracrypt installer. Bailing out."
+# Verify GPG signature of downloaded distribution file against Veracrypt public key
+secring="/home/amnesia/.gnupg/secring.gpg"
+if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
 tar -xjvf veracrypt-1.16-setup.tar.bz2
-# We don't need the x64 stuff on this platform and the .bz2 can go too
-rm vera*x64 veracrypt*.bz2
+# We don't need the x64 stuff on this platform
+rm vera*x64
+echo
+Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.16-setup.tar.bz2
+echo
 fi
 
 # Launch the installer

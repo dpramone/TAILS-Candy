@@ -50,6 +50,7 @@ cd $REPO_DIR
 cnt=`ls silenteye*-i386.deb 2>/dev/null | wc -l`
 if [ "$cnt" = "0" ]; then
 wget -O silenteye-0.4.0-i386.deb http://downloads.sourceforge.net/project/silenteye/Application/0.4/silenteye-0.4.0-i386.deb?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fsilenteye%2Ffiles%2FApplication%2F0.4%2Fsilenteye-0.4.0-i386.deb%2Fdownload&ts=1445478994&use_mirror=liquidtelecom || error_exit "Sorry, unable to download SilentEye. Bailing out."
+wait
 chown amnesia:amnesia $REPO_DIR/silenteye*-i386.deb
 fi
 /usr/bin/dpkg -i $REPO_DIR/silenteye*-i386.deb || error_exit "SilentEye installation failed!" 

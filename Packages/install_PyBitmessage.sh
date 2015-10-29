@@ -218,6 +218,7 @@ else
                 echo "Downloading PyBitmessage + Mixmaster installer..."
 		mkdir $PKG_DIR
 		wget -O $PKG_DIR/bitmix_tailsinstaller.sh https://raw.githubusercontent.com/p2pmessage/PyBitmessage/p2pmessage/bitmix_tailsinstaller.sh || error_exit "Sorry, we were unable to fetch the BitMix TAILS installer script" 
+		wait
 		chmod 700 $PKG_DIR/bitmix_tailsinstaller.sh
 		instpbmx
 		break

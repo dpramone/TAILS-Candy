@@ -56,6 +56,7 @@ cd $INSTALL_DIR
 cnt=`ls armory*-32bit.deb 2>/dev/null | wc -l`
 if [ "$cnt" = "0" ]; then
 wget -O armory_0.93.2_ubuntu-32bit.deb https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.2_ubuntu-32bit.deb || error_exit "Sorry, unable to download Armory. Bailing out." 
+wait
 chown amnesia:amnesia $INSTALL_DIR/armory*-32bit.deb
 fi
 /usr/bin/dpkg -i $INSTALL_DIR/armory*-32bit.deb || error_exit "Armory installation failed! WTF?" 

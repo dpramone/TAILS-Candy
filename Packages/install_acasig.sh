@@ -56,6 +56,7 @@ then
         echo "Trying to download the Academic Signature source package ..."
         cd $REPO_DIR
 	wget -O aca_sig-b52.tar.gz https://www.fh-wedel.de/~an/crypto/accessories/aca_sig_sout.php || error_exit "Unable to download Academic Signature. Giving up."
+	wait
 	tar -xzf aca_sig-b52.tar.gz
 	mv aca_sig-b52 $PERSISTENT/
 	echo
