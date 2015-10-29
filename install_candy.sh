@@ -78,6 +78,7 @@ if [ -d "$folder" ]
 then
 	chown -R amnesia:amnesia $folder
 	cp -rp $folder $PERSISTENT/
+	chmod 700 $PERSISTENT/$folder/*.sh
 else
 	error_exit "Where is our Packages folder? Installation aborted."
 fi

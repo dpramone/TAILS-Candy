@@ -93,7 +93,7 @@ Comment='Sync your files across computers and to the web'
 Type=Application
 Terminal=false
 Exec=torsocks /home/amnesia/bin/dropbox.py start
-Icon=dropbox
+Icon=/home/amnesia/Persistent/Packages/Settings/Gnome/icons/Dropbox64.png
 EOF
 chmod 700 /home/amnesia/Desktop/dropbox.desktop
 fi

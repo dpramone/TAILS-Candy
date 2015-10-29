@@ -8,10 +8,10 @@ License: GPL v3 - http://www.gnu.org/licenses/gpl.txt
 I - DESCRIPTION
 =   ===========
 
-"TAILS Candy" is a small software package designed for use with the TAILS (The
-Amnesic Incognito Live System) operating system. It is not meant to be used
-with any other OS and REQUIRES a TAILS-installation with a persistent volume and
-Dotfiles support configured. 
+"TAILS Candy" is a small software package designed for use with TAILS, The
+Amnesic Incognito Live System. It is not meant to be used with any other OS and
+REQUIRES a TAILS-installation with a persistent volume and Dotfiles support
+configured. 
 See https://tails.boum.org/doc/first_steps/persistence/configure/index.en.html .
 
 The package consists of a number of scripts that add additional features to 
@@ -215,7 +215,7 @@ VII - COMMENTS
 ===   ========
 All comments and suggestions are welcome. You can also drop me a note at
 skylord|at|jedi|dot|be if you want your application included in this package.
-Security -Anonimity-Privacy stuff only, please.
+Security-Anonimity-Privacy stuff only, please.
 
 
 

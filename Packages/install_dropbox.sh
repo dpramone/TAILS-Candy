@@ -32,7 +32,6 @@ echo "The script will exit gracefully if this is not the case."
 echo "2) We will try to download the Dropbox headless installer."
 echo "If download fails, the script exits gracefully."
 echo "3) Installation is saved in /live/persistence/TailsData_unlocked/dotfiles/.dropbox-dist"
-echo "4) ATTENTION: Dropbox will not connect until you set its network preference settings to use socks5 proxy localhost:9050"
 echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
@@ -82,15 +81,34 @@ Comment=Sync your files across computers and to the web
 Type=Application
 Terminal=false
 Exec=torsocks /home/amnesia/bin/dropbox.py start
-Icon=dropbox
+Icon=/home/amnesia/Persistent/Packages/Settings/Gnome/icons/Dropbox32.png
 Categories=Network;
 EOF
 	cp -p $desktopdir/dropbox.desktop /home/amnesia/.local/share/applications/ 1>&2
+
+# Create desktop icon
+cat <<EOF > /home/amnesia/Desktop/dropbox.desktop
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Dropbox
+Name[de]=Dropbox
+Name[en_GB]=Dropbox
+Name[fr]=Dropbox
+Name[fr_CA]=Dropbox
+Comment='Sync your files across computers and to the web'
+Type=Application
+Terminal=false
+Exec=torsocks /home/amnesia/bin/dropbox.py start
+Icon=/home/amnesia/Persistent/Packages/Settings/Gnome/icons/Dropbox64.png
+EOF
+chmod 700 /home/amnesia/Desktop/dropbox.desktop
+
 	/usr/bin/notify-send "Dropbox Installed" "Open with Applications > Internet > Dropbox"
 
 	echo
 	# Launch Dropbox now
-	read -n 1 -p "Dropbox will launch now. Configure it to use the Tor socks5 proxy on localhost:9050 via Preferences->Network-> Proxy settings. Press any key to continue ..."
+	read -n 1 -p "Dropbox will now be launched with torsocks. Press any key to continue ..."
 	echo
 	torsocks /home/amnesia/.dropbox-dist/dropboxd
 else

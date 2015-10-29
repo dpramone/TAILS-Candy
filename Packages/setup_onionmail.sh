@@ -38,6 +38,11 @@ echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
 cd /home/amnesia/Persistent || exit
+clawsmail="/usr/bin/claws-mail"
+if [ ! -f "$clawsmail" ]
+	echo "Claws Mail not installed. Aborting"
+	exit 0
+fi
 
 PERSISTENT=/home/amnesia/Persistent
 REPO_DIR=$PERSISTENT/Packages/Repo
