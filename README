@@ -21,55 +21,58 @@ require the root password to be configured at the TAILS Greeter login screen.
 
 The following are currently included:
 
-1) Academic Signature - A Swiss army knife of (ECC) encryption
+1) Academic Signature v52 - A Swiss army knife of (ECC) encryption
    http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
 
-2) Armory - A Bitcoin wallet manager
+2) Armory 0.93.2 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
-3) Dropbox - Cloud storage
+3) Dropbox 3.8 - Cloud storage
    https://www.dropbox.com
 
-4) Martus - Secure information collection and management system
+4) Linux Malware Detect 1.5 - Malware detection & monitoring
+    https://www.rfxn.com/projects/linux-malware-detect/
+
+5) Martus 4.4.0 - Secure information collection and management system
    https://www.martus.org
 
-5) OnionMail - Set up (a) secure email account(s) on an OnionMail server. 
+6) OnionMail 1.8.0 - Set up (a) secure email account(s) on an OnionMail server. 
    http://en.onionmail.info
 
-6) OnionShare - Secure file sharing
+7) OnionShare 0.7.1 - Secure file sharing
    https://onionshare.org/
 
-7) OpenSSH - Upgrades the (really old) TAILS OpenSSH version 
+8) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
    http://www.openssh.com/
 
-8) Pond - Forward secure, asynchronous messaging 
+9) Pond 0.1.1 - Forward secure, asynchronous messaging 
    https://pond.imperialviolet.org
 
-9) PyBitmessage - P2P encrypted messaging (with optional Mixmaster support)
+10) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
    https://github.com/Bitmessage/PyBitmessage
 
-10) Tahoe LAFS - Secure, encrypted distributed file system (with or without I2P)
+11) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-11) TeamViewer - Remote support
+12) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-12) Tomb - LUKS container creation and management
+13) Tomb 2.1.1 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-13) TorChat - Secure instant messaging over Tor
+14) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-14) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+15) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-15) Silent Eye - Steganography tool
+16) Silent Eye 0.40 - Steganography tool
     http://www.silenteye.org/
 
-16) Veracrypt - Truecrypt/Veracrypt encrypted container management
+17) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-17) VLC - VLC Media Player
+18) VLC 2.0.3 - VLC Media Player
     https://www.videolan.org
 
 None of these packages come with "TAILS Candy". They are fetched on demand

@@ -7,6 +7,6 @@ Terminal=true
 Icon[en_US]=gnome-app-install
 Name[en_US]=Install TeamViewer 10
 Comment=Install TeamViewer Remote Desktop Control
-Exec=/usr/bin/gksudo /home/amnesia/Persistent/Packages/install_teamviewer.sh
+Exec=sudo /home/amnesia/Persistent/Packages/install_teamviewer.sh
 Name=Install TeamViewer 10
 Icon=gnome-app-install

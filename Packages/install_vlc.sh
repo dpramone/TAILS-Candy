@@ -41,6 +41,6 @@ sudo apt-get remove totem totem-common gir1.2-totem-1.0 gir1.2-totem-plparser-1.
 # Install VLC & dependencies
 # We're doing it in this order for mimetypes and stuff to get registered correctly
 echo "Now installing VLC & dependencies ..."
-/usr/bin/apt-get install fonts-freefont-ttf libcddb2 libcrystalhd3 libdirac-decoder0 libdvbpsi7 libebml3 libiso9660-8 libmatroska5 libmtp-common libmtp9 libresid-builder0c2a libsdl-image1.2 libsidplay2 libupnp6 libva-x11-1 libvcdinfo0 libvlc5 libvlccore5 libwebp2 libxcb-composite0 libxcb-keysyms1 libxcb-randr0 libxcb-xfixes0 libxcb-xv0 vlc vlc-data vlc-nox vlc-plugin-notify x264 vlc-plugin-zvbi vlc-plugin-svg libffms2-2
+/usr/bin/apt-get -y install vlc=2.1.5-1~bpo70+1 vlc-nox=2.1.5-1~bpo70+1 vlc-data=2.1.5-1~bpo70+1 libvlccore7=2.1.5-1~bpo70+1 libvlc5=2.1.5-1~bpo70+1 libavcodec-extra-55=6:10.1-1~bpo70+1 libavformat55=6:10.1-1~bpo70+1 libswscale2=6:10.1-1~bpo70+1 libopus0=1.1-1~bpo70+1 libgnutls-deb0-28=3.3.8-6~bpo70+1 libhogweed2=2.7.1-1~bpo70+1 libnettle4=2.7.1-1~bpo70+1 libp11-kit0=0.20.7-1~bpo70+1
 
 /usr/bin/sudo -u amnesia /usr/bin/notify-send "Totem Player Removed & VLC Installed" "Open with Applications > Sound & Video > VLC"

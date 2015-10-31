@@ -98,6 +98,26 @@ EOF
 chmod 700 /home/amnesia/Desktop/dropbox.desktop
 fi
 
+MAL_DIR="/home/amnesia/Persistent/maldetect-1.5"
+if [ -d "$MAL_DIR" ]
+then
+cat <<EOF > /home/amnesia/Desktop/maldet.desktop
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Enable Linux Malware Detect
+Name[de]=Enable Linux Malware Detect
+Name[en_GB]=Enable Linux Malware Detect
+Name[fr]=Enable Linux Malware Detect
+Name[fr_CA]=Enable Linux Malware Detect
+Type=Application
+Terminal=true
+Exec=sudo /home/amnesia/Persistent/Packages/install_maldetect.sh
+Icon=/home/amnesia/Persistent/Packages/Settings/Gnome/icons/Malware64.png
+EOF
+chmod 700 /home/amnesia/Desktop/maldet.desktop
+fi
+
 #
 # Create menu item for Mixmaster (if present)
 # additional software
