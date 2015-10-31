@@ -72,7 +72,7 @@ The following are currently included:
 17) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-18) VLC 2.0.3 - VLC Media Player
+18) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
 None of these packages come with "TAILS Candy". They are fetched on demand
