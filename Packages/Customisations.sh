@@ -118,6 +118,15 @@ EOF
 chmod 700 /home/amnesia/Desktop/maldet.desktop
 fi
 
+# Create menu item for Tor Messenger
+#
+TOR_DIR="/home/amnesia/Persistent/tor-messenger"
+if [ -d "$TOR_DIR" ]
+then
+cd $TOR_DIR
+./start-tor-messenger.desktop --register-app
+fi
+
 #
 # Create menu item for Mixmaster (if present)
 # additional software
