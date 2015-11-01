@@ -308,7 +308,7 @@ echo
 echo "Checking for ed and Clamav ..."
 echo
 # LMD makes use of ed and the clamav scanning engine
-dpkg -l ed >/dev/null 2>&1 || apt-get -y install clamav
+dpkg -l ed >/dev/null 2>&1 || apt-get -y install ed
 dpkg -l clamav >/dev/null 2>&1 || install_clamav
 echo "Installing Linux Malware Detect ..."
 cd $INSTALL_DIR
@@ -343,6 +343,7 @@ chown amnesia:amnesia $desktopdir/maldetect.desktop
 
 # Remove distribution file?
 Confirm "Type y if you wish to remove the distribution file" && rm $REPO_DIR/maldetect-current.tar.gz
+echo
 
 sudo -u amnesia /usr/bin/notify-send "Malware Detect Activated" "Use with Applications > Accessories > Malware Detect on Persistent Volume"
 
