@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for Veracrypt
+# TAILS installer script for Veracrypt 1.16
 #
 # Part of "TAILS Candy" Project
 # Version 0.1a
@@ -42,7 +42,7 @@ if [ -s ./veracrypt-1.16-setup.tar.bz2.sig ]; then
         elif [[ -n $bad ]]; then
                 echo "Signature verification FAILED!"
         else
-                Confirm "This key is untrusted. Do you wish to edit its trust now?" && gpg --edit-key $1
+                Confirm "This key is untrusted. Do you wish to edit its trust now? (trust/lsign)" && gpg --edit-key $1 trust
         fi
 else
 echo "Unable to fetch signature file and verify downloaded Veracrypt distribution file"
@@ -60,6 +60,10 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 clear
 echo 
 echo "This script will non-persistenly install Veracrypt 1.16."
+echo "It will create a dotfiles .VeraCrypt directory to"
+echo "persistently store settings."
+echo
+echo "Re-run this script on every boot when you need Veracrypt."
 echo
 echo "Source: https://veracrypt.codeplex.com/ "
 echo
@@ -74,7 +78,7 @@ REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 cd $REPO_DIR
 installfile=$REPO_DIR/veracrypt-1.16-setup-gui-x86
 if [ ! -f "$installfile" ]; then
-wget -O veracrypt-1.16-setup.tar.bz2 https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468024&FileTime=130886989031200000&Build=21031 || error_exit "Unable to download Veracrypt installer. Bailing out."
+wget -O veracrypt-1.16-setup.tar.bz2 -t 10 https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468024&FileTime=130886989031200000&Build=21031 || error_exit "Unable to download Veracrypt installer. Bailing out."
 # Verify GPG signature of downloaded distribution file against Veracrypt public key
 secring="/home/amnesia/.gnupg/secring.gpg"
 if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
@@ -88,6 +92,7 @@ fi
 
 # Launch the installer
 ./veracrypt-1.16-setup-gui-x86
+clear
 
 # Create menu item
 
