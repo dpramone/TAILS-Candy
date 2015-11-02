@@ -106,6 +106,79 @@ echo
 Confirm "Would you like to remove I2P persistence? " && RemoveI2P
 fi
 
+# Removing applications installed by TAILS Candy
+cd $PERSISTENT
+
+# Academic Signature
+cnt=`ls -d aca_sig*/ 2>/dev/null | wc -l`
+if [ "$cnt" = "1" ]; then
+appdir=`ls -d aca_sig*/`
+echo
+Confirm "Would you like to remove the Academic Signature installation? " && rm -rf $PERSISTENT/$appdir
+echo
+fi
+
+# Dropbox
+appdir=$DOT_DIR/.dropbox-dist
+if [ -d $appdir ]; then
+echo
+Confirm "Would you like to remove the Dropbox installation? " && rm -rf $DOT_DIR/.dropbox*
+fi
+
+# Onionshare
+appdir=$PERSISTENT/onionshare
+if [ -d $appdir ]; then
+appdir="/home/amnesia/Persistent/onionshare /home/amnesia/Persistent/.onionshare_install"
+echo
+Confirm "Would you like to remove the Onionshare installation? " && rm -rf $appdir
+fi
+
+# PyBitmessage
+appdir=$PERSISTENT/PyBitmessage
+if [ -d $appdir ]; then
+echo
+Confirm "Would you like to remove the PyBitmessage installation? " && rm -rf $appdir
+fi
+
+# Tor Messenger
+appdir=$PERSISTENT/tor-messenger
+if [ -d $appdir ]; then
+echo
+Confirm "Would you like to remove the Tor Messanger (InstantBird) installation? " && rm -rf $appdir
+fi
+
+# Tomb
+appdir=$PERSISTENT/Tomb
+if [ -d $appdir ]; then
+echo
+Confirm "Would you like to remove the Tomb installation? " && rm -rf $appdir
+fi
+
+# Linux Malware Detect
+cnt=`ls -d maldetect*/ 2>/dev/null | wc -l`
+if [ "$cnt" = "1" ]; then
+appdir=`ls -d maldetect*/`
+echo
+Confirm "Would you like to remove the Linux Malware Detect installation? " && rm -rf $PERSISTENT/$appdir
+echo
+fi
+
+# Martus Client
+cnt=`ls -d Martus*/ 2>/dev/null | wc -l`
+if [ "$cnt" = "1" ]; then
+appdir=`ls -d Martus*/`
+echo
+Confirm "Would you like to remove the Martus Client installation? " && rm -rf $PERSISTENT/$appdir
+echo
+fi
+
+# SSSS GUI
+appdir=$PERSISTENT/SSSS
+if [ -d $appdir ]; then
+echo
+Confirm "Would you like to remove the SSSS GUI installation? " && rm -rf $appdir
+fi
+
 #
 # Remove additional software packages from /live/persistence/TailsData_unlocked/live-additional-software.conf
 #
