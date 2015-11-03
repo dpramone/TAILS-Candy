@@ -26,8 +26,15 @@ echo
 echo "Verification will fail until you have trusted the Veracrypt public key."
 echo
 gpg --list-keys $1 || wget -O - https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_public_key.asc | gpg --import
+#
 # Download distribution file signature
-wget -O veracrypt-1.16-setup.tar.bz2.sig -t 10 --no-check-certificate https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468027&FileTime=130886989044200000&Build=21031 || echo "Unable to download signature file"
+#
+# This is an ABSURD hack because codeplex.com doesn't allow any direct 
+# downloads with curl/wget unless you set the User Agent to "chocolatey command
+# line". Go figure ...
+# Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
+#
+curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468027 || echo "Unable to download signature file"
 wait
 if [ -s ./veracrypt-1.16-setup.tar.bz2.sig ]; then
 # Verify distribution file
@@ -78,7 +85,13 @@ REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 cd $REPO_DIR
 installfile=$REPO_DIR/veracrypt-1.16-setup-gui-x86
 if [ ! -f "$installfile" ]; then
-wget -O veracrypt-1.16-setup.tar.bz2 -t 10 https://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=veracrypt&DownloadId=1468024&FileTime=130886989031200000&Build=21031 || error_exit "Unable to download Veracrypt installer. Bailing out."
+#
+# This is an ABSURD hack because codeplex.com doesn't allow any direct 
+# downloads with curl/wget unless you set the User Agent to "chocolatey command
+# line". Go figure ...
+# Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
+#
+curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
 # Verify GPG signature of downloaded distribution file against Veracrypt public key
 secring="/home/amnesia/.gnupg/secring.gpg"
 if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
