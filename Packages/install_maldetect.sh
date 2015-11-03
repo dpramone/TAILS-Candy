@@ -308,8 +308,8 @@ echo
 echo "Checking for ed and Clamav ..."
 echo
 # LMD makes use of ed and the clamav scanning engine
-dpkg -l ed >/dev/null 2>&1 || apt-get -y install ed
-dpkg -l clamav >/dev/null 2>&1 || install_clamav
+dpkg -s ed 2>/dev/null >/dev/null || apt-get -y install ed
+dpkg -s clamav 2>/dev/null >/dev/null || install_clamav
 echo "Installing Linux Malware Detect ..."
 cd $INSTALL_DIR
 ./install.sh
