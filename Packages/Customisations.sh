@@ -78,8 +78,7 @@ echo 'user_pref("security.tls.unrestricted_rc4_fallback", false);' >> /home/amne
 # Add a couple of Desktop icons
 #
 BOX_DIR=/live/persistence/TailsData_unlocked/dotfiles/.dropbox-dist
-if [ -d "$BOX_DIR" ]
-then
+if [ -d "$BOX_DIR" ]; then
 cat <<EOF > /home/amnesia/Desktop/dropbox.desktop
 [Desktop Entry]
 Version=1.0
@@ -99,8 +98,7 @@ chmod 700 /home/amnesia/Desktop/dropbox.desktop
 fi
 
 MAL_DIR="/home/amnesia/Persistent/maldetect-1.5"
-if [ -d "$MAL_DIR" ]
-then
+if [ -d "$MAL_DIR" ]; then
 cat <<EOF > /home/amnesia/Desktop/maldet.desktop
 [Desktop Entry]
 Version=1.0
@@ -121,19 +119,34 @@ fi
 # Create menu item for Tor Messenger
 #
 TOR_DIR="/home/amnesia/Persistent/tor-messenger"
-if [ -d "$TOR_DIR" ]
-then
+if [ -d "$TOR_DIR" ]; then
 cd $TOR_DIR
 ./start-tor-messenger.desktop --register-app
 fi
+
+#
+# Create menu item for TAILS Candy Uninstaller
+#
+cat <<EOF > /home/amnesia/.local/share/applications/uninstall_candy.desktop
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Uninstall TAILS Candy
+GenericName=Uninstall TAILS Candy
+Comment=Uninstall TAILS Candy
+Icon=debian
+Terminal=true
+Type=Application
+Categories=Utilities;Tails;
+Exec=/home/amnesia/Persistent/Packages/remove_candy.sh
+EOF
 
 #
 # Create menu item for Mixmaster (if present)
 # additional software
 #
 mixdir=/live/persistence/TailsData_unlocked/dotfiles/.Mix
-if [ -d "$mixdir" ]
-then
+if [ -d "$mixdir" ]; then
 cat <<EOF > /home/amnesia/.local/share/applications/mixmaster.desktop
 [Desktop Entry]
 Version=1.0
@@ -152,3 +165,4 @@ fi
 # Re-start panel to make theme/icon settings take effect
 #
 #/usr/bin/killall -1 gnome-panel
+/usr/bin/notify-send "TAILS Candy initialised" "Do NOT install extras until additional software upgrade has completed."
