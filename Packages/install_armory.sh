@@ -18,10 +18,40 @@ function error_exit
 	exit 1
 }
 
+checksig()
+{
+
+echo
+sudo -u amnesia gpg --list-keys 0x98832223 || wget -O - https://bitcoinarmory.com/Alan-C.-Reiner-Offline-Signing-Key-alan@bitcoinarmory.com-0x98832223-pub.asc | sudo -u amnesia gpg --import
+#
+# Download distribution file signature
+#
+curl --socks5-hostname 127.0.0.1:9050 -k -L -J -O https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.2_sha256sum.txt.asc || echo "Unable to download signature file"
+wait
+if [ -s ./armory_0.93.2_sha256sum.txt.asc ]; then
+	chown amnesia:amnesia armory_0.93.2_sha256sum.txt.asc
+	dpkg -s dpkg-sig 2>/dev/null >/dev/null || apt-get -y install dpkg-sig
+	dpkg-sig --verify armory_0.93.2_ubuntu-32bit.deb
+	echo 
+	echo "You should see the string 4AB16AEA98832223 at the end of the GOODSIG line."
+	echo "If this is not the case, you should NOT uses this installer."
+	echo
+else
+	echo "Unable to fetch signature file and verify downloaded Armory distribution file"
+fi
+
+echo
+read -n 1 -p "Press any key to continue or Ctrl-C to abort installation ..."
+
+}
+
+Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
+
+
 # Main line
 
 if [[ $EUID -ne 0 ]]; then
-    echo "You need to run this as root" 1>&2
+    echo "You need to run this script as root, i.e. sudo install_armory.sh" 1>&2
     exit 1
 fi
 
@@ -59,7 +89,13 @@ wget -O armory_0.93.2_ubuntu-32bit.deb https://s3.amazonaws.com/bitcoinarmory-re
 wait
 chown amnesia:amnesia $INSTALL_DIR/armory*-32bit.deb
 fi
+checksig
 /usr/bin/dpkg -i $INSTALL_DIR/armory*-32bit.deb || error_exit "Armory installation failed! WTF?" 
+#
+# Remove distribution file?
+echo
+Confirm "Type y if you wish to remove the distribution file" && rm $INSTALL_DIR/armory_*-32bit.deb $INSTALL_DIR/armory_0.93.2_sha256sum.txt.asc
+echo
 
 # Config dir already present?
 confdir=$DOT_DIR/.armory

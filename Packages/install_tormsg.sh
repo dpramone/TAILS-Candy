@@ -62,6 +62,11 @@ REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 INSTALL_DIR="/home/amnesia/Persistent/tor-messenger"
 distfile="tor-messenger-linux32-0.1.0b3_en-US.tar.xz"
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 if [ -d "$INSTALL_DIR" ];then
 Confirm "Tor Messenger already installed. Press Y to upgrade/overwrite or N to quit." || exit
 fi

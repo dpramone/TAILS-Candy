@@ -34,6 +34,12 @@ echo "3) If the ~/Persistent/SSSS directory already exists,"
 echo "we try to update the package with a git pull." 
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+	echo
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "Sorry, no dotfiles persistence found."
 
 PERSISTENT=/home/amnesia/Persistent

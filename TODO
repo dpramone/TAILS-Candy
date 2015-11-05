@@ -1,5 +1,6 @@
 TO DO:
 *****
 
+- Include Ricochet IM (probably in TAILS 1.7 running Tor 0.2.7.x)
 - Incorporate AppArmor profiles
-- Include Ricochet (when it can work woth TAILS)
+- Provide (limited) support for installations on non-persistent TAILS

@@ -36,12 +36,17 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 # This can also be done from Synaptic but I like it better like this
 clear
 /usr/bin/apt-get install python-wxversion python-wxgtk2.8 torchat
+/usr/bin/sudo -u amnesia /usr/bin/notify-send "TorChat Installed" "Open with Applications > Internet > TorChat"
 
 if [ ! -d /home/amnesia/.torchat ]; then
-echo 
-echo "If you wish to make your Torchat settings persistent, copy the /home/amnesia/.torchat directory to /live/persistence/TailsData_unlocked/dotfiles/ after initial setup."
-echo 
-read -n 1 -p "Press any key to finish up..."
+	sudo -u amnesia mkdir -p /live/persistence/TailsData_unlocked/dotfiles/.torchat 1>&2
+	sudo -u amnesia ln -sf /live/persistence/TailsData_unlocked/dotfiles/.torchat /home/amnesia/.torchat 1>&2
+else
+	echo 
+	echo "If you wish to keep your Torchat settings persistent, copy the contents of the /home/amnesia/.torchat directory to /live/persistence/TailsData_unlocked/dotfiles/ before system shutdown."
+	echo 
 fi
 
-/usr/bin/sudo -u amnesia /usr/bin/notify-send "TorChat Installed" "Open with Applications > Internet > TorChat"
+read -n 1 -p "Press any key to launch Torchat now or Ctrl-C to finish up..."
+torchat &
+

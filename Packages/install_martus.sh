@@ -22,6 +22,7 @@ function error_exit
 
 Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 
+
 # Script main line
 
 clear
@@ -47,6 +48,11 @@ INSTALL_DIR=$PERSISTENT/MartusClient-4.4.0
 REPO_DIR=$PERSISTENT/Packages/Repo
 REPO_FILE=$REPO_DIR/Martus-4.4.zip
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 if [ ! -d "$INSTALL_DIR" ]
 then
         cd $PERSISTENT
@@ -58,6 +64,16 @@ then
         	wget https://martus.org/installers/Martus-4.4.zip || error_exit "Unable to download Martus 4.4 client. Bailing out."
 		wait
 	fi
+	# Verifying checksum of distribution file
+        checksum="6ab4f502ff07155927aa56ea69cf523885b68a88"
+        calcval=`sha1sum ./Martus-4.4.zip`
+        if [ "$checksum" = "$calcval" ]; then
+		echo "SHA-1 checksum OK!"
+	else
+		echo
+		read -n 1 -p "WARNING: SHA-1 checksum value did not match downloaded file! Press any key to continue or Ctrl-C to abort installation."
+	fi
+
 	unzip Martus-4.4.zip
 	mv Martus-4.4.zip $REPO_DIR/
 	echo

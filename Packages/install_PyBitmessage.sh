@@ -28,7 +28,7 @@ instpbm(){
 	/bin/echo "Installing PyBitmessage in $PKG_DIR ..."
 	if [ ! -f /home/amnesia/Persistent/PyBitmessage/keys.dat ]
 	then
-		/bin/cat <<EOT >> /home/amnesia/Persistent/PyBitmessage/keys.dat
+		/bin/cat <<EOT > /home/amnesia/Persistent/PyBitmessage/keys.dat
 [bitmessagesettings]
 settingsversion = 10
 port = 8444
@@ -194,11 +194,18 @@ echo
 echo "Requirements: You must have enabled TAILS persistence with dotfiles. If not, we will exit gracefully."
 echo 
 echo "If ~/Persistent/PyBitmessage already exists, we will not reinstall but try to update from Github (git pull) instead." 
-read -n 1 -p "Press any key to continue ..."
+echo 
+read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 echo
 
 PERSISTENT=/home/amnesia/Persistent
 PKG_DIR=$PERSISTENT/PyBitmessage
+
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+        echo
+        error_exit "Please do not run this script with sudo or as root"
+fi
 
 # Exit if no TAILS persistence
 cd /live/persistence/TailsData_unlocked/dotfiles || exit
@@ -220,6 +227,11 @@ else
 		wget -O $PKG_DIR/bitmix_tailsinstaller.sh https://raw.githubusercontent.com/p2pmessage/PyBitmessage/p2pmessage/bitmix_tailsinstaller.sh || error_exit "Sorry, we were unable to fetch the BitMix TAILS installer script" 
 		wait
 		chmod 700 $PKG_DIR/bitmix_tailsinstaller.sh
+		# Check for presence of mixmaster
+		dpkg -s mixmaster 2>/dev/null >/dev/null || sudo apt-get -y install mixmaster
+		echo
+		read -n 1 -p "ATTENTION: Re-install Mixmaster at every reboot or make it persistent! Press any key to continue..."
+		echo
 		instpbmx
 		break
                 ;;
@@ -235,6 +247,6 @@ else
         done
 
 	cp /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop /home/amnesia/.local/share/applications/bitmessage.desktop
-	/usr/bin/sudo -u amnesia /usr/bin/notify-send "PyBitmessage Installed" "Open with Applications > Internet > Bitmessage"
+	/usr/bin/notify-send "PyBitmessage Installed" "Open with Applications > Internet > Bitmessage"
 fi
 

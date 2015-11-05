@@ -37,6 +37,12 @@ cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "No dotfiles pers
 PERSISTENT=/home/amnesia/Persistent
 PKG_DIR=$PERSISTENT/Packages/go
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+	echo
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 #
 # Install Pond if Pond client not installed
 #

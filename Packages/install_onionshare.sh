@@ -48,6 +48,12 @@ cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "Sorry, no TAILS 
 PERSISTENT=/home/amnesia/Persistent
 INSTALL_DIR=$PERSISTENT/onionshare
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+	echo
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 if [ -d "$INSTALL_DIR" ]
 then
         # Shall we do a git pull?

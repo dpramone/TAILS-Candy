@@ -36,7 +36,7 @@ The following are currently included:
 5) Martus 4.4.0 - Secure information collection and management system
    https://www.martus.org
 
-6) OnionMail 1.8.0 - Set up (a) secure email account(s) on an OnionMail server. 
+6) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
    http://en.onionmail.info
 
 7) OnionShare 0.7.1 - Secure file sharing
@@ -145,7 +145,7 @@ Mixmaster, FileZilla, Putty).
 III - REQUIREMENTS
 ===   ============
 
-1) A working TAILS 1.6 with persistent volume and Dotfiles support configured.
+1) A working TAILS 1.6 or 1.7 with persistent volume and Dotfiles support.
    "TAILS Candy" has not been tested on previous versions and you should
    upgrade anyway.
 2) Root password set up at the TAILS Greeter (login) screen.

@@ -27,7 +27,7 @@ fi
 
 clear
 echo "This routine will persistently install the Tomb Cryptkeeper in"
-echo "~/Persistent/Tomb-Git."
+echo "~/Persistent/Tomb."
 echo "Source: https://www.dyne.org/software/tomb/"
 echo
 echo "1) You need to have TAILS persistence with dotfiles configured."

@@ -81,6 +81,11 @@ cd $DOT_DIR || error_exit "No dotfiles persistence found. Aborting"
 
 REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 # Do we already have a copy of the Veracrypt installer ?
 cd $REPO_DIR
 installfile=$REPO_DIR/veracrypt-1.16-setup-gui-x86
@@ -91,17 +96,20 @@ if [ ! -f "$installfile" ]; then
 # line". Go figure ...
 # Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
 #
-curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
+	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
+fi
+
 # Verify GPG signature of downloaded distribution file against Veracrypt public key
 secring="/home/amnesia/.gnupg/secring.gpg"
 if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
+
 tar -xjvf veracrypt-1.16-setup.tar.bz2
 # We don't need the x64 stuff on this platform
 rm vera*x64
+
 echo
-Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.16-setup.tar.bz2
+Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.16-setup.tar.bz2*
 echo
-fi
 
 # Launch the installer
 ./veracrypt-1.16-setup-gui-x86
@@ -109,7 +117,7 @@ clear
 
 # Create menu item
 
-/bin/cat <<EOF >> /home/amnesia/.local/share/applications/veracrypt.desktop
+/bin/cat <<EOF > /home/amnesia/.local/share/applications/veracrypt.desktop
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
