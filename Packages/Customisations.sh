@@ -84,6 +84,7 @@ fi
 grep -q 'user_pref("security.tls.unrestricted_rc4_fallback, false);' /home/amnesia/.tor-browser/profile.default/prefs.js
 if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.tls.unrestricted_rc4_fallback", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
 
 #############################################################################
 # Feel free to add your own customisations hereafter ...
