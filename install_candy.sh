@@ -39,14 +39,6 @@ function modify_toppanel
 	fi
 }
 
-I2PPersistence()
-{
-grep -q "I2P" /live/persistence/TailsData_unlocked/persistence.conf
-if [ ! $? -eq 0 ]; then
-echo "/var/lib/i2p source=i2p" >> /live/persistence/TailsData_unlocked/persistence.conf
-fi
-}
-
 Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 
 ####################
@@ -54,39 +46,82 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 ####################
 
 if [[ $EUID -ne 0 ]]; then
-    echo "You need to run this installer as root, i.e. sudo ./install_candy.sh ." 1>&2
+    echo "You need to run this installer script as root" 1>&2
     exit 1
 fi
 
+DOT_DIR=/live/persistence/TailsData_unlocked/dotfiles
+cd $DOT_DIR || error_exit "No TAILS Dotfiles persistence found. Aborting"
+
 clear
 echo 
-echo "This routine will guide you through the installation of the"
-echo "TAILS Candy package."
+echo "This routine will guide you through installation or upgrade"
+echo "of TAILS Candy."
 echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
-DOT_DIR=/live/persistence/TailsData_unlocked/dotfiles
-CUR_DIR=$PWD
+# Determine if this is a first time install or upgrade.
+#
 PERSISTENT=/home/amnesia/Persistent
+CUR_DIR=$PWD
 
-cd $DOT_DIR || error_exit "No TAILS Dotfiles persistence found. Aborting"
+packdir=$PERSISTENT/Packages
+candydir=$PERSISTENT/TAILSCandy 
+if [ -d "$packdir" ] && [ -d "$candydir" ] ; then
+# This is an upgrade
+	#if [ "$CUR_DIR" == "/home/amnesia/Persistent/Packages" ]; then
+		echo "Downloading latest TAILS Candy from Github ..."
+		# We are being executed from the Packages directory, so let's
+		# update by performing a git clone from the master branch
+		mkdir -p $PERSISTENT/tmp  2> /dev/null
+		cd $PERSISTENT/tmp
+		git clone https://github.com/dpramone/TAILS-Candy.git || error_exit "Unable to download TAILS Candy upgrade. Bailing out ..."
+		cd TAILS-Candy
+		# Remove Git infornation
+		rm -rf /home/amnesia/Persistent/tmp/TAILS-Candy/.git
+		CUR_DIR="/home/amnesia/Persistent/tmp/TAILS-Candy"
+	#fi
+	VERSION=`cat $CUR_DIR/VERSION`
+	echo
+	echo "Upgrading TAILS Candy to version $VERSION ..."
+	# 
+	# Placeholder for stuff to be removed from older versions ...
+	#
+else
+	VERSION=`cat $CUR_DIR/VERSION`
+	echo
+	echo "Installing TAILS Candy version $VERSION ..."
+fi
 
 echo
 echo "Installing Packages and TAILSCandy folders in $PERSISTENT ..."
-folder=$CURDIR/Packages
+folder=$CUR_DIR/Packages
 if [ -d "$folder" ]
 then
 	chown -R amnesia:amnesia $folder
 	cp -rp $folder $PERSISTENT/
+	if [ ! -f "$PERSISTENT/Packages/install_candy.sh" ]; then
+	cp -p $CUR_DIR/install_candy.sh $PERSISTENT/Packages/ 2> /dev/null
+	fi 
 	chmod 700 $PERSISTENT/$folder/*.sh
 else
-	error_exit "Where is our Packages folder? Installation aborted."
+	error_exit "Where is our TAILS Candy Packages folder? Installation aborted."
 fi
-folder=$CURDIR/TAILSCandy
+folder=$CUR_DIR/TAILSCandy
 if [ -d "$folder" ]
 then
 	chown -R amnesia:amnesia $folder
 	cp -rp $folder $PERSISTENT/
+	mkdir -p $PERSISTENT/TAILSCandy/Info 2> /dev/null
+	cp -p $CUR_DIR/TODO $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/AUTHORS $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/README $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/LICENSE $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/COPYING $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/ChangeLog $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/NEWS $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p $CUR_DIR/VERSION $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	chown -R amnesia:amnesia $PERSISTENT/TAILSCandy/Info
 else
 	error_exit "Where is our TAILSCandy folder? Installation aborted."
 fi
@@ -175,38 +210,6 @@ fi
 sudo -u amnesia cp -p $PERSISTENT/Packages/Settings/Gnome/Encryption.directory $dtdir/Encryption.directory 1>&2
 
 #
-# Disable vulnerable DHE & RC4-ciphers in Firefox/Tor Browser
-#
-echo "Disabling weak ciphers in Tor Browser default profile ..."
-echo "You need to restart your Tor browser for these changes to take"
-echo "effect in this TAILS session."
-echo 'user_pref("security.ssl3.dhe_rsa_aes_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.ssl3.dhe_rsa_aes_256_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.ssl3.ecdhe_ecdsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.ssl3.ecdhe_rsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.ssl3.rsa_rc4_128_md5", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.ssl3.rsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-echo 'user_pref("security.tls.unrestricted_rc4_fallback", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
-
-#
-# Put a link to the TAILS Candy folder on the user's desktop
-#
-echo "Creating TAILS Candy desktop item ..."
-sudo -u amnesia cat <<EOF > /home/amnesia/Desktop/TAILS_Candy.desktop
-#!/usr/bin/env xdg-open
-[Desktop Entry]
-Version=1.0
-Type=Link
-Icon[en_US]=x-system-software-sources
-Name[en_US]=TAILS Candy
-Comment[en_US]=Install Additional Software
-URL=file:///home/amnesia/Persistent/TAILSCandy
-Name=TAILS Candy
-Comment=Install Additional Software
-Icon=x-system-software-sources
-EOF
-
-#
 # Shall we modify the default TAILS Gnome top panel layout?
 #
 echo
@@ -216,7 +219,10 @@ Confirm "Shall we add a couple of useful items to the Gnome top panel? " && modi
 # Configure persistence for I2P ?
 #
 echo
-Confirm "Shall we configure TAILS for I2P persistence? " && I2PPersistence
+grep -q "I2P" /live/persistence/TailsData_unlocked/persistence.conf
+if [ ! $? -eq 0 ]; then
+Confirm "Shall we configure TAILS for I2P persistence? " && echo "/var/lib/i2p source=i2p" >> /live/persistence/TailsData_unlocked/persistence.conf
+fi
  
 #
 # Ask for additional software packages to be installed persistently
@@ -247,7 +253,7 @@ do
 	grep -q $package /live/persistence/TailsData_unlocked/live-additional-software.conf
 	if [ ! $? -eq 0 ]; then
 		echo
-		Confirm "Do you wish to consistently install $package at boot time? y/n" && echo $package >> /live/persistence/TailsData_unlocked/live-additional-software.conf
+		Confirm "Do you wish to consistently install $package at boot time? " && echo $package >> /live/persistence/TailsData_unlocked/live-additional-software.conf
 	fi
 done
 
@@ -263,7 +269,15 @@ done
 /usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Packages/Settings/Gnome/bg.jpg
 /usr/bin/gsettings set org.gnome.desktop.background picture-options "scaled"
 
-sudo -u amnesia /usr/bin/notify-send "TAILS Candy succesfully installed" "Install your favorite applications from the desktop folder"
+# Execute Customisations script from TAILS Candy Packages folder. This will from now be executed at every boot
+sudo -u amnesia /home/amnesia/Persistent/Packages/Customisations.sh install
 
-read -n 1 -p "All finished. New settings will take effect after reboot. Press any key to finish up ..."
+read -n 1 -p "All finished. Some modifications will only take effect after reboot. Press any key to finish up ..."
+
+# Remove installation directory
+cd $CUR_DIR
+cd ..
+rm -rf ./TAILS-Candy
+
+exit 0
 

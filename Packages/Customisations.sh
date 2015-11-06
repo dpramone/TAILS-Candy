@@ -23,6 +23,11 @@ function error_exit
 
 # Script main line
 
+# This script should not be run as root
+if [[ $EUID -eq 0 ]]; then
+        error_exit "Please do not run this script with sudo or as root"
+fi
+
 #
 # Put a link to the TAILS Candy folder on the user's desktop
 #
@@ -44,12 +49,40 @@ EOF
 #
 # Disable vulnerable DHE & RC4-ciphers in Firefox/Tor Browser
 #
+echo "Disabling weak ciphers in Tor Browser default profile ..."
+
+grep -q 'user_pref("security.ssl3.dhe_rsa_aes_128_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.dhe_rsa_aes_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.ssl3.dhe_rsa_aes_256_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.dhe_rsa_aes_256_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.ssl3.ecdhe_ecdsa_rc4_128_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.ecdhe_ecdsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.ssl3.ecdhe_rsa_rc4_128_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.ecdhe_rsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.ssl3.rsa_rc4_128_md5", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.rsa_rc4_128_md5", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.ssl3.rsa_rc4_128_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.ssl3.rsa_rc4_128_sha", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
+fi
+
+grep -q 'user_pref("security.tls.unrestricted_rc4_fallback, false);' /home/amnesia/.tor-browser/profile.default/prefs.js
+if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.tls.unrestricted_rc4_fallback", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
 
 #############################################################################
@@ -125,6 +158,43 @@ cd $TOR_DIR
 fi
 
 #
+# Create menu item for TAILS Candy installer/updater
+#
+if [ "$1" == "install" ]; then
+	cat <<EOF > /home/amnesia/.local/share/applications/install_candy.desktop
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Install/Upgrade TAILS Candy
+GenericName=Install/Upgrade TAILS Candy
+Comment=Install/Upgrade TAILS Candy
+Icon=system-upgrade
+Terminal=true
+Type=Application
+Categories=Utilities;Tails;
+Exec=/home/amnesia/Persistent/Packages/install_candy.sh
+EOF
+else
+	installfile="/home/amnesia/Persistent/Packages/install_candy.sh"
+	if [ -f "$installfile" ]; then
+		mv $installfile $PERSISTENT/Packages/upgrade_candy.sh
+	fi
+	cat <<EOF > /home/amnesia/.local/share/applications/install_candy.desktop
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Install/Upgrade TAILS Candy
+GenericName=Install/Upgrade TAILS Candy
+Comment=Install/Upgrade TAILS Candy
+Icon=system-upgrade
+Terminal=true
+Type=Application
+Categories=Utilities;Tails;
+Exec=/home/amnesia/Persistent/Packages/upgrade_candy.sh
+EOF
+fi
+
+#
 # Create menu item for TAILS Candy Uninstaller
 #
 cat <<EOF > /home/amnesia/.local/share/applications/uninstall_candy.desktop
@@ -165,4 +235,4 @@ fi
 # Re-start panel to make theme/icon settings take effect
 #
 #/usr/bin/killall -1 gnome-panel
-/usr/bin/notify-send "TAILS Candy initialised" "Do NOT install extras until additional software upgrade has completed."
+/usr/bin/notify-send "TAILS Candy initialised" "Install your favorite applcations from the TAILS Candy desktop folder."
