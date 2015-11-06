@@ -264,6 +264,7 @@ Confirm "Do you wish to save any remaining application configuration settings? "
 rm -rf $PERSISTENT/Packages $PERSISTENT/TAILSCandy
 # Remove uninstall TAILS Candy menu item
 rm -f $PERSISTENT/.local/share/applications/uninstall_candy.desktop 
+rm -f $PERSISTENT/.local/share/applications/install_candy.desktop 
 
 sudo -u amnesia /usr/bin/notify-send "TAILS Candy succesfully removed" "Reboot for changes to take effect."
 
