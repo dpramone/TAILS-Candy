@@ -345,7 +345,7 @@ chown amnesia:amnesia $desktopdir/maldetect.desktop
 Confirm "Type y if you wish to remove the distribution file" && rm $REPO_DIR/maldetect-current.tar.gz
 echo
 
-sudo -u amnesia /usr/bin/notify-send "Malware Detect Activated" "Use with Applications > Accessories > Malware Detect on Persistent Volume"
+sudo -u amnesia /usr/bin/notify-send -i /home/amnesia/Persistent/Packages/Settings/Gnome/icons/Malware64.png "Malware Detect Activated" "Use with Applications > Accessories > Malware Detect on Persistent Volume"
 
 # Remove desktop icon if present
 deskfile="/home/amnesia/Desktop/maldet.desktop"
@@ -357,5 +357,10 @@ echo "Linux Malware Detect has been installed."
 echo
 read -n 1 -p "Press any key to scan Persistent volume for malware now or Ctrl-C to finish up ..."
 /usr/local/maldetect/maldet -a /home/amnesia/Persistent
-read -n 1 -p "Press any key to continue ..."
+
+echo
+# Install Rootkit Hunter too ?
+Confirm "Type y if you would like to install Rootkit Hunter 1.4.2 too ." && /home/amnesia/Persistent/Packages/install_rkhunter.sh
+echo
+
 

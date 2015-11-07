@@ -5,6 +5,11 @@ CHANGELOG
 IMPORTANT: "TAILS Candy" is for use with a TAILS persistent volume only, i.e.
 *********  when running TAILS from a USB-stick, SSD card or virtual machine with persistence support.		
 
+November 7th 2015
+*****************
+
+- Added Rootkit Hunter 1.4.2 package
+
 November 5th 2015
 *****************
 
@@ -16,7 +21,8 @@ October 30th 2015  INITIAL RELEASE 0.1a
 "TAILS Candy" provides a set of on-demand installation/update scripts for
 OpenSSH, VLC, TorChat, OnionMail, OnionShare, Tahoe LAFS, Pond, Martus,
 Academic Signature, Tomb, Armory, Dropbox, SilentEye, TeamViewer, PyBitmessage,
-Shamir's Secret Sharing Scheme, Tor Messenger (beta), Armory and Veracrypt.
+Shamir's Secret Sharing Scheme, Tor Messenger (beta), Armory, Rootkit Hunter and
+Veracrypt.
 
 Additional features:
 

@@ -137,11 +137,11 @@ cat <<EOF > /home/amnesia/Desktop/maldet.desktop
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=Enable Linux Malware Detect
-Name[de]=Enable Linux Malware Detect
-Name[en_GB]=Enable Linux Malware Detect
-Name[fr]=Enable Linux Malware Detect
-Name[fr_CA]=Enable Linux Malware Detect
+Name=Enable TAILS Malware Detect
+Name[de]=Enable TAILS Malware Detect
+Name[en_GB]=Enable TAILS Malware Detect
+Name[fr]=Enable TAILS Malware Detect
+Name[fr_CA]=Enable TAILS Malware Detect
 Type=Application
 Terminal=true
 Exec=sudo /home/amnesia/Persistent/Packages/install_maldetect.sh

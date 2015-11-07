@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Rootkit Hunter 1.4.2
+Comment=Install Rootkit Hunter 1.4.2
+Exec=sudo /home/amnesia/Persistent/Packages/install_rkhunter.sh
+Name=Install Rootkit Hunter 1.4.2
+Icon=gnome-app-install

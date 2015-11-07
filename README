@@ -49,33 +49,36 @@ The following are currently included:
    https://pond.imperialviolet.org
 
 10) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
-   https://github.com/Bitmessage/PyBitmessage
+    https://github.com/Bitmessage/PyBitmessage
 
-11) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+11) Rootkit Hunter 1.4.2 - Linux rootkit detection
+    https://rootkit.nl/projects/rootkit_hunter.html
+
+12) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-12) TeamViewer 10 - Remote support
+13) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-13) Tomb 2.1.1 - LUKS container creation and management
+14) Tomb 2.1.1 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-14) TorChat 0.9.9-550 - Secure instant messaging over Tor
+15) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-15) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
+16) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-16) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+17) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-17) Silent Eye 0.4.0 - Steganography tool
+18) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-18) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+19) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-19) VLC 2.1.5 - VLC Media Player
+20) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
 None of these packages come with "TAILS Candy". They are fetched on demand
@@ -155,19 +158,22 @@ III - REQUIREMENTS
    They will also most probably contain some left-over bugs here and there.
 
 
-IV - (DE)INSTALLATION
-==   ================
+IV - (DE)INSTALLATION and UPGRADE
+==   ============================
 
 Make the install_candy.sh script executable (chmod u+x) and run from where ever 
 you have uncompressed the .tar.gz distribution file. The installer will move the
-Packages and TAILSCandy folders to your ~/Persistent directory and guide you
-through the installation. 
-
+Packages and TAILSCandy folders to your ~/Persistent directory, guide you
+through the installation and clean up the installation directory package.
+Reinstallations or upgrades can be done through the TAILS menu (Applications,
+Other).
+ 
 If you're tired of TAILS Candy, the package can be uninstalled by making the
 uninstall script remove_candy.sh executable and then running it as root. It
 will remove the two main folders from ~/Persistent and undo (most of) the
-modifications described earlier. Any applications previously installed will be
-preserved and you will be asked if you wish to keep their application settings
+modifications described earlier. The uninstaller will ask you to either keep or
+remove any applications previously installed through TAILS Candy. For those you
+remove you will be asked whether or not to preserve their application settings
 stored in ~/Persistent/Packages/Settings. If answered yes to, they will be saved
 in ~/Persistent/TAILS_Candy_Saved_Settings . You're on your own to reconfigure
 the preserved applications with these. Simplest way would probably be to move
@@ -215,6 +221,7 @@ VI - KNOWN ISSUES
 
 1) If you have installed Dropbox, for mysterious reasons it loses its linking
 information on every reboot and will ask you to register again. 
+2) Minor issues with Tomb panel applet
 
 
 VII - COMMENTS
