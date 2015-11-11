@@ -258,6 +258,20 @@ if [ -d $appdir ]; then
 	fi
 fi
 
+# Veracrypt
+appdir=$DOT_DIR/.VeraCrypt
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove previously saved Veracrypt settings? " && rm -rf $appdir
+fi
+
+# Zulucrypt
+appdir=$DOT_DIR/.zuluCrypt
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove previously saved Zulucrypt settings? " && rm -rf $appdir
+fi
+
 #
 # Remove additional software packages from /live/persistence/TailsData_unlocked/live-additional-software.conf
 #

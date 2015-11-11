@@ -217,8 +217,15 @@ if [ $1 ]; then # is it a file?
             die "Key not found, operation aborted." 1
         else
 
+		mediatomb=/media/${tombname}
+		# Tomb already open?
+		if [ -d ${mediatomb} ]; then
+		tomb-notify "Tomb ${tombname} already open." 
+		success=0
+		else
             "${TOMBEXEC}" mount -k ${tombkey} ${tombdir}/${tombfile}
             success=$?
+		fi
         fi
 
         if [ $usbkey_mount ]; then

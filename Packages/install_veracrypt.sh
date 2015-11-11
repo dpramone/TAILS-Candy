@@ -97,15 +97,16 @@ if [ ! -f "$installfile" ]; then
 # Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
 #
 	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
-fi
+	wait
 
 # Verify GPG signature of downloaded distribution file against Veracrypt public key
-secring="/home/amnesia/.gnupg/secring.gpg"
-if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
+	secring="/home/amnesia/.gnupg/secring.gpg"
+	if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
 
-tar -xjvf veracrypt-1.16-setup.tar.bz2
+	tar -xjvf veracrypt-1.16-setup.tar.bz2
 # We don't need the x64 stuff on this platform
-rm vera*x64
+	rm vera*x64
+fi
 
 echo
 Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.16-setup.tar.bz2*

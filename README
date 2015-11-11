@@ -84,6 +84,10 @@ The following are currently included:
 21) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
+22) Zulucrypt 4.77 - Cryptsetup, TCPlay, LUKS & EncFS management
+    https://mhogomchungu.github.io/zuluCrypt/
+    
+
 None of these packages come with "TAILS Candy". They are fetched on demand
 from Debian repositories, cloned/pulled from Github or downloaded from their
 respective sites.

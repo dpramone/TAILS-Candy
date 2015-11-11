@@ -81,11 +81,10 @@ Type=Application
 Name=Create/Open Crypto Tomb 
 GenericName=Crypto Undertaker
 Comment=Keep your bones safe
-#Exec=gnome-terminal -e /usr/local/bin/tomb-open wizard %U
-Exec=gnome-terminal -e 'sudo /usr/local/bin/tomb-open amnesia'
+Exec=sudo /usr/local/bin/tomb-open amnesia
 #TryExec=tomb-open %U
 Icon=seahorse
-Terminal=false
+Terminal=true
 Categories=Tomb;
 MimeType=application/x-tomb-volume;
 #X-AppInstall-Package=tomb
@@ -132,6 +131,15 @@ if [ ! -f /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray ]
 then
 	apt-get install make g++ libnotify-dev libgtk2.0-dev
 	rm -f *.o
+	if [ ! -f /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c.original ]
+	# Make a couple of modifications in tomb-gtk-tray.c
+	# Close/Slam menu items only work when applet is executed as root
+	# Source also wrongly uses tombname.tomb as mountpoint instead of tombname
+	sed -i 's/snprintf(mountpoint,255, "\/media\/%s\.tomb", argv\[1\]);/snprintf(mountpoint,255, "\/media\/%s", argv\[1\]);/' /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c
+	sed -i 's/gtk_widget_show(item_close);/\/\/ gtk_widget_show(item_close);/' /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c
+	sed -i 's/gtk_widget_show(item_slam);/\/\/ gtk_widget_show(item_slam);/' /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c	
+	cp -p /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c.original
+	fi
 	make
 else
 	apt-get install make
@@ -139,7 +147,7 @@ fi
 
 if [ -f /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray ]
 then
-	make install
+	# make install
 	cp tomb-gtk-tray /usr/local/bin/
 	chmod 755 /usr/local/bin/tomb-gtk-tray
 	cp monmort.xpm /usr/share/pixmaps/

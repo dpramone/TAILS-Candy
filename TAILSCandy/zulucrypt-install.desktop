@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install ZuluCrypt 4.77
+Comment=Install ZuluCrypt 4.77
+Exec=sudo /home/amnesia/Persistent/Packages/install_zulucrypt.sh
+Name=Install ZuluCrypt 4.77
+Icon=gnome-app-install
