@@ -24,61 +24,64 @@ The following are currently included:
 1) Academic Signature v52 - A Swiss army knife of (ECC) encryption
    http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
 
-2) Armory 0.93.2 - A Bitcoin wallet manager
+2) AIDE 0.16 - Advanced Intrusion Detection Environment
+   http://aide.sourceforge.net
+
+3) Armory 0.93.2 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
-3) Dropbox 3.8 - Cloud storage
+4) Dropbox 3.8 - Cloud storage
    https://www.dropbox.com
 
-4) Linux Malware Detect 1.5 - Malware detection & monitoring
+5) Linux Malware Detect 1.5 - Malware detection & monitoring
     https://www.rfxn.com/projects/linux-malware-detect/
 
-5) Martus 4.4.0 - Secure information collection and management system
+6) Martus 4.4.0 - Secure information collection and management system
    https://www.martus.org
 
-6) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
+7) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
    http://en.onionmail.info
 
-7) OnionShare 0.7.1 - Secure file sharing
+8) OnionShare 0.7.1 - Secure file sharing
    https://onionshare.org/
 
-8) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
+9) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
    http://www.openssh.com/
 
-9) Pond 0.1.1 - Forward secure, asynchronous messaging 
-   https://pond.imperialviolet.org
+10) Pond 0.1.1 - Forward secure, asynchronous messaging 
+    https://pond.imperialviolet.org
 
-10) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
+11) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
     https://github.com/Bitmessage/PyBitmessage
 
-11) Rootkit Hunter 1.4.2 - Linux rootkit detection
+12) Rootkit Hunter 1.4.2 - Linux rootkit detection
     https://rootkit.nl/projects/rootkit_hunter.html
 
-12) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+13) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-13) TeamViewer 10 - Remote support
+14) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-14) Tomb 2.1.1 - LUKS container creation and management
+15) Tomb 2.1.1 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-15) TorChat 0.9.9-550 - Secure instant messaging over Tor
+16) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-16) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
+17) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-17) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+18) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-18) Silent Eye 0.4.0 - Steganography tool
+19) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-19) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+20) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-20) VLC 2.1.5 - VLC Media Player
+21) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
 None of these packages come with "TAILS Candy". They are fetched on demand
@@ -221,7 +224,7 @@ VI - KNOWN ISSUES
 
 1) If you have installed Dropbox, for mysterious reasons it loses its linking
 information on every reboot and will ask you to register again. 
-2) Minor issues with Tomb panel applet
+2) Minor issues with Tomb panel applet and system mime type registration
 
 
 VII - COMMENTS

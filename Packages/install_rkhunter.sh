@@ -177,5 +177,6 @@ read -n 1 -p "Press any key to launch Rkhunter now or Ctrl-C to finish up ..."
 echo
 Confirm "Would you like to examine the /var/log/rkhunter.log file now? " && more /var/log/rkhunter.log
 echo
+echo
 read -n 1 -p "All done. Press any key to finish up ..."
 

@@ -144,6 +144,9 @@ then
 	chmod 755 /usr/local/bin/tomb-gtk-tray
 	cp monmort.xpm /usr/share/pixmaps/
 	chmod 644 /usr/share/pixmaps/monmort.xpm
+	chown amnesia:amnesia /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray
+	chown amnesia:amnesia /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.o
+	
 fi
 
 /bin/echo "Installing Tomb KDF-keys"
@@ -156,6 +159,7 @@ then
 	make
 fi
 make install
+chown amnesia:amnesia /home/amnesia/Persistent/Tomb/extras/kdf-keys/tomb-kdb-*
 
 # Desktop Integration
 #

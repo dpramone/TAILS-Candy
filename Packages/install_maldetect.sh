@@ -360,7 +360,9 @@ read -n 1 -p "Press any key to scan Persistent volume for malware now or Ctrl-C 
 
 echo
 # Install Rootkit Hunter too ?
-Confirm "Type y if you would like to install Rootkit Hunter 1.4.2 too ." && /home/amnesia/Persistent/Packages/install_rkhunter.sh
+Confirm "Would you like to install Rootkit Hunter 1.4.2 too? " && /home/amnesia/Persistent/Packages/install_rkhunter.sh
 echo
-
+# Install AIDE ?
+Confirm "Would you like to install AIDE 1.6 too? " && /home/amnesia/Persistent/Packages/install_aide.sh
+echo
 

@@ -53,7 +53,7 @@ if [ "$cnt" = "0" ]; then
 wget https://download.teamviewer.com/download/teamviewer_i386.deb || error_exit "Sorry, we were unable to download TeamViewer" 
 wait
 fi
-/usr/bin/dpkg -i $REPO_DIR/teamviewer_1*_i386.deb || error_exit "TeamVewer 10 installation failed! WTF?"
+/usr/bin/dpkg -i $REPO_DIR/teamviewer_1*_i386.deb || error_exit "TeamViewer 10 installation failed! WTF?"
 
 # Open TeamViewer-specific firewall ports
 iptables -I OUTPUT -o lo -p tcp --dport 5939 -j ACCEPT

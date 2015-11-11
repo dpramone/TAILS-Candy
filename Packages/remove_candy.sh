@@ -106,6 +106,13 @@ if [ -d $appdir ]; then
 	Confirm "Would you like to remove persistent Teamviewer 10 configuration settings " && rm -rf $appdir
 fi
 
+# Remove persistent AIDE settings ?
+appdir="/home/amnesia/Packages/Settings/aide"
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove persistent AIDE configuration settings " && rm -rf $appdir
+fi
+
 # Remove persistent Tahoe LAFS settings ?
 cd $PERSISTENT/Packages/Settings
 cnt=`ls -d tahoe*/ 2>/dev/null | wc -l`
@@ -206,6 +213,16 @@ if [ "$cnt" = "1" ]; then
 	fi
 fi
 
+# Rootkit Hunter
+cnt=`ls -d rkhunter*/ 2>/dev/null | wc -l`
+if [ "$cnt" = "1" ]; then
+	appdir=`ls -d rkhunter*/`
+	echo
+	if Confirm "Would you like to remove the Rootkit Hunter installation? " ; then
+		rm -rf $PERSISTENT/$appdir
+	fi
+fi
+ 
 # Martus Client
 cnt=`ls -d Martus*/ 2>/dev/null | wc -l`
 if [ "$cnt" = "1" ]; then
@@ -266,5 +283,5 @@ rm -rf $PERSISTENT/Packages $PERSISTENT/TAILSCandy
 rm -f $PERSISTENT/.local/share/applications/uninstall_candy.desktop 
 rm -f $PERSISTENT/.local/share/applications/install_candy.desktop 
 
-sudo -u amnesia /usr/bin/notify-send "TAILS Candy succesfully removed" "Reboot for changes to take effect."
+sudo -u amnesia /usr/bin/notify-send -i package-purge "TAILS Candy succesfully removed" "Reboot for changes to take effect."
 

@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install AIDE 1.6
+Comment=Install Advanced Intrusion Detection Environment 1.6
+Exec=sudo /home/amnesia/Persistent/Packages/install_aide.sh
+Name=Install AIDE 1.6
+Icon=gnome-app-install
