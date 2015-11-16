@@ -33,58 +33,62 @@ The following are currently included:
 4) Dropbox 3.8 - Cloud storage
    https://www.dropbox.com
 
-5) Linux Malware Detect 1.5 - Malware detection & monitoring
+5) Horcrux - Duplicity based, GPG encrypted backup/restore script
+   https://github.com/piffio/horcrux
+   http://chrispoole.com/project/general/horcrux/
+
+6) Linux Malware Detect 1.5 - Malware detection & monitoring
     https://www.rfxn.com/projects/linux-malware-detect/
 
-6) Martus 4.4.0 - Secure information collection and management system
+7) Martus 4.4.0 - Secure information collection and management system
    https://www.martus.org
 
-7) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
+8) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
    http://en.onionmail.info
 
-8) OnionShare 0.7.1 - Secure file sharing
+9) OnionShare 0.7.1 - Secure file sharing
    https://onionshare.org/
 
-9) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
-   http://www.openssh.com/
+10) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
+    http://www.openssh.com/
 
-10) Pond 0.1.1 - Forward secure, asynchronous messaging 
+11) Pond 0.1.1 - Forward secure, asynchronous messaging 
     https://pond.imperialviolet.org
 
-11) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
+12) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
     https://github.com/Bitmessage/PyBitmessage
 
-12) Rootkit Hunter 1.4.2 - Linux rootkit detection
+13) Rootkit Hunter 1.4.2 - Linux rootkit detection
     https://rootkit.nl/projects/rootkit_hunter.html
 
-13) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+14) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-14) TeamViewer 10 - Remote support
+15) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-15) Tomb 2.1.1 - LUKS container creation and management
+16) Tomb 2.1.1 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-16) TorChat 0.9.9-550 - Secure instant messaging over Tor
+17) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-17) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
+18) Tor Messenger 0.1.0b3 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-18) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+19) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-19) Silent Eye 0.4.0 - Steganography tool
+20) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-20) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+21) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-21) VLC 2.1.5 - VLC Media Player
+22) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
-22) Zulucrypt 4.77 - Cryptsetup, TCPlay, LUKS & EncFS management
+23) Zulucrypt 4.77 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 

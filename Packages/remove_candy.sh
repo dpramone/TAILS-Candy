@@ -236,6 +236,18 @@ if [ "$cnt" = "1" ]; then
 	fi
 fi
 
+# Horcrux
+appdir=$PERSISTENT/horcrux
+if [ -d $appdir ]; then
+	echo
+	if Confirm "Would you like to remove the Horcrux installation? " ; then
+		rm -rf $appdir
+		rm -rf /live/persistence/TailsData_unlocked/dotfiles/.horcrux
+		rm -rf /home/amnesia/.horcrux
+		rm /home/amnesia/.local/share/applications/horcrux.desktop
+	fi
+fi
+
 # SSSS GUI
 appdir=$PERSISTENT/SSSS
 if [ -d $appdir ]; then

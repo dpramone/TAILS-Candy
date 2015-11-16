@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Horcrux Backup
+Comment=Install Horcrux Encrypted Backup
+Exec=sudo /home/amnesia/Persistent/Packages/install_horcrux.sh
+Name=Install Horcrux Backup
+Icon=gnome-app-install
