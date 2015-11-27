@@ -21,7 +21,7 @@ require the root password to be configured at the TAILS Greeter login screen.
 
 The following are currently included:
 
-1) Academic Signature v52 - A Swiss army knife of (ECC) encryption
+1) Academic Signature v53 - A Swiss army knife of (ECC) encryption
    http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
 
 2) AIDE 0.16 - Advanced Intrusion Detection Environment

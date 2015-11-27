@@ -65,4 +65,4 @@ else
 	chmod 644 /etc/ssh/moduli
 fi
 
-/usr/bin/sudo -u amnesia /usr/bin/notify-send "OpenSSH Upgraded" "OpenSSH Client upgraded to version 6.6 Wheezy bpo"
+/usr/bin/sudo -u amnesia /usr/bin/notify-send -i gnome-app-install "OpenSSH Upgraded" "OpenSSH Client upgraded to version 6.6 Wheezy bpo"

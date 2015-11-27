@@ -236,4 +236,4 @@ fi
 # Re-start panel to make theme/icon settings take effect
 #
 #/usr/bin/killall -1 gnome-panel
-/usr/bin/notify-send "TAILS Candy initialised" "Install your favorite applcations from the TAILS Candy desktop folder."
+/usr/bin/notify-send -i checkbox "TAILS Candy initialised" "Install your favorite applcations from the TAILS Candy desktop folder."

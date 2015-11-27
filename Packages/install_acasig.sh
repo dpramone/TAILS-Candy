@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for Academic Signature v52
+# TAILS installer script for Academic Signature v53
 #
 # Part of "TAILS Candy" Project
 # Version 0.1a
@@ -43,12 +43,12 @@ echo
 # Do we already have Prof. Anders' public key?
 gpg --list-keys $1 || gpg --keyserver keys.gnupg.net --recv $1
 # Download distribution file signature
-wget -O aca_sig-b52.tar.gz.sig -t 10 --no-check-certificate https://www.fh-wedel.de/~an/crypto/accessories/aca_sig_sout_tarsig.php || echo "Unable to download signature file"
+wget -O aca_sig-b53.tar.gz.sig -t 10 --no-check-certificate https://www.fh-wedel.de/~an/crypto/accessories/aca_sig_sout_tarsig.php || echo "Unable to download signature file"
 wait
-if [ -s ./aca_sig-b52.tar.gz.sig ]; then
+if [ -s ./aca_sig-b53.tar.gz.sig ]; then
 	echo "Verifying distribution file signature ..."
 # Verify distribution file
-        local sig="aca_sig-b52.tar.gz.sig"
+        local sig="aca_sig-b53.tar.gz.sig"
         local output="$(gpg -v "$sig" 2>&1)"
         local good="$(grep -oE "^gpg: Good signature from" <<< "$output")"
         local bad="$(grep -oE "^gpg: BAD signature from" <<< "$output")"
@@ -62,7 +62,7 @@ if [ -s ./aca_sig-b52.tar.gz.sig ]; then
 		echo
                 Confirm "This key is untrusted. Do you wish to edit its trust now? (trust/lsign) " && gpg --edit-key $1 trust
         fi
-	rm aca_sig-b52.tar.gz.sig
+	rm aca_sig-b53.tar.gz.sig
 else
 echo "Unable to fetch signature file and verify downloaded Academic Signature distribution file"
 fi
@@ -84,8 +84,8 @@ echo "1) You need to have TAILS persistence & root password set up."
 echo "The script will exit gracefully if this is not the case."
 echo "2) We will try to download the Academic Signature source package."
 echo "If download fails, the script exits gracefully."
-echo "3) Installation is saved in ~/Persistent/aca_sig-b52 ."
-echo "4) Script will exit if Academic Signature v52 is already installed."
+echo "3) Installation is saved in ~/Persistent/aca_sig-b53 ."
+echo "4) Script will exit if Academic Signature v53 is already installed."
 echo "5) Settings from a previous version/installation will by copied"
 echo "over from the existing x_secrets and key_tray subdirectories."
 echo
@@ -95,8 +95,8 @@ cd /home/amnesia/Persistent || error_exit "No persistence found. Aborting"
 
 PERSISTENT=/home/amnesia/Persistent
 REPO_DIR=$PERSISTENT/Packages/Repo
-INSTALL_DIR=$PERSISTENT/aca_sig-b52
-distfile=aca_sig-b52.tar.gz
+INSTALL_DIR=$PERSISTENT/aca_sig-b53
+distfile=aca_sig-b53.tar.gz
 
 if [ -d "$INSTALL_DIR" ]; then
 error_exit "Academic Signature already installed. Remove or rename $INSTALL_DIR to reinstall ..."
@@ -169,9 +169,9 @@ Name[fr]=Academic Signature
 Name[fr_CA]=Academic Signature
 Type=Application
 Terminal=false
-Path=/home/amnesia/Persistent/aca_sig-b52
-Exec=/home/amnesia/Persistent/aca_sig-b52/aca_sig
-#Icon=/home/amnesia/Persistent/aca_sig-b52/signature-icon.png
+Path=/home/amnesia/Persistent/aca_sig-b53
+Exec=/home/amnesia/Persistent/aca_sig-b53/aca_sig
+#Icon=/home/amnesia/Persistent/aca_sig-b53/signature-icon.png
 Icon=writer
 Categories=Security;Encryption;
 StartupNotify=true
