@@ -23,6 +23,14 @@ function error_exit
 function modify_toppanel
 {
 	echo "Replacing default TAILS Gnome top panel..."
+	l1dir="/live/persistence/TailsData_unlocked/dotfiles/.config/gnome-panel"
+	l2dir="/home/amnesia/.config/gnome-panel"
+	if [ ! -d "$l1dir" ]; then
+		sudo -u amnesia mkdir -p $l1dir
+	fi
+	if [ ! -d "$l2dir" ]; then
+		sudo -u amnesia mkdir -p $l2dir
+	fi
 	layoutfile="/live/persistence/TailsData_unlocked/dotfiles/.config/gnome-panel/panel-default-layout.layout"
 	layoutfile2="/home/amnesia/.config/gnome-panel/panel-default-layout.layout"
 	layoutsave=$PERSISTENT/Packages/Settings/Gnome/panel-default-layout.layout.saved
@@ -50,8 +58,10 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+CUR_DIR=$PWD
 DOT_DIR=/live/persistence/TailsData_unlocked/dotfiles
 cd $DOT_DIR || error_exit "No TAILS Dotfiles persistence found. Aborting"
+cd "$CUR_DIR"
 
 clear
 echo 
@@ -63,7 +73,6 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 # Determine if this is a first time install or upgrade.
 #
 PERSISTENT=/home/amnesia/Persistent
-CUR_DIR=$PWD
 
 packdir=$PERSISTENT/Packages
 candydir=$PERSISTENT/TAILSCandy 
@@ -81,46 +90,46 @@ if [ -d "$packdir" ] && [ -d "$candydir" ] ; then
 		rm -rf /home/amnesia/Persistent/tmp/TAILS-Candy/.git
 		CUR_DIR="/home/amnesia/Persistent/tmp/TAILS-Candy"
 	#fi
-	VERSION=`cat $CUR_DIR/VERSION`
+	VERSION=`cat "$CUR_DIR/VERSION"`
 	echo
 	echo "Upgrading TAILS Candy to version $VERSION ..."
 	# 
 	# Placeholder for stuff to be removed from older versions ...
 	#
 else
-	VERSION=`cat $CUR_DIR/VERSION`
+	VERSION=`cat "$CUR_DIR/VERSION"`
 	echo
 	echo "Installing TAILS Candy version $VERSION ..."
 fi
 
 echo
 echo "Installing Packages and TAILSCandy folders in $PERSISTENT ..."
-folder=$CUR_DIR/Packages
+folder="$CUR_DIR/Packages"
 if [ -d "$folder" ]
 then
-	chown -R amnesia:amnesia $folder
-	cp -rp $folder $PERSISTENT/
+	chown -R amnesia:amnesia "$folder"
+	cp -rp "$folder" $PERSISTENT/
 	if [ ! -f "$PERSISTENT/Packages/install_candy.sh" ]; then
-	cp -p $CUR_DIR/install_candy.sh $PERSISTENT/Packages/ 2> /dev/null
+	cp -p "$CUR_DIR/install_candy.sh" $PERSISTENT/Packages/ 2> /dev/null
 	fi 
-	chmod 700 $PERSISTENT/$folder/*.sh
+	chmod 700 "$folder"/*.sh
 else
 	error_exit "Where is our TAILS Candy Packages folder? Installation aborted."
 fi
-folder=$CUR_DIR/TAILSCandy
+folder="$CUR_DIR/TAILSCandy"
 if [ -d "$folder" ]
 then
-	chown -R amnesia:amnesia $folder
-	cp -rp $folder $PERSISTENT/
+	chown -R amnesia:amnesia "$folder"
+	cp -rp "$folder" $PERSISTENT/
 	mkdir -p $PERSISTENT/TAILSCandy/Info 2> /dev/null
-	cp -p $CUR_DIR/TODO $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/AUTHORS $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/README $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/LICENSE $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/COPYING $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/ChangeLog $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/NEWS $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
-	cp -p $CUR_DIR/VERSION $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/TODO" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/AUTHORS" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/README" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/LICENSE" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/COPYING" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/ChangeLog" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/NEWS" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
+	cp -p "$CUR_DIR/VERSION" $PERSISTENT/TAILSCandy/Info/ 2> /dev/null
 	chown -R amnesia:amnesia $PERSISTENT/TAILSCandy/Info
 else
 	error_exit "Where is our TAILSCandy folder? Installation aborted."
@@ -144,6 +153,9 @@ X-GNOME-Autostart-enabled=true
 EOF
 chown amnesia:amnesia $startdir/customisations.desktop
 chmod 600 $startdir/customisations.desktop
+if [ ! -d "/home/amnesia/.config/autostart" ]; then
+sudo -u amnesia mkdir -p /home/amnesia/.config/autostart
+fi
 sudo -u amnesia ln -sf $startdir/customisations.desktop /home/amnesia/.config/autostart/customisations.desktop
 
 #
@@ -205,7 +217,7 @@ echo "Creating a Gnome menu Encryption application group item"
 sudo -u amnesia cp -rp $PERSISTENT/Packages/Settings/Gnome/menus /live/persistence/TailsData_unlocked/dotfiles/.config/ 1>&2
 dtdir=/live/persistence/TailsData_unlocked/dotfiles/.local/share/desktop-directories
 if [ ! -d "$dtdir" ]; then
-mkdir -p $dtdir
+	sudo -u amnesia mkdir -p $dtdir
 fi
 sudo -u amnesia cp -p $PERSISTENT/Packages/Settings/Gnome/Encryption.directory $dtdir/Encryption.directory 1>&2
 
@@ -256,6 +268,7 @@ do
 		Confirm "Do you wish to consistently install $package at boot time? " && echo $package >> /live/persistence/TailsData_unlocked/live-additional-software.conf
 	fi
 done
+echo
 
 #
 # Set RAMONES desktop background
@@ -275,7 +288,7 @@ sudo -u amnesia /home/amnesia/Persistent/Packages/Customisations.sh install
 read -n 1 -p "All finished. Some modifications will only take effect after reboot. Press any key to finish up ..."
 
 # Remove installation directory
-cd $CUR_DIR
+cd "$CUR_DIR"
 cd ..
 rm -rf ./TAILS-Candy
 
