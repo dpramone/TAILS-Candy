@@ -18,6 +18,8 @@ function error_exit
         exit 1
 }
 
+Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
+
 # Script main line
 
 clear
@@ -60,13 +62,16 @@ then
         while true; do
         read -p "Do you wish to update (git pull) Onionshare? y/n " yesno
         case $yesno in
-        [Nn]* ) break;;
+        [Nn]* ) 
+                sudo apt-get install -y python-flask python-stem python-qt4 dh-python python-werkzeug python-jinja2 libjs-jquery python-markupsafe
+                break;;
         [Yy]* ) 
         	echo "Trying Onionshare update from Github ..."
         	cd $INSTALL_DIR
         	git pull || break
 		sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem python-qt4 dh-python
 		./install/build_deb.sh
+		Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev linux-libc-dev make
         	read -n 1 -p "Press any key to continue..."
 		break ;;
         * ) echo "Please answer (y)es or (n)o.";;
@@ -75,7 +80,7 @@ then
 
 	echo 
 	echo "Installing ..."
-	sudo dpkg -i deb_dist/onionshare_*.deb
+	sudo dpkg -i $INSTALL_DIR/deb_dist/onionshare_*.deb
 else
 	echo "Downloading Onionshare from Github ..."
 	# mkdir $INSTALL_DIR
@@ -85,7 +90,8 @@ else
 	sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem python-qt4 dh-python
 	./install/build_deb.sh
 	sudo dpkg -i deb_dist/onionshare_*.deb
+	Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev linux-libc-dev make
 fi
 
-/usr/bin/notify-send "Onionshare Installed" "Open with Applications > Internet > OnionShare"
+/usr/bin/notify-send -i checkbox "Onionshare Installed" "Open with Applications > Internet > OnionShare"
 
