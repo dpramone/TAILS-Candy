@@ -8,7 +8,7 @@ IMPORTANT: "TAILS Candy" is for use with a TAILS persistent volume only, i.e.
 December 8th 2015
 ******************
 
-- Updated Onionshare to version 8.0
+- Temporarily removed OnionShare until it works with TAILS again
 - Bugfixes
 
 November 27th 2015

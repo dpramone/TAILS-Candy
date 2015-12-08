@@ -46,8 +46,9 @@ The following are currently included:
 8) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
    http://en.onionmail.info
 
-9) OnionShare 0.8 - Secure file sharing
-   https://onionshare.org/
+9) *TEMPORARILY REMOVED*
+   (OnionShare 0.8.1 - Secure file sharing
+   https://onionshare.org/)
 
 10) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
     http://www.openssh.com/
