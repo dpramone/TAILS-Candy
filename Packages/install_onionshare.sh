@@ -65,6 +65,8 @@ then
         	echo "Trying Onionshare update from Github ..."
         	cd $INSTALL_DIR
         	git pull || break
+		sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem python-qt4 dh-python
+		./install/build_deb.sh
         	read -n 1 -p "Press any key to continue..."
 		break ;;
         * ) echo "Please answer (y)es or (n)o.";;
@@ -73,13 +75,17 @@ then
 
 	echo 
 	echo "Installing ..."
-	sudo $PERSISTENT/.onionshare_install/install.sh
+	sudo dpkg -i deb_dist/onionshare_*.deb
 else
 	echo "Downloading Onionshare from Github ..."
 	# mkdir $INSTALL_DIR
 	git clone https://github.com/micahflee/onionshare.git $INSTALL_DIR || error_exit "Unable to download OnonShare. Bailing out ..."
-	cd $PERSISTENT
+	cd $PERSISTENT/onionshare
 	echo "Installing ..."
-	sudo onionshare/tails/install_in_persistent_volume.sh
+	sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem python-qt4 dh-python
+	./install/build_deb.sh
+	sudo dpkg -i deb_dist/onionshare_*.deb
 fi
+
+/usr/bin/notify-send "Onionshare Installed" "Open with Applications > Internet > OnionShare"
 
