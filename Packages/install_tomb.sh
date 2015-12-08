@@ -42,7 +42,7 @@ echo "after every TAILS (re)boot."
 echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
-cd /live/persistence/TailsData_unlocked/dotfiles || exit
+cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "No TAILS persistence found"
 
 PERSISTENT=/home/amnesia/Persistent
 PKG_DIR=$PERSISTENT/Tomb
@@ -52,13 +52,13 @@ if [ -d "$PKG_DIR" ]
 then
         echo "Trying to update Tomb from Github ..."
         cd $PKG_DIR
-        git pull
+        sudo -u amnesia git pull
 	echo
         read -n 1 -p "Press any key to continue..."
 	echo
 else
         echo "Downloading Tomb from Github ..."
-        git clone https://github.com/dyne/Tomb.git $PKG_DIR || exit
+        sudo -u amnesia git clone https://github.com/dyne/Tomb.git $PKG_DIR || eror_exit "Unable to download Tomb from Github."
 fi
 
 /bin/echo "Installing Tomb dependencies"

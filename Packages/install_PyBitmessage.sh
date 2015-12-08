@@ -208,7 +208,7 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 # Exit if no TAILS persistence
-cd /live/persistence/TailsData_unlocked/dotfiles || exit
+cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "No TAILS persistence found. Bailing out..."
 
 if [ -d "$PKG_DIR" ]
 then

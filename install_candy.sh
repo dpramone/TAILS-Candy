@@ -82,9 +82,9 @@ if [ -d "$packdir" ] && [ -d "$candydir" ] ; then
 		echo "Downloading latest TAILS Candy from Github ..."
 		# We are being executed from the Packages directory, so let's
 		# update by performing a git clone from the master branch
-		mkdir -p $PERSISTENT/tmp  2> /dev/null
+		sudo -u amnesia mkdir -p $PERSISTENT/tmp  2> /dev/null
 		cd $PERSISTENT/tmp
-		git clone https://github.com/dpramone/TAILS-Candy.git || error_exit "Unable to download TAILS Candy upgrade. Bailing out ..."
+		sudo -u amnesia git clone https://github.com/dpramone/TAILS-Candy.git || error_exit "Unable to download TAILS Candy upgrade. Bailing out ..."
 		cd TAILS-Candy
 		# Remove Git infornation
 		rm -rf /home/amnesia/Persistent/tmp/TAILS-Candy/.git
