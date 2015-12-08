@@ -149,7 +149,7 @@ Comment=Customisations hook
 Exec=/home/amnesia/Persistent/Packages/Customisations.sh
 Terminal=false
 Type=Application
-X-GNOME-Autostart-enabled=true 
+X-GNOME-Autostart-enabled=true
 EOF
 chown amnesia:amnesia $startdir/customisations.desktop
 chmod 600 $startdir/customisations.desktop

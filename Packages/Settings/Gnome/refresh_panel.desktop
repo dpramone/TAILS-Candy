@@ -10,4 +10,4 @@ Comment=Refresh Gnome panel
 Type=Application
 Terminal=false
 Exec=/usr/bin/killall gnome-panel
-Icon=grsync
+Icon=gtk-refresh

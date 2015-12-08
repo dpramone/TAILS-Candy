@@ -37,18 +37,19 @@ cat <<EOF > /home/amnesia/Desktop/TAILS_Candy.desktop
 [Desktop Entry]
 Version=1.0
 Type=Link
-Icon[en_US]=x-system-software-sources
+Icon[en_US]=system-software-install
 Name[en_US]=TAILS Candy
 Comment[en_US]=Install Additional Software
 URL=file:///home/amnesia/Persistent/TAILSCandy
 Name=TAILS Candy
 Comment=Install Additional Software
-Icon=x-system-software-sources
+Icon=system-software-install
 EOF
 
 #
 # Disable vulnerable DHE & RC4-ciphers in Firefox/Tor Browser
 #
+if [ -f "/home/amnesia/.tor-browser/profile.default/prefs.js" ]; then
 echo "Disabling weak ciphers in Tor Browser default profile ..."
 
 grep -q 'user_pref("security.ssl3.dhe_rsa_aes_128_sha", false);' /home/amnesia/.tor-browser/profile.default/prefs.js
@@ -86,6 +87,7 @@ if [ ! $? -eq 0 ]; then
 echo 'user_pref("security.tls.unrestricted_rc4_fallback", false);' >> /home/amnesia/.tor-browser/profile.default/prefs.js
 fi
 
+fi
 #############################################################################
 # Feel free to add your own customisations hereafter ...
 #############################################################################
@@ -178,7 +180,7 @@ EOF
 else
 	installfile="/home/amnesia/Persistent/Packages/install_candy.sh"
 	if [ -f "$installfile" ]; then
-		mv $installfile $PERSISTENT/Packages/upgrade_candy.sh
+		mv $installfile /home/amnesia/Persistent/Packages/upgrade_candy.sh
 	fi
 	cat <<EOF > /home/amnesia/.local/share/applications/install_candy.desktop
 [Desktop Entry]
@@ -236,4 +238,4 @@ fi
 # Re-start panel to make theme/icon settings take effect
 #
 #/usr/bin/killall -1 gnome-panel
-/usr/bin/notify-send -i checkbox "TAILS Candy initialised" "Install your favorite applcations from the TAILS Candy desktop folder."
+/usr/bin/notify-send -i checkbox "TAILS Candy initialised" "Install your favorite applications from the TAILS Candy desktop folder."
