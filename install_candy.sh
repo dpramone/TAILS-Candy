@@ -154,7 +154,7 @@ EOF
 chown amnesia:amnesia $startdir/customisations.desktop
 chmod 600 $startdir/customisations.desktop
 if [ ! -d "/home/amnesia/.config/autostart" ]; then
-sudo -u amnesia mkdir -p /home/amnesia/.config/autostart
+	sudo -u amnesia mkdir -p /home/amnesia/.config/autostart
 fi
 sudo -u amnesia ln -sf $startdir/customisations.desktop /home/amnesia/.config/autostart/customisations.desktop
 
@@ -199,7 +199,7 @@ export GPG_TTY
 EOF
 bashrc=/live/persistence/TailsData_unlocked/dotfiles/.bashrc
 # Make .bashrc persistent by copying over to Dotfiles directory
-if [ ! -f "$bashrc"]; then
+if [ ! -f "$bashrc" ]; then
 	sudo -u amnesia cp -p /home/amnesia/.bashrc $bashrc
 fi
 fi
@@ -279,8 +279,8 @@ echo
 # You're on a SECURE OS, so try to keep it that way.
 # The wallpaper is temporary and TAILS will automatically reset it at reboot
 #
-/usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Packages/Settings/Gnome/bg.jpg
-/usr/bin/gsettings set org.gnome.desktop.background picture-options "scaled"
+sudo -u amnesia /usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Packages/Settings/Gnome/bg.jpg
+sudo -u amnesia /usr/bin/gsettings set org.gnome.desktop.background picture-options "scaled"
 
 # Execute Customisations script from TAILS Candy Packages folder. This will from now be executed at every boot
 sudo -u amnesia /home/amnesia/Persistent/Packages/Customisations.sh install
@@ -290,7 +290,7 @@ read -n 1 -p "All finished. Some modifications will only take effect after reboo
 # Remove installation directory
 cd "$CUR_DIR"
 cd ..
-rm -rf ./TAILS-Candy
+rm -rf ./TAILS-Candy-master
 
 exit 0
 

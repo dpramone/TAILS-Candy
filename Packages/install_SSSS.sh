@@ -74,6 +74,11 @@ Icon=SSSS
 Comment=Shamir's Secret Sharing Scheme
 Categories=Encryption;Security;
 EOT
+	if [ ! -d "/home/amnesia/.local/share/applications" ] 
+	then
+		mkdir -p /home/amnesia/.local/share/applications
+	fi
+	ln -sf $desktopdir/SSSS.desktop /home/amnesia/.local/share/applications/SSSS.desktop
 	/usr/bin/notify-send "Python SSSS Installed" "Open with Applications > Encryption > SSSS"
 fi
 

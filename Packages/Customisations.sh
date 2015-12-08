@@ -173,7 +173,7 @@ Icon=system-upgrade
 Terminal=true
 Type=Application
 Categories=Utilities;Tails;
-Exec=/home/amnesia/Persistent/Packages/install_candy.sh
+Exec=sudo /home/amnesia/Persistent/Packages/install_candy.sh
 EOF
 else
 	installfile="/home/amnesia/Persistent/Packages/install_candy.sh"
@@ -191,7 +191,7 @@ Icon=system-upgrade
 Terminal=true
 Type=Application
 Categories=Utilities;Tails;
-Exec=/home/amnesia/Persistent/Packages/upgrade_candy.sh
+Exec=sudo /home/amnesia/Persistent/Packages/upgrade_candy.sh
 EOF
 fi
 
@@ -209,7 +209,7 @@ Icon=debian
 Terminal=true
 Type=Application
 Categories=Utilities;Tails;
-Exec=/home/amnesia/Persistent/Packages/remove_candy.sh
+Exec=sudo /home/amnesia/Persistent/Packages/remove_candy.sh
 EOF
 
 #
