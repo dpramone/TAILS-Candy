@@ -143,6 +143,7 @@ sudo -u amnesia mkdir -p $startdir
 fi
 sudo -u amnesia cat <<EOF > /live/persistence/TailsData_unlocked/dotfiles/.config/autostart/customisations.desktop
 [Desktop Entry]
+Encoding=UTF-8
 Name=Customisations
 GenericName=Customisations
 Comment=Customisations hook
@@ -166,6 +167,7 @@ sudo -u amnesia ln -sf $startdir/customisations.desktop /home/amnesia/.config/au
 echo "Disabling Gnome Keyring SSH support so we can use the GPG agent ..."
 sudo -u amnesia cat <<EOF > /live/persistence/TailsData_unlocked/dotfiles/.config/autostart/gnome-keyring-ssh.desktop
 [Desktop Entry]
+Encoding=UTF-8
 Type=Application
 Name=SSH Key Agent
 Name[en_GB]=SSH Key Agent
@@ -231,7 +233,7 @@ Confirm "Shall we add a couple of useful items to the Gnome top panel? " && modi
 # Configure persistence for I2P ?
 #
 echo
-grep -q "I2P" /live/persistence/TailsData_unlocked/persistence.conf
+grep -q "i2p" /live/persistence/TailsData_unlocked/persistence.conf
 if [ ! $? -eq 0 ]; then
 Confirm "Shall we configure TAILS for I2P persistence? " && echo "/var/lib/i2p source=i2p" >> /live/persistence/TailsData_unlocked/persistence.conf
 fi
@@ -291,6 +293,7 @@ read -n 1 -p "All finished. Some modifications will only take effect after reboo
 cd "$CUR_DIR"
 cd ..
 rm -rf ./TAILS-Candy-master
+rm -rf ./TAILS-Candy
 
 exit 0
 
