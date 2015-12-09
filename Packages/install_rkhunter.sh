@@ -99,7 +99,7 @@ REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 # This script should not be run as root
 if [[ $EUID -ne 0 ]]; then
 	echo
-        error_exit "This script needs to be run as as root"
+        error_exit "This script should not be run as root."
 fi
 
 # Was rkhunter previously installed ?
@@ -131,6 +131,9 @@ if [ ! -f "$installer" ]; then
 	Confirm "Do you wish to keep the downloaded/saved distribution file(s)? " || rm $REPO_DIR/rkhunter-1.4.2.tar.gz*
 	echo
 fi
+
+# Install Unhide
+dpkg -s unhide  2>/dev/null >/dev/null || sudo apt-get install unhide
 
 cd $PERSISTENT/rkhunter-1.4.2
 ./installer.sh --layout default --install
