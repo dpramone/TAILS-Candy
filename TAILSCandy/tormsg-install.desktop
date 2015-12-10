@@ -7,6 +7,6 @@ Terminal=true
 Icon[en_US]=gnome-app-install
 Name[en_US]=Install Tor Messenger 0.1.0b4
 Comment=Install Tor Messenger 0.1.0b4 (InstantBird)
-Exec=sudo /home/amnesia/Persistent/Packages/install_tormsg.sh
+Exec=/home/amnesia/Persistent/Packages/install_tormsg.sh
 Name=Install Tor Messenger 0.1.0b4
 Icon=gnome-app-install

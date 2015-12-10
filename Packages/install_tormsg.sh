@@ -49,7 +49,7 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 
 clear
 echo 
-echo "This script will persistenly install Tor Messenger 0.1.0b3 (beta)."
+echo "This script will persistenly install Tor Messenger 0.1.0b4 (beta)."
 echo
 echo "Source: https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily "
 echo
