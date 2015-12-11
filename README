@@ -33,7 +33,7 @@ The following are currently included:
 4) Dropbox 3.8 - Cloud storage
    https://www.dropbox.com
 
-5) Gostcrypt 1.0 - Truecrypt successor with GOST-support
+5) GostCrypt 1.0 - Truecrypt successor with GOST-support
     http://www.gostcrypt.org/
 
 6) Horcrux - Duplicity based, GPG encrypted backup/restore script
@@ -86,13 +86,16 @@ The following are currently included:
 21) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-22) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+22) TrueCrypt 7.2 - Truecrypt
+    http://sourceforge.net/projects/truecrypt/
+
+23) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-23) VLC 2.1.5 - VLC Media Player
+24) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
-24) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
+25) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 
@@ -237,6 +240,8 @@ VI - KNOWN ISSUES
 1) If you have installed Dropbox, for mysterious reasons it loses its linking
 information on every reboot and will ask you to register again. 
 2) Minor issues with Tomb panel applet and system mime type registration
+3) OnionShare was temporarily removed from TAILS Candy because of
+incompatibilities with current TAILS version(s).
 
 
 VII - COMMENTS

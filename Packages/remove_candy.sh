@@ -284,6 +284,13 @@ if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
 	fi
 fi
 
+# TrueCrypt
+appdir=$DOT_DIR/.TrueCrypt
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove previously saved TrueCrypt settings? " && rm -rf $appdir
+fi
+
 # Veracrypt
 appdir=$DOT_DIR/.VeraCrypt
 if [ -d $appdir ]; then

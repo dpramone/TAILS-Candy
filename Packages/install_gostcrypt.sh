@@ -83,7 +83,7 @@ echo
 echo "Now compiling Gostcrypt ..."
 echo
 cd $COMP_DIR
-make || error_exit "Compilation of Gostcrypt failed."
+make 
 
 # Install into ~/bin directory
 if [ ! -d "$BIN_DIR" ]; then
@@ -93,6 +93,18 @@ fi
 if [ -f "$COMP_DIR/Main/gostcrypt" ]; then
 	cp $COMP_DIR/Main/gostcrypt $BIN_DIR/
 	ln -sf $BIN_DIR/gostcrypt /home/amnesia/bin/gostcrypt
+	#
+	# Check for existence of previous Veracrypt config directory in persistent volume (dotfiles)
+	#
+	confdir=/live/persistence/TailsData_unlocked/dotfiles/.TrueCrypt
+	if [ ! -d "$confdir" ]; then
+        	# Create TrueCrypt config directory & symlink
+        	mkdir $confdir
+        	chmod 700 $confdir
+        	ln -s  $confdir /home/amnesia/.TrueCrypt
+	fi
+else
+	error_exit "Compilation of Gostcrypt failed."
 fi
 cp $COMP_DIR/Resources/Icons/*.xpm $PERSISTENT/Packages/Settings/Gnome/icons/
 
@@ -113,7 +125,7 @@ Name[de]=Gostcrypt 1.0
 Name[en_GB]=Gostcrypt 1.0
 Name[fr]=Gostcrypt 1.0
 Name[fr_CA]=Gostcrypt 1.0
-Comments=Truecrypt successor with GOST
+Comment=Truecrypt successor with GOST
 Type=Application
 Terminal=false
 Path=/home/amnesia/Persistent/bin
