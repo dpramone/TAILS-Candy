@@ -5,6 +5,11 @@ CHANGELOG
 IMPORTANT: "TAILS Candy" is for use with a TAILS persistent volume only, i.e.
 *********  when running TAILS from a USB-stick, SSD card or virtual machine with persistence support.		
 
+December 11th 2015
+******************
+
+- Added Gostcrypt 1.0
+
 December 8th 2015
 ******************
 
@@ -43,7 +48,7 @@ October 30th 2015  INITIAL RELEASE 0.1a
 OpenSSH, VLC, TorChat, OnionMail, OnionShare, Tahoe LAFS, Pond, Martus,
 Academic Signature, Tomb, Armory, Dropbox, SilentEye, TeamViewer, PyBitmessage,
 Shamir's Secret Sharing Scheme, Tor Messenger (beta), Armory, Rootkit Hunter,
-AIDE and Veracrypt.
+AIDE, Horcrux, Gostcrypt, Veracrypt and Zulucrypt.
 
 Additional features:
 

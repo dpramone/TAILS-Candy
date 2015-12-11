@@ -270,6 +270,19 @@ if [ -d $appdir ]; then
 	fi
 fi
 
+# GostCrypt
+appdir=$DOT_DIR/.GostCrypt
+if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
+	echo
+	if Confirm "Would you like to remove Gostcrypt? " ; then
+		 rm -rf $appdir
+		 rm /home/amnesia/bin/gostcrypt
+		 rm /live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt
+		 rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/gostcrypt.desktop
+		 rm /home/amnesia/.local/share/applications/gostcrypt.desktop
+	fi
+fi
+
 # Veracrypt
 appdir=$DOT_DIR/.VeraCrypt
 if [ -d $appdir ]; then
