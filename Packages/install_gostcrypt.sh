@@ -77,13 +77,13 @@ tar -xzf $distfile
 echo
 echo "Install g++ compiler & dependencies ..."
 echo
-#sudo apt-get -y install g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers libfuse-dev libselinux1-dev libsepol1-dev pkg-config
+sudo apt-get -y install g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers libfuse-dev libselinux1-dev libsepol1-dev pkg-config
 # Compile Gostcrypt the usual way ...
 echo
 echo "Now compiling Gostcrypt ..."
 echo
 cd $COMP_DIR
-#make || error_exit "Compilation of Gostcrypt failed."
+make || error_exit "Compilation of Gostcrypt failed."
 
 # Install into ~/bin directory
 if [ ! -d "$BIN_DIR" ]; then
@@ -131,7 +131,7 @@ echo
 Confirm "Type y if you wish to remove the distribution file" && rm $REPO_DIR/$distfile
 # Remove compiler & dependencies?
 echo
-#Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers libfuse-dev libselinux1-dev libsepol1-dev pkg-config
+Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers libfuse-dev libselinux1-dev libsepol1-dev pkg-config
 
 /usr/bin/notify-send -i /home/amnesia/Persistent/Packages/Settings/Gnome/icons/GostCrypt-48x48.xpm "Gostcrypt Installed" "Open with Applications > Encryption > Gostcrypt"
 

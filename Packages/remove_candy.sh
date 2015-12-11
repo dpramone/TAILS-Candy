@@ -280,6 +280,7 @@ if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
 		 rm /live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt
 		 rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/gostcrypt.desktop
 		 rm /home/amnesia/.local/share/applications/gostcrypt.desktop
+		 rm /home/amnesia/Persistent/Packages/Settings/Gnome/icons/GostCrypt*.xpm
 	fi
 fi
 
