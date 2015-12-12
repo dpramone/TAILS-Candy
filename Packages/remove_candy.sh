@@ -270,6 +270,25 @@ if [ -d $appdir ]; then
 	fi
 fi
 
+# Paranoia SSE Text & File Encryption
+if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/pte.jar" ]; then
+	echo
+	if Confirm "Would you like to remove Paranoia SSE Text & File Encryption? " ; then
+		 rm /home/amnesia/bin/pte.jar
+		 rm /home/amnesia/bin/ssefenc.jar
+		 rm /home/amnesia/bin/ssefencgui.jar
+		 rm /live/persistence/TailsData_unlocked/dotfiles/bin/pte.jar
+		 rm /live/persistence/TailsData_unlocked/dotfiles/bin/ssefenc.jar
+		 rm /live/persistence/TailsData_unlocked/dotfiles/bin/ssefencgui.jar
+		 rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/pte.desktop
+		 rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/ssefe.desktop
+		 rm /home/amnesia/.local/share/applications/pte.desktop
+		 rm /home/amnesia/.local/share/applications/ssefe.desktop
+		 rm /home/amnesia/Persistent/Packages/Repo/SSEFilePC.zip
+		 rm /home/amnesia/Persistent/Packages/Repo/PTE-PC.zip
+	fi
+fi
+
 # GostCrypt
 appdir=$DOT_DIR/.GostCrypt
 if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
@@ -281,6 +300,7 @@ if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
 		 rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/gostcrypt.desktop
 		 rm /home/amnesia/.local/share/applications/gostcrypt.desktop
 		 rm /home/amnesia/Persistent/Packages/Settings/Gnome/icons/GostCrypt*.xpm
+		rm -rf /home/amnesia/Persistent/Packages/Repo/GostCrypt_Linux_1.0
 	fi
 fi
 
