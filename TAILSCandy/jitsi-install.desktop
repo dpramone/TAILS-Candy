@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Jitsi 2.8
+Comment=Install Jitsi 2.8 SIP Communicator
+Exec=/home/amnesia/Persistent/Packages/install_jitsi.sh
+Name=Install Jitsi 2.8
+Icon=gnome-app-install

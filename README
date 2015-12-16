@@ -24,81 +24,90 @@ The following are currently included:
 1) Academic Signature v53 - A Swiss army knife of (ECC) encryption
    http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
 
-2) AIDE 0.16 - Advanced Intrusion Detection Environment
+2) AES Crypt 3.10 - Advanced File Encryption
+   http://www.aescrypt.com
+
+3) AIDE 0.16 - Advanced Intrusion Detection Environment
    http://aide.sourceforge.net
 
-3) Armory 0.93.2 - A Bitcoin wallet manager
+4) Armory 0.93.2 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
-4) Dropbox 3.8 - Cloud storage
+5) Dropbox 3.8 - Cloud storage
    https://www.dropbox.com
 
-5) GostCrypt 1.0 - Truecrypt successor with GOST-support
+6) GostCrypt 1.0 - Truecrypt successor with GOST-support
     http://www.gostcrypt.org/
 
-6) Horcrux - Duplicity based, GPG encrypted backup/restore script
+7) Horcrux - Duplicity based, GPG encrypted backup/restore script
    https://github.com/piffio/horcrux
    http://chrispoole.com/project/general/horcrux/
 
-7) Linux Malware Detect 1.5 - Malware detection & monitoring
-    https://www.rfxn.com/projects/linux-malware-detect/
+8) Jitsi 2.8 - SIP Communicator
+   https://jitsi.org
 
-8) Martus 4.4.0 - Secure information collection and management system
-   https://www.martus.org
+9) Linux Malware Detect 1.5 - Malware detection & monitoring
+   https://www.rfxn.com/projects/linux-malware-detect/
 
-9) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server. 
-   http://en.onionmail.info
+10) Mumble 1.2.3 - Low latency VOIP client
+    http://www.mumble.com
 
-10) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
+11) Martus 4.4.0 - Secure information collection and management system
+    https://www.martus.org
+
+12) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server.
+    http://en.onionmail.info
+
+13) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
     (OnionShare 0.8.1 - Secure file sharing
     https://onionshare.org/)
 
-11) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
+14) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
     http://www.openssh.com/
 
-12) Paranoia Text & File Encryption 12R1C
+15) Paranoia Text & File Encryption 12R1C
     http://www.paranoiaworks.mobi
 
-13) Pond 0.1.1 - Forward secure, asynchronous messaging 
+16) Pond 0.1.1 - Forward secure, asynchronous messaging 
     https://pond.imperialviolet.org
 
-14) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
+17) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
     https://github.com/Bitmessage/PyBitmessage
 
-15) Rootkit Hunter 1.4.2 - Linux rootkit detection
+18) Rootkit Hunter 1.4.2 - Linux rootkit detection
     https://rootkit.nl/projects/rootkit_hunter.html
 
-16) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+19) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-17) TeamViewer 10 - Remote support
+20) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-18) Tomb 2.1.1 - LUKS container creation and management
+21) Tomb 2.1.1 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-19) TorChat 0.9.9-550 - Secure instant messaging over Tor
+22) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-20) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
+23) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-21) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+24) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-22) Silent Eye 0.4.0 - Steganography tool
+25) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-23) TrueCrypt 7.2 - Truecrypt
+26) TrueCrypt 7.2 - Truecrypt
     http://sourceforge.net/projects/truecrypt/
 
-24) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+27) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-25) VLC 2.1.5 - VLC Media Player
+28) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
-26) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
+29) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 

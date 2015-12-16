@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install Mumble 1.2.3
+Comment=Install Mumble 1.2.3 VOIP Client
+Exec=sudo /home/amnesia/Persistent/Packages/install_mumble.sh
+Name=Install Mumble 1.2.3
+Icon=gnome-app-install

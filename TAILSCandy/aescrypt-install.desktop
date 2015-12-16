@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Install AESCrypt 3.10
+Comment=Install AESCrypt 3.10
+Exec=/home/amnesia/Persistent/Packages/install_aescrypt.sh
+Name=Install AESCrypt 3.10
+Icon=gnome-app-install
