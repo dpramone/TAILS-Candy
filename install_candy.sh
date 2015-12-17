@@ -227,7 +227,7 @@ sudo -u amnesia cp -p $PERSISTENT/Packages/Settings/Gnome/Encryption.directory $
 # Shall we modify the default TAILS Gnome top panel layout?
 #
 echo
-Confirm "Shall we add a couple of useful items to the Gnome top panel? " && modify_toppanel
+Confirm "Shall we add a couple of useful items to the Gnome top panel? If you answered yes on previous TAILS 1.6 ot 1.7 instalations, please repeat now to reflect changes in TAILS 1.8 and up." && modify_toppanel
 
 #
 # Configure persistence for I2P ?

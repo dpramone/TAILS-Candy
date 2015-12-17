@@ -304,6 +304,20 @@ if [ -f "/live/persistence/TailsData_unlocked/dotfiles/bin/gostcrypt" ]; then
 	fi
 fi
 
+# Jitsi
+appdir=$DOT_DIR/.jitsi
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove previously saved Jitsi settings? " && rm -rf $appdir
+fi
+
+# Mumble
+appdir=$DOT_DIR/.config/Mumble
+if [ -d $appdir ]; then
+	echo
+	Confirm "Would you like to remove previously saved Mumble settings? " && rm -rf $appdir
+fi
+
 # TrueCrypt
 appdir=$DOT_DIR/.TrueCrypt
 if [ -d $appdir ]; then

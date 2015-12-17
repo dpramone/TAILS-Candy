@@ -178,7 +178,7 @@ Mixmaster, FileZilla, Putty).
 III - REQUIREMENTS
 ===   ============
 
-1) A working TAILS 1.6 or 1.7 with persistent volume and Dotfiles support.
+1) A working TAILS 1.6, 1.7 or 1.8 with persistent volume and Dotfiles support.
    "TAILS Candy" has not been tested on previous versions and you should
    upgrade anyway.
 2) Root password set up at the TAILS Greeter (login) screen.
