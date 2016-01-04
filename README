@@ -33,7 +33,7 @@ The following are currently included:
 4) Armory 0.93.2 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
-5) Dropbox 3.8 - Cloud storage
+5) Dropbox 3.12 - Cloud storage
    https://www.dropbox.com
 
 6) GostCrypt 1.0 - Truecrypt successor with GOST-support
@@ -83,7 +83,7 @@ The following are currently included:
 20) TeamViewer 10 - Remote support
     https://www.teamviewer.com/en/
 
-21) Tomb 2.1.1 - LUKS container creation and management
+21) Tomb 2.2 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
 22) TorChat 0.9.9-550 - Secure instant messaging over Tor
@@ -178,7 +178,7 @@ Mixmaster, FileZilla, Putty).
 III - REQUIREMENTS
 ===   ============
 
-1) A working TAILS 1.6, 1.7 or 1.8 with persistent volume and Dotfiles support.
+1) A working TAILS 1.6, 1.7 or 1.8.x with persistent volume and Dotfiles support.
    "TAILS Candy" has not been tested on previous versions and you should
    upgrade anyway.
 2) Root password set up at the TAILS Greeter (login) screen.

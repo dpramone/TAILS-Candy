@@ -246,22 +246,23 @@ echo
 echo "You can now pick a series of other standard packages to be installed"
 echo "automatically every time you boot TAILS."
 echo 
-echo "1) You need dirmngr, gpgsm and claws-mail-smime-plugin if you want to"
-echo "use X509 certificates in Claws Mail."
-echo "2) pidgin-privacy-please and pidgin-openpgp are privacy add-ons for"
+#echo "1) You need dirmngr, gpgsm and claws-mail-smime-plugin if you want to"
+#echo "use X509 certificates in Claws Mail."
+echo "1) pidgin-privacy-please and pidgin-openpgp are privacy add-ons for"
 echo "the Pidgin IM client."
-echo "3) ClamTk and claws-mail-clamd-plugin: forwarding emails containing"
-echo "viruses is never a good idea."
-echo "4) Putty and Filezilla are for those folks who cannot be asked to use"
+echo "2) ClamTk"
+#echo "3) ClamTk and claws-mail-clamd-plugin: forwarding emails containing"
+#echo "viruses is never a good idea."
+echo "3) Putty and Filezilla are for those folks who cannot be asked to use"
 echo "the command line for secure remote sessions and file transfers."
-echo "5) encfs and cryptkeeper let you access Dropbox storage encrypted with"
+echo "4) encfs and cryptkeeper let you access Dropbox storage encrypted with"
 echo "encfs or BoxCryptor on other platforms."
-echo "6) Mixmaster and signing-party for die-hard cypherpunks."
-echo "7) Proxychains for use with nmap during network reconnaissance."
-echo "8) hfsprogs: set of utilities for accessing your Mac's hard drive(s)."
+echo "5) Mixmaster and signing-party for die-hard cypherpunks."
+echo "6) Proxychains for use with nmap during network reconnaissance."
+echo "7) hfsprogs: set of utilities for accessing your Mac's hard drive(s)."
 echo
 
-packages='dirmngr gpgsm claws-mail-smime-plugin pidgin-openpgp signing-party clamtk claws-mail-clamd-plugin filezilla putty mixmaster encfs cryptkeeper pidgin-privacy-please proxychains nmap hfsprogs'
+packages='dirmngr gpgsm pidgin-openpgp signing-party clamtk filezilla putty mixmaster encfs cryptkeeper pidgin-privacy-please proxychains nmap hfsprogs'
 for package in $packages
 do
 	grep -q $package /live/persistence/TailsData_unlocked/live-additional-software.conf

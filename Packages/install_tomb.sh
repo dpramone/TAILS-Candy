@@ -26,8 +26,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 clear
-echo "This routine will persistently install the Tomb Cryptkeeper in"
-echo "~/Persistent/Tomb."
+echo "This routine will persistently install the Tomb Cryptkeeper 2.2"
+echo "in ~/Persistent/Tomb."
 echo "Source: https://www.dyne.org/software/tomb/"
 echo
 echo "1) You need to have TAILS persistence with dotfiles configured."
@@ -62,7 +62,7 @@ else
 fi
 
 /bin/echo "Installing Tomb dependencies"
-/usr/bin/apt-get -y install libmcrypt4 python-uno zsh make steghide wipe pinentry-curses mlocate dcfldd qrencode swish++ unoconv
+/usr/bin/apt-get -y install libmcrypt4 python-uno zsh make steghide wipe pinentry-curses mlocate dcfldd qrencode swish++ unoconv || eror_exit "Unable to install Tomb dependencies"
 
 /bin/echo "Installing Tomb scripts"
 cd $PKG_DIR
@@ -105,6 +105,19 @@ Categories=Tomb;
 #X-AppInstall-Package=tomb
 EOF
 
+/bin/cat <<EOF > /home/amnesia/.local/share/applications/tomb_mgmt.desktop
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tomb GUI Wrapper
+GenericName=Tomb GUI Wrapper
+Comment=Tomb GUI Wrapper
+Exec=/home/amnesia/Persistent/Tomb/extras/gtomb/gtomb
+Icon=monmort
+Terminal=false
+Categories=Tomb;
+EOF
+
 /bin/cat <<EOF > /home/amnesia/.local/share/desktop-directories/Tomb.directory
 [Desktop Entry]
 Encoding=UTF-8
@@ -120,9 +133,14 @@ EOF
 
 chown amnesia:amnesia /home/amnesia/.local/share/applications/tomb.desktop
 chown amnesia:amnesia /home/amnesia/.local/share/applications/tomb_close.desktop
+chown amnesia:amnesia /home/amnesia/.local/share/applications/tomb_mgmt.desktop
 chown amnesia:amnesia /home/amnesia/.local/share/desktop-directories/Tomb.directory
 chmod u+x /home/amnesia/.local/share/applications/tomb.desktop
 chmod u+x /home/amnesia/.local/share/applications/tomb_close.desktop
+chmod u+x /home/amnesia/.local/share/applications/tomb_mgmt.desktop
+
+# Change paths in gtomb script from /usr/bin to /usr/local/bin
+sed -i 's/\/usr\/bin/\/usr\/local\/bin/' /home/amnesia/Persistent/Tomb/extras/gtomb/gtomb
 
 /bin/echo "Installing Tomb-gtk-tray"
 cd $PKG_DIR/extras/gtk-tray
@@ -132,6 +150,7 @@ then
 	apt-get install make g++ libnotify-dev libgtk2.0-dev
 	rm -f *.o
 	if [ ! -f /home/amnesia/Persistent/Tomb/extras/gtk-tray/tomb-gtk-tray.c.original ]
+	then
 	# Make a couple of modifications in tomb-gtk-tray.c
 	# Close/Slam menu items only work when applet is executed as root
 	# Source also wrongly uses tombname.tomb as mountpoint instead of tombname
@@ -260,4 +279,4 @@ EOF
 # Uninstall dependencies no longer needed
 /usr/bin/dpkg -r make
 
-/usr/bin/sudo -u amnesia /usr/bin/notify-send "Tomb has been installed." "Open with Applications > Encryption > Tomb Crypto Undertaker"
+/usr/bin/sudo -u amnesia /usr/bin/notify-send -i monmort "Tomb has been installed." "Open with Applications > Encryption > Tomb Crypto Undertaker"
