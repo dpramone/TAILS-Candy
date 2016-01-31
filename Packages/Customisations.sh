@@ -233,6 +233,8 @@ Type=Application
 Categories=Network;
 Exec=/usr/bin/mixmaster
 EOF
+# Update Mixmaster files
+torsocks /usr/bin/mixmaster-update
 fi
 #
 # Re-start panel to make theme/icon settings take effect
