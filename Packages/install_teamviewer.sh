@@ -41,6 +41,7 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 PERSISTENT=/home/amnesia/Persistent
 REPO_DIR=$PERSISTENT/Packages/Repo
 SET_DIR=$PERSISTENT/Packages/Settings/teamviewer11
+OLD_DIR=$PERSISTENT/Packages/Settings/teamviewer10
 
 # TeamViewer dependencies
 echo "Installing TeamViewer dependencies first ..."
@@ -65,8 +66,10 @@ Confirm "Type y if you wish to keep the downloaded/saved distribution file" || r
 echo
 #
 # Check for existence or previous TeamViewer config directory in $INSTALL_DIR
-if [ -d "$SET_DIR" ]
-then
+if [ -d "$OLD_DIR" ]; then
+	mv $OLD_DIR $SET_DIR
+fi
+if [ -d "$SET_DIR" ]; then
 	sudo -u amnesia ln -sf $SET_DIR /home/amnesia/.config/teamviewer11
 else
 	mkdir -p $SET_DIR

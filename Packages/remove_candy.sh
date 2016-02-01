@@ -5,7 +5,7 @@
 # This script removes the TAILS Candy package
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included in distribution package
 #
 # By Dirk Praet - skylord@jedi.be
@@ -100,10 +100,10 @@ echo
 fi
 
 # Remove persistent Teamviewer settings ?
-appdir="/home/amnesia/Packages/Settings/teamviewer10"
+appdir="/home/amnesia/Packages/Settings/teamviewer11"
 if [ -d $appdir ]; then
 	echo
-	Confirm "Would you like to remove persistent Teamviewer 10 configuration settings " && rm -rf $appdir
+	Confirm "Would you like to remove persistent Teamviewer 10/11 configuration settings " && rm -rf $appdir
 fi
 
 # Remove persistent AIDE settings ?

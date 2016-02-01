@@ -5,7 +5,7 @@
 # This script installs the TAILS Candy package
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included in distribution package
 #
 # By Dirk Praet - skylord@jedi.be
@@ -246,8 +246,6 @@ echo
 echo "You can now pick a series of other standard packages to be installed"
 echo "automatically every time you boot TAILS."
 echo 
-#echo "1) You need dirmngr, gpgsm and claws-mail-smime-plugin if you want to"
-#echo "use X509 certificates in Claws Mail."
 echo "1) pidgin-privacy-please and pidgin-openpgp are privacy add-ons for"
 echo "the Pidgin IM client."
 echo "2) ClamTk"
