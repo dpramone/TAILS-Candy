@@ -4,7 +4,7 @@
 # TAILS installer script for Duplicity/Horcrux backup
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -58,7 +58,7 @@ INSTALL_DIR=$PERSISTENT/horcrux
 # Install Duplicity
 #
 echo "Installing Duplicity and dependencies ..."
-dpkg -s duplicity  2>/dev/null >/dev/null || apt-get install duplicity=0.6.24-1~bpo70+1 librsync1 python-lockfile md5deep
+dpkg -s duplicity  2>/dev/null >/dev/null || apt-get install duplicity librsync1 python-lockfile md5deep
 
 if [ -d "$INSTALL_DIR" ]
 then

@@ -4,7 +4,7 @@
 # TAILS installer script for AIDE 0.16 file & directory integrity checker 
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -51,7 +51,7 @@ echo
 echo "Now installing AIDE and dependencies ..."
 dpkg -s aide 2>/dev/null >/dev/null 
 if [ $? -ne 0 ]; then
-	/usr/bin/apt-get -y install aide=0.16~a2.git20130520-3~bpo70+1 aide-common=0.16~a2.git20130520-3~bpo70+1 bsd-mailx exim4-base exim4-config exim4-daemon-light
+	/usr/bin/apt-get -y install aide aide-common bsd-mailx exim4-base exim4-config exim4-daemon-light
 	/usr/bin/sudo -u amnesia /usr/bin/notify-send -i gnome-app-install "AIDE binaries installed" "Crontab entry created"
 fi
 

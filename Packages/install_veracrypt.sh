@@ -4,7 +4,7 @@
 # TAILS installer script for Veracrypt 1.16
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -145,4 +145,4 @@ then
         ln -s  $confdir /home/amnesia/.VeraCrypt
 fi
  
-/usr/bin/notify-send "Veracrypt Installed" "Open with Applications > Encryption > Veracrypt"
+/usr/bin/notify-send -i veracrypt "Veracrypt Installed" "Open with Applications > Encryption > Veracrypt"

@@ -5,7 +5,7 @@
 # Secret Space Encryptor 12R1C
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be

@@ -4,7 +4,7 @@
 # TAILS installer script for PyBitmessage
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -92,11 +92,11 @@ EOT
 
 	/bin/echo " "
 	while true; do
-        read -p "Do you wish to replace Claws Mail in the Gnome top panel with Bitmessage? y/n" yesno
+        read -p "Do you wish to replace Icedove in the Gnome top panel with Bitmessage? y/n" yesno
         case $yesno in
         [Yy]* )
                 /bin/echo " "
-		/bin/echo "Creating file to replace Claws Mail with Bitmessage in Gnome top panel"
+		/bin/echo "Creating file to replace Icedove with Bitmessage in Gnome top panel"
 		/bin/echo " "
 		appdir=/live/persistence/TailsData_unlocked/dotfiles/.config/gnome-panel
 		if [ ! -d "$appdir" ]
@@ -218,8 +218,10 @@ then
 	read -n 1 -p "Press any key to continue..."
 	
 else
+	rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop
+	rm /home/amnesia/.local/share/applications/bitmessage.desktop
         while true; do
-        read -p "Install PyBitmessage with (y) or without (n) Mixmaster support ?" yn
+        read -p "Install PyBitmessage with (y) or without (n) Mixmaster support ? " yn
         case $yn in
         [Yy]* )
                 echo "Downloading PyBitmessage + Mixmaster installer..."
@@ -239,7 +241,7 @@ else
 		echo "Downloading original PyBitmessage from Github ..."
 		mkdir $PKG_DIR
 		git clone https://github.com/Bitmessage/PyBitmessage $PKG_DIR || error_exit "Sorry, we were unable to download PyBitmessage" 
-		inst_pbm
+		instpbm
 		break
 		;;
         * ) echo "Please answer (y)es or (n)o.";;
@@ -247,6 +249,6 @@ else
         done
 
 	cp /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop /home/amnesia/.local/share/applications/bitmessage.desktop
-	/usr/bin/notify-send "PyBitmessage Installed" "Open with Applications > Internet > Bitmessage"
+	/usr/bin/notify-send -i /home/amnesia/Persistent/PyBitmessage/desktop/icon24.png "PyBitmessage Installed" "Open with Applications > Internet > Bitmessage"
 fi
 

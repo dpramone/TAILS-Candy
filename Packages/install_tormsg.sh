@@ -4,7 +4,7 @@
 # TAILS installer script for Tor Messenger 0.1.0b4 (beta)
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be

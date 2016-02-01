@@ -4,7 +4,7 @@
 # TAILS installer script for Academic Signature v53
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -140,7 +140,7 @@ fi
 echo
 echo "Install g++ compiler & dependencies ..."
 echo
-sudo apt-get -y install g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers
+sudo apt-get -y install g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 libwxbase3.0-dev libwxgtk3.0-dev linux-libc-dev make wx-common wx3.0-headers
 # Compile Academic Signature the usual way ...
 echo
 echo "Now compiling Academic Signature ..."
@@ -196,7 +196,7 @@ echo
 Confirm "Type y if you wish to remove the distribution file" && rm $PERSISTENT/$distfile || mv $PERSISTENT/$distfile $REPO_DIR/
 # Remove compiler & dependencies?
 echo
-Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.7 gcc gcc-4.7 libc-dev-bin libc6-dev libitm1 libstdc++6-4.7-dev libwxbase2.8-dev libwxgtk2.8-dev linux-libc-dev make wx-common wx2.8-headers
+Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 libwxbase3.0-dev libwxgtk3.0-dev linux-libc-dev make wx-common wx3.0-headers
 
 /usr/bin/notify-send "Academic Signature Installed" "Open with Applications > Encryption > Academic Signature"
 

@@ -4,7 +4,7 @@
 # TAILS installer/bootstrap script for Tahoe-LAFS distributed file system
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -87,7 +87,7 @@ echo
 # Reload repositories after key additions for KillYourTV repos so i2p-tahoe-lafs install doesn't complain
 /usr/bin/apt-get update
 
-/usr/bin/apt-get install libcrypto++9 python-pycryptopp=0.6.0.20120313-1 python-crypto python-i2p-foolscap python-mock python-nevow python-openssl python-pyasn1 python-setuptools python-simplejson python-twisted python-twisted-bin python-twisted-conch python-twisted-core python-twisted-lore python-twisted-mail python-twisted-names python-twisted-news python-twisted-runner python-twisted-web python-twisted-words python-zfec i2p-tahoe-lafs grid-updates binfmt-support fastjar itoopie jarwrapper libapache-pom-java libcommons-logging-java libcommons-parent-java libxmlgraphics-commons-java
+/usr/bin/apt-get install libcrypto++9 python-pycryptopp python-crypto python-i2p-foolscap python-mock python-nevow python-openssl python-pyasn1 python-setuptools python-simplejson python-twisted python-twisted-bin python-twisted-conch python-twisted-core python-twisted-lore python-twisted-mail python-twisted-names python-twisted-news python-twisted-runner python-twisted-web python-twisted-words python-zfec i2p-tahoe-lafs grid-updates binfmt-support fastjar itoopie jarwrapper libapache-pom-java libcommons-logging-java libcommons-parent-java libxmlgraphics-commons-java
 
 # Create symbolic link from previous installation saved in Persistent/Packages/Settings/tahoe to ~/.tahoe
 
@@ -198,9 +198,7 @@ else
 echo "Now installing Tahoe LAFS. This may take a while because of Python dependency hell..."
 echo " "
 
-# Using Wheezy backports because LAFS backup tool breaks with default (old stable) 12.x versions, but stable 14.x versions require base upgrade to higher Python. It's a nightmare.
-
-/usr/bin/apt-get install libcrypto++9 python-crypto python-foolscap python-mock python-nevow python-openssl python-pyasn1 python-pycryptopp=0.6.0.20120313-1 python-setuptools python-simplejson python-twisted=13.2.0-1~bpo70+1 python-twisted-bin=13.2.0-1~bpo70+1 python-twisted-conch=1:13.2.0-1~bpo70+1 python-twisted-core=13.2.0-1~bpo70+1 python-twisted-lore=13.2.0-1~bpo70+1 python-twisted-mail=13.2.0-1~bpo70+1 python-twisted-names=13.2.0-1~bpo70+1 python-twisted-news=13.2.0-1~bpo70+1 python-twisted-runner=13.2.0-1~bpo70+1 python-twisted-web=13.2.0-1~bpo70+1 python-twisted-words=13.2.0-1~bpo70+1 python-zfec tahoe-lafs=1.10.0-2
+/usr/bin/apt-get install libcrypto++9 python-crypto python-foolscap python-mock python-nevow python-openssl python-pyasn1 python-pycryptopp python-setuptools python-simplejson python-twisted python-twisted-bin python-twisted-conch python-twisted-core python-twisted-lore python-twisted-mail python-twisted-names python-twisted-news python-twisted-runner python-twisted-web python-twisted-words python-zfec tahoe-lafs
 
 # Install backup tool too?
 while true; do

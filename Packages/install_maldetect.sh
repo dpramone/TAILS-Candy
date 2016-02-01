@@ -4,7 +4,7 @@
 # TAILS installer script for Linux Malware Detect
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -313,7 +313,7 @@ dpkg -s clamav 2>/dev/null >/dev/null || install_clamav
 echo "Installing Linux Malware Detect ..."
 cd $INSTALL_DIR
 ./install.sh
-/etc/init.d/maldet start
+systemctl start maldet.service
 echo "Creating Malware Detect Gnome menu item ..."
 echo
 desktopdir="/home/amnesia/.local/share/applications"

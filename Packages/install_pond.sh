@@ -4,7 +4,7 @@
 # TAILS installer script for Pond
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -53,14 +53,14 @@ if [ ! -f "$client" ]; then
 echo 'export GOPATH=$HOME/Persistent/go' >> ~/.bashrc
 export GOPATH=$HOME/Persistent/go
 mkdir $GOPATH
-alias pond-install-deps='sudo apt-get install libtspi1 libgtkspell-3-0'
+alias pond-install-deps='sudo apt-get install libtspi1 libgtkspell3-3-0'
 alias pond='$GOPATH/bin/client'
 alias pond-cli='$GOPATH/bin/client --cli'
-alias pond-build='sudo bash -c "sudo apt-get update && apt-get install -y -t testing golang && apt-get install -y gcc git mercurial libgtk-3-dev libgtkspell-3-dev libtspi-dev trousers" && mkdir -p /home/amnesia/Persistent/go/src/golang.org/x && cd /home/amnesia/Persistent/go/src/golang.org/x && git clone https://github.com/golang/crypto && git clone https://github.com/golang/net && go get -u -tags ubuntu github.com/agl/pond/client && echo "Success" || echo "Sorry, something went wrong."'
+alias pond-build='sudo bash -c "sudo apt-get update && apt-get install -y -t testing golang && apt-get install -y gcc git mercurial libgtk-3-dev libgtkspell3-3-dev libtspi-dev trousers" && mkdir -p /home/amnesia/Persistent/go/src/golang.org/x && cd /home/amnesia/Persistent/go/src/golang.org/x && git clone https://github.com/golang/crypto && git clone https://github.com/golang/net && go get -u -tags ubuntu github.com/agl/pond/client && echo "Success" || echo "Sorry, something went wrong."'
 alias|grep pond >> ~/.bashrc
 . ~/.bashrc
 # pond-build
-sudo bash -c "sudo apt-get update && apt-get install -y -t testing golang && apt-get install -y gcc git mercurial libgtk-3-dev libgtkspell-3-dev libtspi-dev trousers" && mkdir -p /home/amnesia/Persistent/go/src/golang.org/x && cd /home/amnesia/Persistent/go/src/golang.org/x && git clone https://github.com/golang/crypto && git clone https://github.com/golang/net && go get -u -tags ubuntu github.com/agl/pond/client && echo "Success" || echo "Sorry, something went wrong."
+sudo bash -c "sudo apt-get update && apt-get install -y -t testing golang && apt-get install -y gcc git mercurial libgtk-3-dev libgtkspell3-3-dev libtspi-dev trousers" && mkdir -p /home/amnesia/Persistent/go/src/golang.org/x && cd /home/amnesia/Persistent/go/src/golang.org/x && git clone https://github.com/golang/crypto && git clone https://github.com/golang/net && go get -u -tags ubuntu github.com/agl/pond/client && echo "Success" || echo "Sorry, something went wrong."
 #
 /usr/bin/notify-send "Pond has been installed." "Open with Applications > Internet > Pond"
 
@@ -71,7 +71,7 @@ else
 
 #pond-install-deps
 /bin/echo "Installing Pond runtime dependencies only ..."
-sudo apt-get install libtspi1 libgtkspell-3-0
+sudo apt-get install libtspi1 libgtkspell3-3-0
 /usr/bin/notify-send "Pond dependencies have been installed." "Open with Applications > Internet > Pond"
 
 fi

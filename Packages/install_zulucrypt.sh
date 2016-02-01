@@ -4,7 +4,7 @@
 # TAILS installer script for Zulucrypt 4.80
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -43,16 +43,16 @@ DOT_DIR=/live/persistence/TailsData_unlocked/dotfiles
 cd $DOT_DIR || error_exit "No dotfiles persistence found. Aborting"
 
 REPO_DIR=/home/amnesia/Persistent/Packages/Repo
-ZULU_DIR=$REPO_DIR/zuluCrypt-4.8.0-debian-7-Wheezy
+ZULU_DIR=$REPO_DIR/zuluCrypt-4.8.0-debian-8-Jessie
 
 # Do we already have a copy of the Zulucrypt installer ?
 cd $REPO_DIR
 installfile=$ZULU_DIR/i386/zulucrypt-gui_4.8.0_i386.deb
 if [ ! -f "$installfile" ]; then
-	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -O https://github.com/mhogomchungu/zuluCrypt/releases/download/4.8.0/zuluCrypt-4.8.0-debian-7-Wheezy.tar.xz || error_exit "Unable to download Zulucrypt installer. Bailing out."
-	wait
 	rm -rf $REPO_DIR/zulu* 2>/dev/null >/dev/null
-	tar -xJvf zuluCrypt-4.8.0-debian-7-Wheezy.tar.xz
+	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -O https://github.com/mhogomchungu/zuluCrypt/releases/download/4.8.0/zuluCrypt-4.8.0-debian-8-Jessie.tar.xz || error_exit "Unable to download Zulucrypt installer. Bailing out."
+	wait
+	tar -xJvf zuluCrypt-4.8.0-debian-8-Jessie.tar.xz
 	# We don't need the x64 stuff on this platform
 	rm -rf $ZULU_DIR/amd64
 	chown -R amnesia:amnesia $ZULU_DIR
@@ -65,7 +65,7 @@ dpkg -s zulucrypt-gui  2>/dev/null >/dev/null || dpkg -i *zulu*i386.deb
 clear
 
 echo
-Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/zuluCrypt-4.8.0-debian-7-Wheezy.tar.xz
+Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/zuluCrypt-4.8.0-debian-8-Jessie.tar.xz
 echo
 
 #
@@ -83,4 +83,4 @@ fi
 echo
 echo "All done."
  
-sudo -u amnesia /usr/bin/notify-send -i gnome-app-install "Zulucrypt Installed" "Open with Applications > Encryption > Zulucrypt"
+sudo -u amnesia /usr/bin/notify-send -i zuluCrypt.png "Zulucrypt Installed" "Open with Applications > Encryption > Zulucrypt"

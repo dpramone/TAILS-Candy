@@ -1,5 +1,5 @@
-TAILS Candy Ver. 0.1a
-*********************
+TAILS Candy Ver. 0.2
+********************
 
 	(C) 2015-2016 by Dirk Praet
 
@@ -36,8 +36,9 @@ The following are currently included:
 5) Dropbox 3.12 - Cloud storage
    https://www.dropbox.com
 
-6) GostCrypt 1.0 - Truecrypt successor with GOST-support
-    http://www.gostcrypt.org/
+6) *TEMPORARILY REMOVED DUE TO COMPILATION ERRORS on Debian Jessie *
+   GostCrypt 1.0 - Truecrypt successor with GOST-support
+   http://www.gostcrypt.org/
 
 7) Horcrux - Duplicity based, GPG encrypted backup/restore script
    https://github.com/piffio/horcrux
@@ -55,59 +56,57 @@ The following are currently included:
 11) Martus 4.4.0 - Secure information collection and management system
     https://www.martus.org
 
-12) OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server.
+12) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
+    OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server.
     http://en.onionmail.info
 
 13) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
     (OnionShare 0.8.1 - Secure file sharing
     https://onionshare.org/)
 
-14) OpenSSH 6.6p1 - Upgrades the (really old) TAILS OpenSSH version 
-    http://www.openssh.com/
-
-15) Paranoia Text & File Encryption 12R1C
+14) Paranoia Text & File Encryption 12R1C
     http://www.paranoiaworks.mobi
 
-16) Pond 0.1.1 - Forward secure, asynchronous messaging 
+15) Pond 0.1.1 - Forward secure, asynchronous messaging 
     https://pond.imperialviolet.org
 
-17) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
+16) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
     https://github.com/Bitmessage/PyBitmessage
 
-18) Rootkit Hunter 1.4.2 - Linux rootkit detection
+17) Rootkit Hunter 1.4.2 - Linux rootkit detection
     https://rootkit.nl/projects/rootkit_hunter.html
 
-19) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+18) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-20) TeamViewer 10 - Remote support
+19) TeamViewer 11 - Remote support
     https://www.teamviewer.com/en/
 
-21) Tomb 2.2 - LUKS container creation and management
+20) Tomb 2.2 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-22) TorChat 0.9.9-550 - Secure instant messaging over Tor
+21) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-23) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
+22) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-24) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+23) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-25) Silent Eye 0.4.0 - Steganography tool
+24) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-26) TrueCrypt 7.2 - Truecrypt
+25) TrueCrypt 7.2 - Truecrypt
     http://sourceforge.net/projects/truecrypt/
 
-27) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+26) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-28) VLC 2.1.5 - VLC Media Player
+27) VLC 2.1.5 - VLC Media Player
     https://www.videolan.org
 
-29) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
+28) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 
@@ -178,9 +177,8 @@ Mixmaster, FileZilla, Putty).
 III - REQUIREMENTS
 ===   ============
 
-1) A working TAILS 1.6, 1.7 or 1.8.x with persistent volume and Dotfiles support.
-   "TAILS Candy" has not been tested on previous versions and you should
-   upgrade anyway.
+1) A working TAILS 2.x with persistent volume and Dotfiles support.
+   Please download v0.1 for TAILS 1.6 - 1.8.x.
 2) Root password set up at the TAILS Greeter (login) screen.
 3) Some patience and a kind disposition. This is a first (alpha) release.
    Most (bash) scripts are really basic-basic and will benefit from some

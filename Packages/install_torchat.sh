@@ -4,7 +4,7 @@
 # TAILS installer script for Torchat
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -35,8 +35,8 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 # Install TorChat & dependencies
 # This can also be done from Synaptic but I like it better like this
 clear
-/usr/bin/apt-get install python-wxversion python-wxgtk2.8 torchat
-/usr/bin/sudo -u amnesia /usr/bin/notify-send "TorChat Installed" "Open with Applications > Internet > TorChat"
+/usr/bin/apt-get install python-wxversion python-wxgtk3.0 torchat
+/usr/bin/sudo -u amnesia /usr/bin/notify-send -i /usr/share/torchat/icons/torchat.png "TorChat Installed" "Open with Applications > Internet > TorChat"
 
 if [ ! -d /home/amnesia/.torchat ]; then
 	sudo -u amnesia mkdir -p /live/persistence/TailsData_unlocked/dotfiles/.torchat 1>&2
@@ -48,5 +48,5 @@ else
 fi
 
 read -n 1 -p "Press any key to launch Torchat now or Ctrl-C to finish up..."
-torchat &
+sudo -u amnesia torchat &
 

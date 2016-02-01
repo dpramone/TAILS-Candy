@@ -4,7 +4,7 @@
 # TAILS installer script for AESCrypt 3.10
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -54,7 +54,8 @@ fi
 
 echo "Unpacking distribution file ..."
 tar -xzf $distfile
-./$installer
+./$installer --mode silent
+wait
 
 echo
 echo "Creating Gnome menu item ..."

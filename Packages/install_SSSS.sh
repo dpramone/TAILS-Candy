@@ -4,7 +4,7 @@
 # TAILS installer script for Shamir's Secret Share Scheme GUI
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -79,6 +79,6 @@ EOT
 		mkdir -p /home/amnesia/.local/share/applications
 	fi
 	ln -sf $desktopdir/SSSS.desktop /home/amnesia/.local/share/applications/SSSS.desktop
-	/usr/bin/notify-send "Python SSSS Installed" "Open with Applications > Encryption > SSSS"
+	/usr/bin/notify-send -i SSSS "Python SSSS Installed" "Open with Applications > Encryption > SSSS"
 fi
 

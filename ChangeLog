@@ -5,6 +5,12 @@ CHANGELOG
 IMPORTANT: "TAILS Candy" is for use with a TAILS persistent volume only, i.e.
 *********  when running TAILS from a USB-stick, SSD card or virtual machine with persistence support.		
 
+January 31st 2016
+*****************
+
+- Initial work on 0.2 release for TAILS 2.0
+- Removed SSH upgrade script; Already on SSH 6.7 in Debian Jessie
+
 December 16th 2015
 ******************
 

@@ -4,7 +4,7 @@
 # TAILS installer script for TrueCrypt 7.2
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -98,7 +98,7 @@ if [ ! -f "$installfile" ]; then
 fi
 
 echo
-Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/TrueCrypt-7.2-Linux-x86*
+Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm -f $REPO_DIR/TrueCrypt-7.2-Linux-x86*
 echo
 
 # Launch the installer

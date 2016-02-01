@@ -4,7 +4,7 @@
 # TAILS installer script for Muble 1.2.3
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -41,7 +41,7 @@ echo
 # Install Mumble & dependencies
 # 
 echo "Now installing Mumble & dependencies ..."
-sudo /usr/bin/apt-get -y install mumble=1.2.3-349-g315b5f5-2.2+deb7u2 libavahi-compat-libdnssd1 libg15-1 libg15daemon-client1 libg15render1 libprotobuf7 libqt4-sql-sqlite lsb-release
+sudo /usr/bin/apt-get -y install mumble libavahi-compat-libdnssd1 libg15-1 libg15daemon-client1 libg15render1 libqt4-sql-sqlite lsb-release
 
 confdir=/live/persistence/TailsData_unlocked/dotfiles/.config/Mumble
 if [ ! -d "$confdir" ]

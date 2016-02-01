@@ -4,7 +4,7 @@
 # TAILS installer script for SilentEye 0.4.0 steganography tool
 #
 # Part of "TAILS Candy" Project
-# Version 0.1a
+# Version 0.2
 # License: GPL v3 - Copy included with distribution
 #
 # By Dirk Praet - skylord@jedi.be
@@ -95,4 +95,4 @@ EOF
 	chmod +x $shutfile
 fi
 
-sudo -u amnesia /usr/bin/notify-send "SilentEye Installed" "Open with Applications > Accessoires > SilentEye"
+sudo -u amnesia /usr/bin/notify-send -i /opt/silenteye/silenteye.png "SilentEye Installed" "Open with Applications > Accessoires > SilentEye"
