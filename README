@@ -64,49 +64,52 @@ The following are currently included:
     (OnionShare 0.8.1 - Secure file sharing
     https://onionshare.org/)
 
-14) Paranoia Text & File Encryption 12R1C
+14) OpenSSH - Upgrade moduli file to 4096-bit values
+    http://www.openssh.org
+
+15) Paranoia Text & File Encryption 12R1C
     http://www.paranoiaworks.mobi
 
-15) Pond 0.1.1 - Forward secure, asynchronous messaging 
+16) Pond 0.1.1 - Forward secure, asynchronous messaging 
     https://pond.imperialviolet.org
 
-16) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
+17) PyBitmessage 0.4.4 - P2P encrypted messaging (with opt. Mixmaster support)
     https://github.com/Bitmessage/PyBitmessage
 
-17) Rootkit Hunter 1.4.2 - Linux rootkit detection
+18) Rootkit Hunter 1.4.2 - Linux rootkit detection
     https://rootkit.nl/projects/rootkit_hunter.html
 
-18) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
+19) Tahoe LAFS 1.10 - Encrypted distributed file system (with or without I2P)
     https://www.tahoe-lafs.org/
 
-19) TeamViewer 11 - Remote support
+20) TeamViewer 11 - Remote support
     https://www.teamviewer.com/en/
 
-20) Tomb 2.2 - LUKS container creation and management
+21) Tomb 2.2 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-21) TorChat 0.9.9-550 - Secure instant messaging over Tor
+22) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-22) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
+23) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
-23) Shamir's Secret Sharing Scheme - Python GUI for SSSS
+24) Shamir's Secret Sharing Scheme - Python GUI for SSSS
     https://github.com/skhakimov/secret-sharing
 
-24) Silent Eye 0.4.0 - Steganography tool
+25) Silent Eye 0.4.0 - Steganography tool
     http://www.silenteye.org/
 
-25) TrueCrypt 7.2 - Truecrypt
+26) TrueCrypt 7.2 - Truecrypt
     http://sourceforge.net/projects/truecrypt/
 
-26) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+27) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-27) VLC 2.1.5 - VLC Media Player
+28) VLC 2.2.1 - VLC Media Player
     https://www.videolan.org
 
-28) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
+29) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 
