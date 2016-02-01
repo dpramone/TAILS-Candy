@@ -60,9 +60,8 @@ The following are currently included:
     OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server.
     http://en.onionmail.info
 
-13) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
-    (OnionShare 0.8.1 - Secure file sharing
-    https://onionshare.org/)
+13) OnionShare 0.8.1 - Secure file sharing
+    https://onionshare.org/
 
 14) OpenSSH - Upgrade moduli file to 4096-bit values
     http://www.openssh.org
