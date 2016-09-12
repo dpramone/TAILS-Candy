@@ -86,7 +86,7 @@ cat <<EOF > conf.maldet.patch
 EOF
 
 chown amnesia:amnesia conf.maldet.patch
-patch -b -V numbered < conf.maldet.patch
+patch -b -V numbered conf.maldet < conf.maldet.patch
 chown amnesia:amnesia conf.maldet
 
 # Replace maldet.sh init script file
