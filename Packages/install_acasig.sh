@@ -18,6 +18,12 @@ function error_exit
 	exit 1
 }
 
+function comp_error
+{
+	echo "Compilation failed. Apparently, WxWidgets is broken again on TAILS. Please download a static binary from http://academic-signature.org/Using_aca_sig_on_TAILS.html ..." 1>&2
+	exit 1
+}
+
 function copy_settings
 {
 	cp -rp $PERSISTENT/$prev_dir/x_secrets $PERSISTENT/
@@ -140,16 +146,8 @@ fi
 echo
 echo "Install g++ compiler & dependencies ..."
 echo
-# Need to downgrade libgl1mesa-glx libglapi-mesa
 sudo apt-get -y install g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev linux-libc-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 libwxbase3.0-dev libwxgtk3.0-dev libitm1 make wx-common wx3.0-headers
-# Also libosmesa6 libpthread-stubs0-dev libx11-dev libx11-xcb-dev libxau-dev
-# libxcb-dri2-0-dev libxcb-dri3-dev libxcb-glx0-dev libxcb-present-dev libxcb-randr0-dev
-# libxcb-render0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev
-# libxcb1-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev
-# libxshmfence-dev libxxf86vm-dev mesa-common-dev x11proto-core-dev
-# x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev
-# x11proto-kb-dev x11proto-input-dev x11proto-xext-dev x11proto-xf86vidmode-dev
-# xtrans-dev xorg-sgml-doctools
+
 # Compile Academic Signature the usual way ...
 echo
 echo "Now compiling Academic Signature ..."
@@ -158,7 +156,7 @@ cd $INSTALL_DIR
 ./configure
 # modify src/dolonu.h header because of known bug that prevents compilation on TAILS
 #grep -q 'define WX28' $INSTALL_DIR/src/dolonu.h || insertAfter $INSTALL_DIR/src/dolonu.h '#define DOLONUX_H' '#define WX28'
-make || error_exit "Compilation of Academic Signature failed."
+make || comp_error 
 echo
 echo "Creating Gnome menu item ..."
 echo
@@ -180,7 +178,7 @@ Type=Application
 Terminal=false
 Path=/home/amnesia/Persistent/aca_sig-b55
 Exec=/home/amnesia/Persistent/aca_sig-b55/aca_sig
-#Icon=/home/amnesia/Persistent/aca_sig-b53/signature-icon.png
+#Icon=/home/amnesia/Persistent/aca_sig-b55/signature-icon.png
 Icon=writer
 Categories=Security;Encryption;
 StartupNotify=true
