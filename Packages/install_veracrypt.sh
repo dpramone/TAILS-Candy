@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for Veracrypt 1.16
+# TAILS installer script for Veracrypt 1.18
 #
 # Part of "TAILS Candy" Project
 # Version 0.2
@@ -34,11 +34,12 @@ gpg --list-keys $1 || wget -O - https://www.idrix.fr/VeraCrypt/VeraCrypt_PGP_pub
 # line". Go figure ...
 # Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
 #
-curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468027 || echo "Unable to download signature file"
+# curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468027 || echo "Unable to download signature file"
+curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1601967 || echo "Unable to download signature file"
 wait
-if [ -s ./veracrypt-1.16-setup.tar.bz2.sig ]; then
+if [ -s ./veracrypt-1.18-setup.tar.bz2.sig ]; then
 # Verify distribution file
-        local sig="veracrypt-1.16-setup.tar.bz2.sig"
+        local sig="veracrypt-1.18-setup.tar.bz2.sig"
         local output="$(gpg -v "$sig" 2>&1)"
         local good="$(grep -oE "^gpg: Good signature from" <<< "$output")"
         local bad="$(grep -oE "^gpg: BAD signature from" <<< "$output")"
@@ -66,7 +67,7 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 
 clear
 echo 
-echo "This script will non-persistenly install Veracrypt 1.16."
+echo "This script will non-persistenly install Veracrypt 1.18."
 echo "It will create a dotfiles .VeraCrypt directory to"
 echo "persistently store settings."
 echo
@@ -88,7 +89,7 @@ fi
 
 # Do we already have a copy of the Veracrypt installer ?
 cd $REPO_DIR
-installfile=$REPO_DIR/veracrypt-1.16-setup-gui-x86
+installfile=$REPO_DIR/veracrypt-1.18-setup-gui-x86
 if [ ! -f "$installfile" ]; then
 #
 # This is an ABSURD hack because codeplex.com doesn't allow any direct 
@@ -96,24 +97,25 @@ if [ ! -f "$installfile" ]; then
 # line". Go figure ...
 # Ref.: https://groups.google.com/forum/#!topic/chocolatey/tQJzs0B7a1k
 #
-	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
+	#curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1468024 || error_exit "Unable to download Veracrypt installer. Bailing out."
+	curl --socks5-hostname 127.0.0.1:9050 -k -L -J -A "chocolatey command line" -O https://veracrypt.codeplex.com/downloads/get/1601964 || error_exit "Unable to download Veracrypt installer. Bailing out."
 	wait
 
 # Verify GPG signature of downloaded distribution file against Veracrypt public key
 	secring="/home/amnesia/.gnupg/secring.gpg"
 	if [ -f "$secring" ]; then checksig 993B7D7E8E413809828F0F29EB559C7C54DDD393 ; fi
 
-	tar -xjvf veracrypt-1.16-setup.tar.bz2
+	tar -xjvf veracrypt-1.18-setup.tar.bz2
 # We don't need the x64 stuff on this platform
 	rm vera*x64
 fi
 
 echo
-Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.16-setup.tar.bz2*
+Confirm "Do you wish to keep the downloaded/saved distribution file?" || rm $REPO_DIR/veracrypt-1.18-setup.tar.bz2*
 echo
 
 # Launch the installer
-./veracrypt-1.16-setup-gui-x86
+./veracrypt-1.18-setup-gui-x86
 clear
 
 # Create menu item
@@ -122,7 +124,7 @@ clear
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=VeraCrypt 1.16
+Name=VeraCrypt 1.18
 GenericName=VeraCrypt
 Comment=Work with VeraCrypt/Truecrypt Volumes
 Icon=gdu-encrypted-lock

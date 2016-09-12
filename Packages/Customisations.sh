@@ -93,9 +93,12 @@ fi
 #############################################################################
 
 #
-# Set theme & icons
+# Set GTK & user theme, window theme, icon theme
 #
-#/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "YourGTKTheme"
+#/usr/bin/gsettings set org.gnome.desktop.interface gtk-theme "flat-glass"
+#/usr/bin/gconftool-2 --type=string --set /desktop/gnome/interface/gtk_theme "flat-glass"
+#/usr/bin/gsettings set org.gnome.shell.extensions.user-theme name "flat-glass"
+#/usr/bin/gsettings set org.gnome.desktop.wm.preferences theme "flat-glass"
 #/usr/bin/gsettings set org.gnome.desktop.interface icon-theme 'YourIconTheme'
 
 #
@@ -106,7 +109,7 @@ fi
 #if [ "$resolution" == "1280 800" ]; then
 #/usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Tor\ Browser/bg1280.jpg
 #else
-#/usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Tor\ Browser/bg.jpg
+#/usr/bin/gsettings set org.gnome.desktop.background picture-uri file:///home/amnesia/Persistent/Pictures/matrix_green_1024x768.jpeg
 #fi
 #/usr/bin/gsettings set org.gnome.desktop.background picture-options "scaled"
 

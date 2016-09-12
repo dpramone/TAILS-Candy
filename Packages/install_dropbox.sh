@@ -45,7 +45,7 @@ if [ ! -d "$INSTALL_DIR" ]
 then
         echo "Trying to download the Dropbox headless installer ..."
         cd /live/persistence/TailsData_unlocked/dotfiles
-	wget -O - https://www.dropbox.com/install?os=lnx | tar xzf - || error_exit "Unable to download Dropbox. Giving up."
+	wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf - || error_exit "Unable to download Dropbox. Giving up."
 	wait
 	if [ ! -d "$BIN_DIR" ]; then
 	mkdir -p $BIN_DIR

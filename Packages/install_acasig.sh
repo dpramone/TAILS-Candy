@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for Academic Signature v53
+# TAILS installer script for Academic Signature v55
 #
 # Part of "TAILS Candy" Project
 # Version 0.2
@@ -43,12 +43,12 @@ echo
 # Do we already have Prof. Anders' public key?
 gpg --list-keys $1 || gpg --keyserver keys.gnupg.net --recv $1
 # Download distribution file signature
-wget -O aca_sig-b53.tar.gz.sig -t 10 --no-check-certificate https://www.fh-wedel.de/~an/crypto/accessories/aca_sig_sout_tarsig.php || echo "Unable to download signature file"
+wget -O aca_sig-b55.tar.gz.sig -t 10 --no-check-certificate https://www.fh-wedel.de/~an/crypto/accessories/aca_sig_sout_tarsig.php || echo "Unable to download signature file"
 wait
-if [ -s ./aca_sig-b53.tar.gz.sig ]; then
+if [ -s ./aca_sig-b55.tar.gz.sig ]; then
 	echo "Verifying distribution file signature ..."
 # Verify distribution file
-        local sig="aca_sig-b53.tar.gz.sig"
+        local sig="aca_sig-b55.tar.gz.sig"
         local output="$(gpg -v "$sig" 2>&1)"
         local good="$(grep -oE "^gpg: Good signature from" <<< "$output")"
         local bad="$(grep -oE "^gpg: BAD signature from" <<< "$output")"
@@ -62,7 +62,7 @@ if [ -s ./aca_sig-b53.tar.gz.sig ]; then
 		echo
                 Confirm "This key is untrusted. Do you wish to edit its trust now? (trust/lsign) " && gpg --edit-key $1 trust
         fi
-	rm aca_sig-b53.tar.gz.sig
+	rm aca_sig-b55.tar.gz.sig
 else
 echo "Unable to fetch signature file and verify downloaded Academic Signature distribution file"
 fi
@@ -84,8 +84,8 @@ echo "1) You need to have TAILS persistence & root password set up."
 echo "The script will exit gracefully if this is not the case."
 echo "2) We will try to download the Academic Signature source package."
 echo "If download fails, the script exits gracefully."
-echo "3) Installation is saved in ~/Persistent/aca_sig-b53 ."
-echo "4) Script will exit if Academic Signature v53 is already installed."
+echo "3) Installation is saved in ~/Persistent/aca_sig-b55 ."
+echo "4) Script will exit if Academic Signature v55 is already installed."
 echo "5) Settings from a previous version/installation will by copied"
 echo "over from the existing x_secrets and key_tray subdirectories."
 echo
@@ -95,8 +95,8 @@ cd /home/amnesia/Persistent || error_exit "No persistence found. Aborting"
 
 PERSISTENT=/home/amnesia/Persistent
 REPO_DIR=$PERSISTENT/Packages/Repo
-INSTALL_DIR=$PERSISTENT/aca_sig-b53
-distfile=aca_sig-b53.tar.gz
+INSTALL_DIR=$PERSISTENT/aca_sig-b55
+distfile=aca_sig-b55.tar.gz
 
 if [ -d "$INSTALL_DIR" ]; then
 error_exit "Academic Signature already installed. Remove or rename $INSTALL_DIR to reinstall ..."
@@ -140,7 +140,16 @@ fi
 echo
 echo "Install g++ compiler & dependencies ..."
 echo
-sudo apt-get -y install g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 libwxbase3.0-dev libwxgtk3.0-dev linux-libc-dev make wx-common wx3.0-headers
+# Need to downgrade libgl1mesa-glx libglapi-mesa
+sudo apt-get -y install g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev linux-libc-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 libwxbase3.0-dev libwxgtk3.0-dev libitm1 make wx-common wx3.0-headers
+# Also libosmesa6 libpthread-stubs0-dev libx11-dev libx11-xcb-dev libxau-dev
+# libxcb-dri2-0-dev libxcb-dri3-dev libxcb-glx0-dev libxcb-present-dev libxcb-randr0-dev
+# libxcb-render0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev
+# libxcb1-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev
+# libxshmfence-dev libxxf86vm-dev mesa-common-dev x11proto-core-dev
+# x11proto-damage-dev x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev
+# x11proto-kb-dev x11proto-input-dev x11proto-xext-dev x11proto-xf86vidmode-dev
+# xtrans-dev xorg-sgml-doctools
 # Compile Academic Signature the usual way ...
 echo
 echo "Now compiling Academic Signature ..."
@@ -148,7 +157,7 @@ echo
 cd $INSTALL_DIR
 ./configure
 # modify src/dolonu.h header because of known bug that prevents compilation on TAILS
-grep -q 'define WX28' $INSTALL_DIR/src/dolonu.h || insertAfter $INSTALL_DIR/src/dolonu.h '#define DOLONUX_H' '#define WX28'
+#grep -q 'define WX28' $INSTALL_DIR/src/dolonu.h || insertAfter $INSTALL_DIR/src/dolonu.h '#define DOLONUX_H' '#define WX28'
 make || error_exit "Compilation of Academic Signature failed."
 echo
 echo "Creating Gnome menu item ..."
@@ -169,8 +178,8 @@ Name[fr]=Academic Signature
 Name[fr_CA]=Academic Signature
 Type=Application
 Terminal=false
-Path=/home/amnesia/Persistent/aca_sig-b53
-Exec=/home/amnesia/Persistent/aca_sig-b53/aca_sig
+Path=/home/amnesia/Persistent/aca_sig-b55
+Exec=/home/amnesia/Persistent/aca_sig-b55/aca_sig
 #Icon=/home/amnesia/Persistent/aca_sig-b53/signature-icon.png
 Icon=writer
 Categories=Security;Encryption;

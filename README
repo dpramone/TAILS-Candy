@@ -1,7 +1,7 @@
 TAILS Candy Ver. 0.2
 ********************
 
-	(C) 2015-2016 by Dirk Praet
+	(C) 2015-2017 by Dirk Praet
 
 License: GPL v3 - http://www.gnu.org/licenses/gpl.txt
 
@@ -21,7 +21,7 @@ require the root password to be configured at the TAILS Greeter login screen.
 
 The following are currently included:
 
-1) Academic Signature v53 - A Swiss army knife of (ECC) encryption
+1) Academic Signature v55 - A Swiss army knife of (ECC) encryption
    http://www.fh-wedel.de/~an/crypto/Academic_signature_eng.html
 
 2) AES Crypt 3.10 - Advanced File Encryption
@@ -33,7 +33,7 @@ The following are currently included:
 4) Armory 0.93.2 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
-5) Dropbox 3.12 - Cloud storage
+5) Dropbox 4.49 - Cloud storage
    https://www.dropbox.com
 
 6) *TEMPORARILY REMOVED DUE TO COMPILATION ERRORS on Debian Jessie *
@@ -50,17 +50,17 @@ The following are currently included:
 9) Linux Malware Detect 1.5 - Malware detection & monitoring
    https://www.rfxn.com/projects/linux-malware-detect/
 
-10) Mumble 1.2.3 - Low latency VOIP client
+10) Mumble 1.2.8 - Low latency VOIP client
     http://www.mumble.com
 
 11) Martus 4.4.0 - Secure information collection and management system
     https://www.martus.org
 
 12) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
-    OnionMail 1.8.3 - Set up (a) secure email account(s) on an OnionMail server.
+    OnionMail 1.8.1 - Set up (a) secure email account(s) on an OnionMail server.
     http://en.onionmail.info
 
-13) OnionShare 0.8.1 - Secure file sharing
+13) OnionShare 0.9.1 - Secure file sharing
     https://onionshare.org/
 
 14) OpenSSH - Upgrade moduli file to 4096-bit values
@@ -90,7 +90,7 @@ The following are currently included:
 22) TorChat 0.9.9-550 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
-23) Tor Messenger 0.1.0b4 - Secure instant messaging over Tor (InstantBird)
+23) Tor Messenger 0.2.0b2 - Secure instant messaging over Tor (InstantBird)
     https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily
 
 24) Shamir's Secret Sharing Scheme - Python GUI for SSSS
@@ -102,13 +102,13 @@ The following are currently included:
 26) TrueCrypt 7.2 - Truecrypt
     http://sourceforge.net/projects/truecrypt/
 
-27) Veracrypt 1.16 - Truecrypt/Veracrypt encrypted container management
+27) Veracrypt 1.18 - Truecrypt/Veracrypt encrypted container management
     https://veracrypt.codeplex.com/
 
-28) VLC 2.2.1 - VLC Media Player
+28) VLC 2.2.4 - VLC Media Player
     https://www.videolan.org
 
-29) Zulucrypt 4.80 - Cryptsetup, TCPlay, LUKS & EncFS management
+29) Zulucrypt 5.0.1 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
     
 
@@ -179,8 +179,7 @@ Mixmaster, FileZilla, Putty).
 III - REQUIREMENTS
 ===   ============
 
-1) A working TAILS 2.x with persistent volume and Dotfiles support.
-   Please download v0.1 for TAILS 1.6 - 1.8.x.
+1) A working TAILS 2.5 with persistent volume and Dotfiles support.
 2) Root password set up at the TAILS Greeter (login) screen.
 3) Some patience and a kind disposition. This is a first (alpha) release.
    Most (bash) scripts are really basic-basic and will benefit from some

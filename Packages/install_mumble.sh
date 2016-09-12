@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for Muble 1.2.3
+# TAILS installer script for Muble 1.2.8
 #
 # Part of "TAILS Candy" Project
 # Version 0.2
@@ -27,7 +27,7 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo " "
-echo "This routine non-persistenly installs the Mumble 1.2.3 VOIP Client"
+echo "This routine non-persistenly installs the Mumble 1.2.8 VOIP Client"
 echo "You need to run it again after each TAILS reboot. Configuration settings"
 echo "are preserved in ~/.config/Mumble ."
 echo 

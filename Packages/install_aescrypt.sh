@@ -54,7 +54,7 @@ fi
 
 echo "Unpacking distribution file ..."
 tar -xzf $distfile
-./$installer --mode silent
+sudo ./$installer --mode silent
 wait
 
 echo
@@ -78,8 +78,9 @@ ExecutionMode=normal
 Type=Application
 Icon=gdu-encrypted-lock
 Categories=Security;Encryption;
-MimeType=all/allfiles;
-Enabled=true
+#MimeType=all/allfiles;
+#Enabled=true
+Hidden=true
 EOF
 
 # Remove installation & configuration source files?

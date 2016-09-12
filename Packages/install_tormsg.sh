@@ -27,11 +27,11 @@ echo "Fetching package authors gpg key ..."
 gpg --list-keys $1 || gpg --keyserver keys.gnupg.net --recv $1
 # Download distribution file check sum file
 echo "Downloading package checksum file ..."
-wget -O sha256sums.txt -t 10 --no-check-certificate https://dist.torproject.org/tormessenger/0.1.0b4/sha256sums.txt || echo "Unable to download checksum file"
+wget -O sha256sums.txt -t 10 --no-check-certificate https://dist.torproject.org/tormessenger/0.2.0b2/sha256sums.txt || echo "Unable to download checksum file"
 wait
 if [ -s ./sha256sums.txt ]; then
 	local checksum=`grep linux32 sha256sums.txt | sed -e 's/\s.*$//'`
-	local calcval=`sha256sum ./tor-messenger-linux32-0.1.0b4_en-US.tar.xz | sed -e 's/\s.*$//'`
+	local calcval=`sha256sum ./tor-messenger-linux32-0.2.0b2_en-US.tar.xz | sed -e 's/\s.*$//'`
 	test "$checksum" = "$calcval" && echo "Checksum OK!" || echo "WARNING: Checksum values did not match!"
 	rm sha256sums.txt
 else
@@ -49,7 +49,7 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 
 clear
 echo 
-echo "This script will persistenly install Tor Messenger 0.1.0b4 (beta)."
+echo "This script will persistenly install Tor Messenger 0.2.0b2 (beta)."
 echo
 echo "Source: https://blog.torproject.org/blog/tor-messenger-beta-chat-over-tor-easily "
 echo
@@ -60,7 +60,7 @@ cd $PER_DIR || error_exit "No TAILS persistence found. Aborting"
 
 REPO_DIR=/home/amnesia/Persistent/Packages/Repo
 INSTALL_DIR="/home/amnesia/Persistent/tor-messenger"
-distfile="tor-messenger-linux32-0.1.0b4_en-US.tar.xz"
+distfile="tor-messenger-linux32-0.2.0b2_en-US.tar.xz"
 
 # This script should not be run as root
 if [[ $EUID -eq 0 ]]; then
@@ -78,7 +78,7 @@ if [ ! -f "$installfile" ]; then
 	echo
 	echo "Downloading Tor Messenger distribution file ..."
 	echo
-	wget -O $distfile https://dist.torproject.org/tormessenger/0.1.0b4/tor-messenger-linux32-0.1.0b4_en-US.tar.xz || error_exit "Unable to download Tor Messenger. Bailing out."
+	wget -O $distfile https://dist.torproject.org/tormessenger/0.2.0b2/tor-messenger-linux32-0.2.0b2_en-US.tar.xz || error_exit "Unable to download Tor Messenger. Bailing out."
 else
 	mv $installfile $PER_DIR/
 fi

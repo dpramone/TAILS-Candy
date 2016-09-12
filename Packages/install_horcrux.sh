@@ -52,7 +52,7 @@ fi
 cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "Sorry, no dotfiles persistence found."
 
 PERSISTENT=/home/amnesia/Persistent
-INSTALL_DIR=$PERSISTENT/horcrux
+INSTALL_DIR=$PERSISTENT/Git/horcrux
 
 # 
 # Install Duplicity
@@ -113,7 +113,7 @@ EOT
 **/*
 EOT
 	# Create configuration directory
-	sudo -u amnesia /home/amnesia/Persistent/horcrux/horcrux
+	sudo -u amnesia /home/amnesia/Persistent/Git/horcrux/horcrux
 fi
 
 

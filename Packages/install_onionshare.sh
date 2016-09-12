@@ -23,8 +23,8 @@ Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
 # Script main line
 
 clear
-echo "This routine will persistently install an Onionshare"
-echo "git clone in ~/Persistent/onionshare."
+echo "This routine will persistently install an Onionshare 0.9.1"
+echo "git clone in ~/Persistent/Git/onionshare."
 echo
 echo "Source: https://onionshare.org/ "
 echo
@@ -32,7 +32,7 @@ echo "1) You need to have TAILS persistence configured."
 echo "The script will exit gracefully if this is not the case."
 echo "2) We will try to download Onionshare from Github. If the"
 echo "download fails, the script exits gracefully."
-echo "3) If the ~/Persistent/onionshare directory already exists,"
+echo "3) If the ~/Persistent/Git/onionshare directory already exists,"
 echo "you can (optionally) request a git pull (package update)." 
 echo
 echo "4)ATTENTION: To access Onionshare in TAILS, you need to"
@@ -47,7 +47,7 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 cd /live/persistence/TailsData_unlocked/dotfiles || error_exit "Sorry, no TAILS dotfiles persistence found"
 
 PERSISTENT=/home/amnesia/Persistent
-INSTALL_DIR=$PERSISTENT/onionshare
+INSTALL_DIR=$PERSISTENT/Git/onionshare
 
 # This script should not be run as root
 if [[ $EUID -eq 0 ]]; then
@@ -62,13 +62,13 @@ then
         read -p "Do you wish to update (git pull) Onionshare? y/n " yesno
         case $yesno in
         [Nn]* ) 
-                sudo apt-get install -y python-flask python-stem=1.4.1b-1~bpo8+1 python-qt4 dh-python python-werkzeug python-jinja2 libjs-jquery python-markupsafe
+                sudo apt-get install -y python3-flask python3-stem python3-pyqt5 python-nautilus 
                 break;;
         [Yy]* ) 
         	echo "Trying Onionshare update from Github ..."
         	cd $INSTALL_DIR
         	git pull || break
-		sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem=1.4.1b-1~bpo8+1 python-qt4 dh-python
+                sudo apt-get install -y python3-flask python3-stem python3-pyqt5 python-nautilus build-essential fakeroot python3-all python3-stdeb dh-python
 		./install/build_deb.sh
 		Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 linux-libc-dev make
         	read -n 1 -p "Press any key to continue..."
@@ -83,10 +83,10 @@ then
 else
 	echo "Downloading Onionshare from Github ..."
 	# mkdir $INSTALL_DIR
-	git clone https://github.com/micahflee/onionshare.git $INSTALL_DIR || error_exit "Unable to download OnionShare. Bailing out ..."
-	cd $PERSISTENT/onionshare
+	cd $PERSISTENT/Git
+	git clone https://github.com/micahflee/onionshare.git || error_exit "Unable to download OnionShare. Bailing out ..."
 	echo "Installing ..."
-	sudo apt-get install -y build-essential fakeroot python-all python-stdeb python-flask python-stem=1.4.1b-1~bpo8+1 python-qt4 dh-python
+        sudo apt-get install -y python3-flask python3-stem python3-pyqt5 python-nautilus build-essential fakeroot python3-all python3-stdeb dh-python
 	./install/build_deb.sh
 	sudo dpkg -i deb_dist/onionshare_*.deb
 	Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 linux-libc-dev make

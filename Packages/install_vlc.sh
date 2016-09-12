@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #########################################################################
-# TAILS installer script for VLC Media Player 2.1.5
+# TAILS installer script for VLC Media Player 2.2.4
 #
 # Part of "TAILS Candy" Project
 # Version 0.2
@@ -24,9 +24,12 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+clear
 echo " "
-echo "This routine non-persistenly installs VLC and removes Totem Player"
-echo "VLC just plays way more different media types."
+# echo "This routine non-persistenly installs VLC and removes Totem Player"
+echo "This routine non-persistenly installs VLC 2.2.4"
+#echo "VLC just plays way more different media types."
+echo " "
 echo "At some point, we will add a VLC apparmor profile for better containment."
 echo "Source: https://www.videolan.org "
 echo 
@@ -34,13 +37,13 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 echo
 
 # Remove Totem player
-echo "Removing Totem multimedia player..."
+#echo "Removing Totem multimedia player..."
 #sudo apt-get -y remove totem totem-common gir1.2-totem-1.0 gir1.2-totem-plparser-1.0 totem-plugins
 
 # Install VLC & dependencies
 # We're doing it in this order for mimetypes and stuff to get registered correctly
 echo "Now installing VLC & dependencies ..."
-/usr/bin/apt-get -y install vlc vlc-nox vlc-data libvlccore8 libvlc5
+/usr/bin/apt-get install vlc vlc-nox vlc-data libvlccore8 libvlc5
 
 if [ ! -d /home/amnesia/.config/vlc ]; then
         sudo -u amnesia mkdir -p /live/persistence/TailsData_unlocked/dotfiles/.config/vlc 1>&2
