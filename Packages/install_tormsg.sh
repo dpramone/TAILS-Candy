@@ -107,9 +107,14 @@ echo "Registering Tor Messenger in Gnome ..."
 /usr/bin/notify-send "Tor Messenger Installed" "Open with Applications > Internet > Tor Messenger"
 
 echo
-echo "ATTENTION: You need to change the default Tor Messenger SOCKS5 port to"
-echo "9150 for things to work! (Tools, Preferences, Advanced, Network)"
+echo "ATTENTION: Configure Tor to connect through the SOCKS 5 proxy at"
+echo "127.0.0.1 port 9050 for things to work!"
 echo
-read -n 1 -p "Press any key to launch Tor Messenger now or Ctrl-C to finish up..."
+read -n 1 -p "Press any key to launch Tor Messenger anyway or Ctrl-C to finish up..."
+echo
+echo "Opening up tcp ports 9152-9153 to connect Tor Messenger ..."
+echo
+sudo iptables -I OUTPUT -o lo -p tcp --dport 9152 -j ACCEPT
+sudo iptables -I OUTPUT -o lo -p tcp --dport 9153 -j ACCEPT
 ./start-tor-messenger.desktop
 

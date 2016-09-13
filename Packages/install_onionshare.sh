@@ -92,5 +92,9 @@ else
 	Confirm "Type y if you wish to remove the compiler now" && sudo apt-get -y remove g++ g++-4.9 gcc gcc-4.9 libc-dev-bin libc6-dev libasan1 libatomic1 libcilkrts5 libitm1 libgcc-4.9-dev libstdc++-4.9-dev libubsan0 linux-libc-dev make
 fi
 
+echo " "
+echo "Opening tcp port 9051 for Onionshare to connect ..."
+sudo iptables -I OUTPUT -o lo -p tcp --dport 9051 -j ACCEPT
+
 /usr/bin/notify-send -i /usr/share/pixmaps/onionshare80.xpm "Onionshare Installed" "Open with Applications > Internet > OnionShare"
 
