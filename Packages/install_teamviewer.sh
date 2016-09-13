@@ -40,7 +40,7 @@ read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
 PERSISTENT=/home/amnesia/Persistent
 REPO_DIR=$PERSISTENT/Packages/Repo
-SET_DIR=$PERSISTENT/Packages/Settings/teamviewer11
+SET_DIR=$PERSISTENT/Packages/Settings/teamviewer
 OLD_DIR=$PERSISTENT/Packages/Settings/teamviewer10
 
 # TeamViewer dependencies
@@ -70,13 +70,13 @@ if [ -d "$OLD_DIR" ]; then
 	mv $OLD_DIR $SET_DIR
 fi
 if [ -d "$SET_DIR" ]; then
-	sudo -u amnesia ln -sf $SET_DIR /home/amnesia/.config/teamviewer11
+	sudo -u amnesia ln -sf $SET_DIR /home/amnesia/.config/teamviewer
 else
 	mkdir -p $SET_DIR
 	chown amnesia:amnesia $SET_DIR
-	sudo -u amnesia ln -s $SET_DIR /home/amnesia/.config/teamviewer11
+	sudo -u amnesia ln -s $SET_DIR /home/amnesia/.config/teamviewer
 	echo 
-	echo "If you wish to make your Teamviewer settings persistent, copy the contents of the /home/amnesia/.config/teamviewer11 directory to /home/amnesia/Persistent/Packages/Settings/teamviewer11 ."
+	echo "If you wish to make your Teamviewer settings persistent, copy the contents of the /home/amnesia/.config/teamviewer directory to /home/amnesia/Persistent/Packages/Settings/teamviewer ."
 	echo
 	echo "WARNING: Do NOT copy this directory to your Dotfiles persistent folder as this will cause an infinite loop at boot time. This is a TAILS bug."
 	echo 
@@ -85,3 +85,4 @@ fi
  
 /usr/bin/sudo -u amnesia /usr/bin/notify-send -i /opt/teamviewer/tv_bin/desktop/teamviewer.png "TeamViewer Installed" "Open with Applications > Internet > TeamViewer"
 /usr/bin/sudo -u amnesia /usr/bin/notify-send -i /opt/teamviewer/tv_bin/desktop/teamviewer.png "Set TeamViewer Proxy: Extras->Options->General->Proxy" "Manual Proxy IP socks5://127.0.0.1 Port 9050"
+/opt/teamviewer/tv_bin/script/teamviewer &
