@@ -198,6 +198,13 @@ if [ ! $? -eq 0 ]; then
 # 
 GPG_TTY=$(tty)
 export GPG_TTY
+
+if [ -f "${HOME}/.gnupg/gpg-agent-info-amnesia" ]; then
+     . "${HOME}/.gnupg/gpg-agent-info-amnesia"
+       export GPG_AGENT_INFO
+       export SSH_AUTH_SOCK
+       export SSH_AGENT_PID
+fi
 EOF
 bashrc=/live/persistence/TailsData_unlocked/dotfiles/.bashrc
 # Make .bashrc persistent by copying over to Dotfiles directory

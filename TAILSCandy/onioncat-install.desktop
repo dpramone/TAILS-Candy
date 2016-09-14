@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=service
+Name[en_US]=Install OnionCat 0.2.2 Service
+Comment=Install OnionCat 0.2.2 Service
+Exec=sudo /home/amnesia/Persistent/Packages/install_onioncat.sh
+Name=Install OnionCat 0.2.2 Service
+Icon=service

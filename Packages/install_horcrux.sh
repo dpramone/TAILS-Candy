@@ -37,8 +37,10 @@ echo "we try to update the package with a git pull."
 echo "4) On first run, we create a ~/.horcrux config directory containing"
 echo "the main config file as well as -config and -exclude files you need"
 echo "to adjust to reflect your own backup needs."
+echo "5) Set source argument to /live/persistence/TailsData_unlocked/"
+echo "in ~/.horcrux/horcrux.conf to backup persistent volume".
 echo
-echo "5) As Horcrux requires Duplicity and some additional packages"
+echo "6) As Horcrux requires Duplicity and some additional packages"
 echo ", you need to re-run this script at every TAILS reboot."
 echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
@@ -91,6 +93,7 @@ Icon=grsync
 Comment=Horcrux Backup
 Categories=System;Security;
 EOT
+chown amnesia:amnesia $desktopdir/horcrux.desktop
 
 #
 # Check for existence of previous Horcrux config directory in persistent volume (dotfiles)
@@ -106,12 +109,11 @@ then
 destination_path="rsync://username@your_server//home/username/backup/"
 #destination_path="file:///media/medianame/backup/"
 EOT
-	sudo -u amnesia cat <<EOT >> $confdir/persistent-exclude
+	sudo -u amnesia cat <<EOT >> $confdir/persistent-exclude-example
 + /live/persistence
-+ /home/amnesia/Persistent
- /home/amnesia/Persistent/Dropbox
 **/*
 EOT
+	chown amnesia:amnesia $confdir/persistent*
 	# Create configuration directory
 	sudo -u amnesia /home/amnesia/Persistent/Git/horcrux/horcrux
 fi
