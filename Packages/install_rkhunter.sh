@@ -125,6 +125,7 @@ if [ ! -f "$installer" ]; then
 	tar -xzvf $distfile
 	chown amnesia:amnesia rkhunter-1.4.2.tar.gz*
 	mv rkhunter-1.4.2.tar.gz* $REPO/
+	chown amnesia:amnesia $REPO/rkhunter-1.4.2.tar.gz*
 	chown -R amnesia:amnesia $PERSISTENT/rkhunter-1.4.2
 
 	echo

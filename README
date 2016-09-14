@@ -30,7 +30,7 @@ The following are currently included:
 3) AIDE 0.16 - Advanced Intrusion Detection Environment
    http://aide.sourceforge.net
 
-4) Armory 0.93.2 - A Bitcoin wallet manager
+4) Armory 0.93.3 - A Bitcoin wallet manager
    https://bitcoinarmory.com
 
 5) Dropbox 4.49 - Cloud storage
@@ -53,7 +53,7 @@ The following are currently included:
 10) Mumble 1.2.8 - Low latency VOIP client
     http://www.mumble.com
 
-11) Martus 4.4.0 - Secure information collection and management system
+11) Martus 4.4.0/5.1.1 - Secure information collection and management system
     https://www.martus.org
 
 12) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
@@ -87,7 +87,7 @@ The following are currently included:
 21) Tomb 2.2 - LUKS container creation and management
     https://www.dyne.org/software/tomb/
 
-22) TorChat 0.9.9-550 - Secure instant messaging over Tor
+22) TorChat 0.9.9-553 - Secure instant messaging over Tor
     https://github.com/prof7bit/TorChat
 
 23) Tor Messenger 0.2.0b2 - Secure instant messaging over Tor (InstantBird)
@@ -110,6 +110,12 @@ The following are currently included:
 
 29) Zulucrypt 5.0.1 - Cryptsetup, TCPlay, LUKS & EncFS management
     https://mhogomchungu.github.io/zuluCrypt/
+
+30) Yubikey Personalization Manager 3.1.16 - Authentication token management
+    https://yubico.com
+
+31) OnionCat 0.2.2 - IP-Transparent Tor hidden service connector
+    https://www.onioncat.org
     
 
 None of these packages come with "TAILS Candy". They are fetched on demand
@@ -145,11 +151,12 @@ by the "TAILS Candy" installer. Here's a short summary:
 executed every time you log in to TAILS. You can customise the Customisations.sh
 script it runs and which can be found in the ~/Persistent/Packages folder.
 
-2) Disable TAILS Gnome Keyring Daemon SSH-support by overriding default
+2) Disable TAILS Gnome Keyring Daemon SSH/GPG-support by overriding default
 autostart. This is done by creating another ~/.config/autostart item which is
 a copy of the one in /etc/xdg/autostart but with Autostart set to false.
 Reason for doing so is that Gnome Keyring s*cks, doesn't support recent SSH key
-types and normal people are using the GnuPG agent for this purpose anyway.
+types or smart cards, and normal people are using the GnuPG agent for this
+purpose anyway.
 
 3) Check for GPG SSH-support in ~/.bashrc and ~/.gnupg/gpg-agent.conf. Set if
 not found. Check if you have configured GPG persistence.
@@ -164,14 +171,9 @@ profile.
 6) Create a link to the TAILSCandy folder on the user's desktop so he/she can
 perform point-and-click installations/updates.
 
-7) Propose to replace the default Gnome top panel by a customised one
-containing additional icons for system settings and to restart the panel.
-(~/.config/gnome-panel/panel-default-layout.layout). Saves the original
-if answered yes to.
+7) Propose to make I2P settings persistent.
 
-8) Propose to make I2P settings persistent.
-
-9) Ask if you want to make some additional Debian package installations
+8) Ask if you want to make some additional Debian package installations
 persistent by adding them to the live-additional-software.conf file (e.g.
 Mixmaster, FileZilla, Putty).
 
@@ -181,7 +183,7 @@ III - REQUIREMENTS
 
 1) A working TAILS 2.5 with persistent volume and Dotfiles support.
 2) Root password set up at the TAILS Greeter (login) screen.
-3) Some patience and a kind disposition. This is a first (alpha) release.
+3) Some patience and a kind disposition. This is an early release.
    Most (bash) scripts are really basic-basic and will benefit from some
    optimisation and code clean-up. This will happen over time.
    They will also most probably contain some left-over bugs here and there.
@@ -251,8 +253,8 @@ VI - KNOWN ISSUES
 1) If you have installed Dropbox, for mysterious reasons it loses its linking
 information on every reboot and will ask you to register again. 
 2) Minor issues with Tomb panel applet and system mime type registration
-3) OnionShare was temporarily removed from TAILS Candy because of
-incompatibilities with current TAILS version(s).
+3) OnionMail was temporarily removed from TAILS Candy because it still requires
+ClawsMail while IceDove is now the default on TAILS.
 
 
 VII - COMMENTS

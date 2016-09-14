@@ -18,20 +18,27 @@ function error_exit
 	exit 1
 }
 
+function error_sig
+{
+	echo "Unable to download signature file"
+	rm armory_0.93.3_sha256sum.txt.asc
+}
+
 checksig()
 {
 
 echo
-sudo -u amnesia gpg --list-keys 0x98832223 || wget -O - https://bitcoinarmory.com/Alan-C.-Reiner-Offline-Signing-Key-alan@bitcoinarmory.com-0x98832223-pub.asc | sudo -u amnesia gpg --import
+sudo -u amnesia gpg --list-keys 0x98832223 || gpg --recv-keys --keyserver keyserver.ubuntu.com 98832223
 #
 # Download distribution file signature
 #
-curl --socks5-hostname 127.0.0.1:9050 -k -L -J -O https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.2_sha256sum.txt.asc || echo "Unable to download signature file"
+curl --socks5-hostname 127.0.0.1:9050 -k -L -J -O https://www.bitcoinarmory.com/downloads/bitcoinarmory-releases/armory_0.93.3_sha256sum.txt.asc || echo error_sig
 wait
-if [ -s ./armory_0.93.2_sha256sum.txt.asc ]; then
-	chown amnesia:amnesia armory_0.93.2_sha256sum.txt.asc
+
+if [ -s ./armory_0.93.3_sha256sum.txt.asc ]; then
+	chown amnesia:amnesia armory_0.93.3_sha256sum.txt.asc
 	dpkg -s dpkg-sig 2>/dev/null >/dev/null || apt-get -y install dpkg-sig
-	dpkg-sig --verify armory_0.93.2_ubuntu-32bit.deb
+	dpkg-sig --verify armory_0.93.3_ubuntu-32bit.deb
 	echo 
 	echo "You should see the string 4AB16AEA98832223 at the end of the GOODSIG line."
 	echo "If this is not the case, you should NOT uses this installer."
@@ -77,24 +84,35 @@ cd $DOT_DIR || error_exit "No dotfiles persistence found. Aborting"
 PERSISTENT=/home/amnesia/Persistent
 INSTALL_DIR=$PERSISTENT/Packages/Repo
 
-# Armory dependencies
-echo "Installing Armory dependencies first ..."
-/usr/bin/apt-get install python-crypto python-openssl python-psutil python-pyasn1 python-twisted python-twisted-bin python-twisted-conch python-twisted-core python-twisted-lore python-twisted-mail python-twisted-names python-twisted-news python-twisted-runner python-twisted-web python-twisted-words
-
 # Do we already have a copy of the Armory .deb installation file?
 cd $INSTALL_DIR
 cnt=`ls armory*-32bit.deb 2>/dev/null | wc -l`
 if [ "$cnt" = "0" ]; then
-wget -O armory_0.93.2_ubuntu-32bit.deb https://s3.amazonaws.com/bitcoinarmory-releases/armory_0.93.2_ubuntu-32bit.deb || error_exit "Sorry, unable to download Armory. Bailing out." 
+wget -O armory_0.93.3_ubuntu-32bit.deb https://www.bitcoinarmory.com/downloads/bitcoinarmory-releases/armory_0.93.3_ubuntu-32bit.deb 
+if [[ "$?" != 0 ]]; then
+	rm armory_0.93.3_ubuntu-32bit.deb 
+	echo "Unable to download armory distribution file"
+	echo "This is probably a Cloudflare Captcha problem."
+	echo "Please go to https://www.bitcoinarmory.com/downloads"
+	echo "to download the file manually. Save it in ~/Persistent/"
+	echo "Packages/Repo/, then restart this installer." 
+	echo "exit 1"
+else
+	chown amnesia:amnesia $INSTALL_DIR/armory*-32bit.deb
+fi
 wait
-chown amnesia:amnesia $INSTALL_DIR/armory*-32bit.deb
 fi
 checksig
+
+# Armory dependencies
+echo "Installing Armory dependencies first ..."
+/usr/bin/apt-get install python-crypto python-openssl python-psutil python-pyasn1 python-twisted python-twisted-bin python-twisted-conch python-twisted-core python-twisted-lore python-twisted-mail python-twisted-names python-twisted-news python-twisted-runner python-twisted-web python-twisted-words
+
 /usr/bin/dpkg -i $INSTALL_DIR/armory*-32bit.deb || error_exit "Armory installation failed! WTF?" 
 #
 # Remove distribution file?
 echo
-Confirm "Type y if you wish to remove the distribution file" && rm $INSTALL_DIR/armory_*-32bit.deb $INSTALL_DIR/armory_0.93.2_sha256sum.txt.asc
+Confirm "Type y if you wish to remove the distribution file" && rm $INSTALL_DIR/armory_*-32bit.deb $INSTALL_DIR/armory_0.93.3_sha256sum.txt.asc
 echo
 
 # Config dir already present?

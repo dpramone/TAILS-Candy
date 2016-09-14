@@ -28,16 +28,20 @@ clear
 echo "This routine non-persistently installs Yubikey Personalization Manager"
 echo "GUI from standard Debian package(s)."
 echo
-echo "ATTENTION: You NEED to run Yubikey PM as root. Otherwise you will"
-echo "get -Unknown Error-".
-echo
 read -n 1 -p "Press any key to continue or Ctrl-C to abort ..."
 
 # This can also be done from Synaptic but I like it better like this
 clear
 /usr/bin/apt-get install yubikey-personalization-gui opensc
-/usr/bin/sudo -u amnesia /usr/bin/notify-send "Yubikey Personalization GUI Installed" "Start with sudo yubikey-personalization-gui"
+echo
+echo "Creating 70-yubikey.rules in /etc/udev/rules.d ..."
+/bin/cat <<EOT > /etc/udev/rules.d/70-yubikey.rules
+ACTION=="add|change", SUBSYSTEM=="usb", ATTR{idVendor}=="1050", ATTR{idProduct}=="0010|0110|0111|0114|0116|0401|0403|0405|0407|0410", OWNER="amnesia", TAG+="uaccess"
+EOT
+udevadm control --reload-rules
+
+/usr/bin/sudo -u amnesia /usr/bin/notify-send "Yubikey Personalization GUI Installed" "Launch with Accessories - Yubikey Personalization Tool"
 
 read -n 1 -p "Press any key to launch Yubikey PM now or Ctrl-C to finish up..."
-sudo /usr/bin/yubikey-personalization-gui
+sudo -u amnesia /usr/bin/yubikey-personalization-gui &
 

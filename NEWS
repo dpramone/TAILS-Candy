@@ -1,2 +1,4 @@
 
 - Commit of a number of modifications for TAILS 2.5
+- Current TAILS 2.5 has a number of issues that prevent Academic Signature 
+from compiling or VLC from installing due to conflicting dependencies.

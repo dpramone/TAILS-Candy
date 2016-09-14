@@ -8,7 +8,6 @@ TAILS, VLC, TorChat, OnionMail, OnionShare, Tahoe LAFS, Pond, Martus,
 Academic Signature, Tomb, Armory, Dropbox, SilentEye, TeamViewer, PyBitmessage,
 Shamir's Secret Sharing Scheme, Tor Messenger, Linux Malware Detect, Rootkit
 Hunter, AIDE, Horcrux, Gostcript, Paranoia Text & File Encryption, AESCrypt,
-TrueCrypt, Mumble, Jitsi, Veracrypt and Zulucrypt are copyrighted by their
-respective authors and owners. None of these are included in the "TAILS Candy"
-package but are downloaded on demand by their respective installer/update
-scripts.
+TrueCrypt, Mumble, Jitsi, Veracrypt, Zulucrypt, OnionCat and Yubikey
+Personalization Manager are copyrighted by their respective authors and owners. None of these are included in the "TAILS Candy" package but are downloaded
+on demand by their respective installer/update scripts.
