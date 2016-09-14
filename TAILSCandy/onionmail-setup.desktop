@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Terminal=true
+Icon[en_US]=gnome-app-install
+Name[en_US]=Set up OnionMail 1.9.0
+Comment=Install/Update OnionMail 1.9.0.1904
+Exec=/home/amnesia/Persistent/Packages/setup_onionmail.sh
+Name=Set up OnionMail 1.9.0
+Icon=gnome-app-install

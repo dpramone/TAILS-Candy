@@ -56,8 +56,7 @@ The following are currently included:
 11) Martus 4.4.0/5.1.1 - Secure information collection and management system
     https://www.martus.org
 
-12) *TEMPORARILY REMOVED DUE TO INCOMPATIBILITIES WITH CURRENT TAILS VERSION*
-    OnionMail 1.8.1 - Set up (a) secure email account(s) on an OnionMail server.
+12) OnionMail 1.9.0 - Set up (a) secure email account(s) on an OnionMail server.
     http://en.onionmail.info
 
 13) OnionShare 0.9.1 - Secure file sharing
