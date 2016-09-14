@@ -36,8 +36,7 @@ The following are currently included:
 5) Dropbox 4.49 - Cloud storage
    https://www.dropbox.com
 
-6) *TEMPORARILY REMOVED DUE TO COMPILATION ERRORS on Debian Jessie *
-   GostCrypt 1.0 - Truecrypt successor with GOST-support
+6) GostCrypt 1.3 - Truecrypt successor with GOST-support
    http://www.gostcrypt.org/
 
 7) Horcrux - Duplicity based, GPG encrypted backup/restore script
