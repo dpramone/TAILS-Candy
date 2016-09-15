@@ -39,6 +39,9 @@ The following are currently included:
 6) GostCrypt 1.3 - Truecrypt successor with GOST-support
    http://www.gostcrypt.org/
 
+    *** Broken on current TAILS 2.5 because of WxWidgets 3.0
+    *** conflicts. (same as Academic Signature)
+
 7) Horcrux - Duplicity based, GPG encrypted backup/restore script
    https://github.com/piffio/horcrux
    http://chrispoole.com/project/general/horcrux/

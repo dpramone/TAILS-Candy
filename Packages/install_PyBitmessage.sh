@@ -18,6 +18,8 @@ function error_exit
         exit 1
 }
 
+Confirm() { read -sn 1 -p "$* [Y/N]? "; [[ ${REPLY:0:1} = [Yy] ]]; }
+
 # Script main line
   
 # Install PyBitmessage
@@ -32,46 +34,52 @@ instpbm(){
 		ln -s /home/amnesia/.config/PyBitMessage
 	fi
 
-	if [ ! -f /home/amnesia/Persistent/PyBitmessage/keys.dat ]
+	if [ ! -f /live/persistence/TailsData_unlocked/dotfiles/.config/PyBitmessage/keys.dat ]
 	then
-		/bin/cat <<EOT > /home/amnesia/Persistent/PyBitmessage/keys.dat
-[bitmessagesettings]
+		/bin/cat <<EOT > /live/persistence/TailsData_unlocked/dotfiles/.config/PyBitmessage/keys.dat
 settingsversion = 10
 port = 8444
-timeformat = %%a, %%d %%b %%Y  %%I:%%M %%p
+timeformat = %%c
 blackwhitelist = black
 startonlogon = False
 minimizetotray = False
 showtraynotifications = True
 startintray = False
 socksproxytype = SOCKS5
-sockshostname = localhost
+sockshostname = 127.0.0.1
 socksport = 9050
-socksauthentication = True
+socksauthentication = False
 sockslisten = False
-socksusername = bitmessage
-sockspassword = bitmessage
+socksusername = 
+sockspassword = 
 keysencrypted = false
 messagesencrypted = false
 defaultnoncetrialsperbyte = 1000
 defaultpayloadlengthextrabytes = 1000
 minimizeonclose = false
-maxacceptablenoncetrialsperbyte = 0
-maxacceptablepayloadlengthextrabytes = 0
+maxacceptablenoncetrialsperbyte = 20000000000
+maxacceptablepayloadlengthextrabytes = 20000000000
+dontconnect = true
 userlocale = system
 useidenticons = True
-identiconsuffix = PV7e9irDHhsy
+identiconsuffix = Y9998KPVEg78
 replybelow = False
+maxdownloadrate = 0
+maxuploadrate = 0
+ttl = 367200
 stopresendingafterxdays = 
 stopresendingafterxmonths = 
-namecoinrpctype = namecoind
+namecoinrpctype = nmcontrol
 namecoinrpchost = localhost
 namecoinrpcuser = 
 namecoinrpcpassword = 
-namecoinrpcport = 8336
+namecoinrpcport = 9000
 sendoutgoingconnections = True
-maxdownloadrate = 0
-maxuploadrate = 0
+onionhostname = 
+onionport = 8444
+onionbindip = 127.0.0.1
+smtpdeliver = 
+trayonclose = False
 willinglysendtomobile = False
 EOT
 	fi
@@ -93,6 +101,7 @@ Exec=bash -c "until sudo -n -u debian-tor /usr/local/sbin/tor-has-bootstrapped ;
  do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; python2 src/bitmessagemain.py"
 Icon=/home/amnesia/Persistent/PyBitmessage/desktop/icon24.png
 Comment[en_US.UTF-8]=Anonymous P2P Messenger
+Hidden=true
 EOT
 	chmod 700 $appdir/bitmessage_autostart.desktop
 
@@ -143,7 +152,8 @@ Version=1.0
 Name=Bitmessage
 Type=Application
 Terminal=false
-Exec=bash -c "until sudo -n -u debian-tor /usr/local/sbin/tor-has-bootstrapped ; do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; python2 src/bitmessagemain.py"
+Path=/home/amnesia/Persistent/PyBitmessage
+Exec=python2 /home/amnesia/Persistent/PyBitmessage/src/bitmessagemain.py
 Icon=evolution-mail
 Comment=Anonymous P2P Messenger
 Comment[en_US.UTF-8]=Anonymous P2P Messenger
@@ -206,6 +216,7 @@ echo
 
 PERSISTENT=/home/amnesia/Persistent
 PKG_DIR=$PERSISTENT/PyBitmessage
+REPO_DIR=$PERSISTENT/Packages/Repo
 
 # This script should not be run as root
 if [[ $EUID -eq 0 ]]; then
@@ -248,6 +259,23 @@ else
 		mkdir $PKG_DIR
 		git clone https://github.com/Bitmessage/PyBitmessage $PKG_DIR || error_exit "Sorry, we were unable to download PyBitmessage" 
 		instpbm
+
+		echo "installing namecoind ..."
+		# Do we already have a copy of the SilentEye .deb installation file?
+		cd $REPO_DIR
+		cnt=`ls namecoin_0.3*_i386.deb 2>/dev/null | wc -l`
+		if [ "$cnt" = "0" ]; then
+		wget -O namecoin_0.3.80-3_i386.deb http://download.opensuse.org/repositories/home:/p_conrad:/coins/Debian_8.0/i386/namecoin_0.3.80-3_i386.deb || break
+		wait
+		chown amnesia:amnesia $REPO_DIR/namecoin_0.3*_i386.deb
+		fi
+
+		sudo apt-get install libboost-program-options1.55.0
+		sudo dpkg -i namecoin_0.3.80-3_i386.deb
+		echo
+		Confirm "Type y if you wish to keep the downloaded/saved distribution file" || rm $REPO_DIR/namecoin_0.3.*_i386.deb
+		echo
+
 		break
 		;;
         * ) echo "Please answer (y)es or (n)o.";;
