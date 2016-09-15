@@ -26,6 +26,12 @@ function error_exit
 instpbm(){
 
 	/bin/echo "Installing PyBitmessage in $PKG_DIR ..."
+	confdir=/live/persistence/TailsData_unlocked/dotfiles/.config/PyBitmessage
+	if [ ! -d "$confdir" ]; then
+		mkdir -p $confdir
+		ln -s /home/amnesia/.config/PyBitMessage
+	fi
+
 	if [ ! -f /home/amnesia/Persistent/PyBitmessage/keys.dat ]
 	then
 		/bin/cat <<EOT > /home/amnesia/Persistent/PyBitmessage/keys.dat
@@ -40,7 +46,7 @@ showtraynotifications = True
 startintray = False
 socksproxytype = SOCKS5
 sockshostname = localhost
-socksport = 9150
+socksport = 9050
 socksauthentication = True
 sockslisten = False
 socksusername = bitmessage
@@ -84,44 +90,44 @@ Name=Bitmessage
 Type=Application
 Terminal=false
 Exec=bash -c "until sudo -n -u debian-tor /usr/local/sbin/tor-has-bootstrapped ;
- do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; ./src/bitmessagemain.py"
+ do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; python2 src/bitmessagemain.py"
 Icon=/home/amnesia/Persistent/PyBitmessage/desktop/icon24.png
 Comment[en_US.UTF-8]=Anonymous P2P Messenger
 EOT
 	chmod 700 $appdir/bitmessage_autostart.desktop
 
 	/bin/echo " "
-	while true; do
-        read -p "Do you wish to replace Icedove in the Gnome top panel with Bitmessage? y/n" yesno
-        case $yesno in
-        [Yy]* )
-                /bin/echo " "
-		/bin/echo "Creating file to replace Icedove with Bitmessage in Gnome top panel"
-		/bin/echo " "
-		appdir=/live/persistence/TailsData_unlocked/dotfiles/.config/gnome-panel
-		if [ ! -d "$appdir" ]
-		then
-			mkdir -p $appdir
-		fi
-		/bin/cat <<EOT > $appdir/bitmessage.desktop
-[Desktop Entry]
-Name=Bitmessage
-Type=Application
-Terminal=false
-Exec=bash -c "cd /home/amnesia/Persistent/PyBitmessage/ ; ./src/bitmessagemain.py"
-Icon=/home/amnesia/Persistent/PyBitmessage/desktop/icon24.png
-Comment[en_US.UTF-8]=Anonymous P2P Messenger
-EOT
-		chmod 700 $appdir/bitmessage.desktop
-		cp /home/amnesia/.config/gnome-panel/panel-default-layout.layout $appdir/
-		sed -i "s|\[Object claws-launcher\]|\[Object bitmessage-launcher\]|g" $appdir/panel-default-layout.layout
-		sed -i "s|@instance-config/location='/usr/share/applications/claws-mail\.desktop'|@instance-config/location='/live/persistence/TailsData_unlocked/dotfiles/\.config/gnome-panel/bitmessage\.desktop'|g" $appdir/panel-default-layout.layout
-                break
-                ;;
-        [Nn]* ) break;;
-        * ) echo "Please answer (y)es or (n)o.";;
-        esac
-        done
+#	while true; do
+#        read -p "Do you wish to replace Icedove in the Gnome top panel with Bitmessage? y/n" yesno
+#        case $yesno in
+#        [Yy]* )
+#                /bin/echo " "
+#		/bin/echo "Creating file to replace Icedove with Bitmessage in Gnome top panel"
+#		/bin/echo " "
+#		appdir=/live/persistence/TailsData_unlocked/dotfiles/.config/gnome-panel
+#		if [ ! -d "$appdir" ]
+#		then
+#			mkdir -p $appdir
+#		fi
+#		/bin/cat <<EOT > $appdir/bitmessage.desktop
+#[Desktop Entry]
+#Name=Bitmessage
+#Type=Application
+#Terminal=false
+#Exec=bash -c "cd /home/amnesia/Persistent/PyBitmessage/ ; ./src/bitmessagemain.py"
+#Icon=/home/amnesia/Persistent/PyBitmessage/desktop/icon24.png
+#Comment[en_US.UTF-8]=Anonymous P2P Messenger
+#EOT
+#		chmod 700 $appdir/bitmessage.desktop
+#		cp /home/amnesia/.config/gnome-panel/panel-default-layout.layout $appdir/
+#		sed -i "s|\[Object claws-launcher\]|\[Object bitmessage-launcher\]|g" $appdir/panel-default-layout.layout
+#		sed -i "s|@instance-config/location='/usr/share/applications/claws-mail\.desktop'|@instance-config/location='/live/persistence/TailsData_unlocked/dotfiles/\.config/gnome-panel/bitmessage\.desktop'|g" $appdir/panel-default-layout.layout
+#                break
+#                ;;
+#        [Nn]* ) break;;
+#        * ) echo "Please answer (y)es or (n)o.";;
+#        esac
+#        done
 
 	# Create Gnome menu item
 	#
@@ -137,7 +143,7 @@ Version=1.0
 Name=Bitmessage
 Type=Application
 Terminal=false
-Exec=bash -c "until sudo -n -u debian-tor /usr/local/sbin/tor-has-bootstrapped ; do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; ./src/bitmessagemain.py"
+Exec=bash -c "until sudo -n -u debian-tor /usr/local/sbin/tor-has-bootstrapped ; do sleep 5 ; done ; cd /home/amnesia/Persistent/PyBitmessage/ ; python2 src/bitmessagemain.py"
 Icon=evolution-mail
 Comment=Anonymous P2P Messenger
 Comment[en_US.UTF-8]=Anonymous P2P Messenger
@@ -218,8 +224,8 @@ then
 	read -n 1 -p "Press any key to continue..."
 	
 else
-	rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop
-	rm /home/amnesia/.local/share/applications/bitmessage.desktop
+	rm /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop 2>/dev/null >/dev/null
+	rm /home/amnesia/.local/share/applications/bitmessage.desktop 2>/dev/null >/dev/null
         while true; do
         read -p "Install PyBitmessage with (y) or without (n) Mixmaster support ? " yn
         case $yn in
@@ -249,6 +255,7 @@ else
         done
 
 	cp /live/persistence/TailsData_unlocked/dotfiles/.local/share/applications/bitmessage.desktop /home/amnesia/.local/share/applications/bitmessage.desktop
+
 	/usr/bin/notify-send -i /home/amnesia/Persistent/PyBitmessage/desktop/icon24.png "PyBitmessage Installed" "Open with Applications > Internet > Bitmessage"
 fi
 

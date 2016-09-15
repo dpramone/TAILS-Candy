@@ -20,8 +20,15 @@ function error_exit
 
 function comp_error
 {
-	echo "Compilation failed. Apparently, WxWidgets is broken again on TAILS. Please download a static binary from http://academic-signature.org/Using_aca_sig_on_TAILS.html ..." 1>&2
-	exit 1
+	echo "Compilation failed. Apparently, WxWidgets is broken again on TAILS. We will try to download a static binary from http://academic-signature.org/Using_aca_sig_on_TAILS.html ..." 1>&2
+	wget -O academic_signature_4tails.zip http://academic-signature.org/academic_signature_4tails.zip 
+        #wait
+        if [ $? -ne 0 ]; then
+	error_exit "Unable to download static binary. Giving up."
+	fi
+	wget -O academic_signature_4tails.zip.sig http://academic-signature.org/academic_signature_4tails.zip.sig
+	unzip academic_signature_4tails.zip
+	rm academic_signature_4tails.zip
 }
 
 function copy_settings
@@ -178,8 +185,7 @@ Type=Application
 Terminal=false
 Path=/home/amnesia/Persistent/aca_sig-b55
 Exec=/home/amnesia/Persistent/aca_sig-b55/aca_sig
-#Icon=/home/amnesia/Persistent/aca_sig-b55/signature-icon.png
-Icon=writer
+Icon=/home/amnesia/Persistent/aca_sig-b55/aca_sig_icon.png
 Categories=Security;Encryption;
 StartupNotify=true
 EOF
